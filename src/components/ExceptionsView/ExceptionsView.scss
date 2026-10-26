@@ -1,0 +1,131 @@
+.exceptions-view {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--cds-layer-01);
+
+  &--empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    gap: 1rem;
+    color: var(--cds-text-secondary);
+
+    svg {
+      fill: var(--cds-support-warning);
+    }
+
+    p {
+      margin: 0;
+      font-size: 0.875rem;
+    }
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid var(--cds-border-subtle-01);
+
+    h3 {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+  }
+
+  &__list {
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  &__row {
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+
+    &:hover {
+      background: var(--cds-layer-hover-01);
+    }
+
+    &--selected {
+      background: var(--cds-layer-selected-01);
+      font-weight: 600;
+    }
+  }
+
+  &__cell {
+    &--origin {
+      cursor: pointer;
+      width: 200px;
+      font-size: 0.875rem;
+      vertical-align: top;
+    }
+
+    &--details {
+      word-break: break-word;
+    }
+  }
+
+  &__origin-icon {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 0.5rem;
+    flex-shrink: 0;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__origin-label {
+    font-weight: 500;
+    color: var(--cds-text-primary);
+  }
+
+  .exception-type {
+    margin-bottom: 0.5rem;
+    color: var(--cds-support-error);
+
+    strong {
+      font-weight: 600;
+    }
+  }
+
+  .exception-message {
+    margin-bottom: 0.5rem;
+    color: var(--cds-text-primary);
+  }
+
+  .exception-stack {
+    margin-top: 0.5rem;
+    
+    summary {
+      color: var(--cds-link-primary);
+      font-size: 0.875rem;
+      user-select: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    pre {
+      margin-top: 0.5rem;
+      padding: 0.5rem;
+      background: var(--cds-layer-02);
+      border-radius: 4px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+  }
+}
+
+// Made with Bob

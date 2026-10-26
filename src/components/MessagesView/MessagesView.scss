@@ -1,0 +1,90 @@
+.messages-view {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+    overflow-y: auto !important;
+  background: var(--cds-layer-01);
+
+  &--empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    gap: 1rem;
+    color: var(--cds-text-secondary);
+
+    svg {
+      fill: var(--cds-icon-secondary);
+    }
+
+    p {
+      margin: 0;
+      font-size: 0.875rem;
+    }
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid var(--cds-border-subtle-01);
+
+    h3 {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+  }
+
+  &__list {
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  &__row {
+    transition: background-color 0.15s ease;
+
+    &:hover {
+      background: var(--cds-layer-hover-01);
+    }
+
+    &--selected {
+      background: var(--cds-layer-selected-01);
+      font-weight: 600;
+    }
+  }
+
+  &__cell {
+    &--origin {
+      cursor: pointer;
+      width: 200px;
+      font-size: 0.875rem;
+    }
+
+    &--message {
+      word-break: break-word;
+    }
+  }
+
+  &__origin-icon {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 0.5rem;
+    flex-shrink: 0;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__origin-label {
+    font-weight: 500;
+    color: var(--cds-text-primary);
+  }
+}
+
+// Made with Bob
