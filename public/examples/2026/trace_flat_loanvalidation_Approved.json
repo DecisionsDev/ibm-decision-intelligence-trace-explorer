@@ -1,0 +1,761 @@
+{
+  "configuration" : {
+    "executionDuration" : false,
+    "printedMessages" : true,
+    "objectsInMemoryLimit" : -1,
+    "decisionModel" : {
+      "inputParameters" : "Object",
+      "outputParameters" : "Object",
+      "inputNode" : "Object",
+      "outputNode" : "Object"
+    },
+    "rules" : {
+      "boundObjectsAtStart" : "Object",
+      "boundObjectsAtEnd" : "Object",
+      "allRules" : true,
+      "executedRules" : true,
+      "nonExecutedRules" : true,
+      "selectedRules" : true,
+      "exceptions" : "NotHandled",
+      "boundObjectsDiff" : "JSONMergePatch",
+      "dataModifiedInAction" : "None",
+      "dataUsedInCondition" : "None"
+    },
+    "ruleflow" : {
+      "inputParameters" : "Object",
+      "outputParameters" : "Object",
+      "allTasks" : true,
+      "executedTasks" : true,
+      "notExecutedTasks" : false,
+      "executedTaskActions" : false
+    },
+    "format" : "Nested"
+  },
+  "rootRecord" : {
+    "recordType" : "DecisionModel",
+    "recordIndex" : "1",
+    "properties" : {
+      "engineVersion" : "LATEST-SNAPSHOT",
+      "name" : "loanValidation",
+      "input" : {
+        "borrower" : {
+          "SSN" : {
+            "areaNumber" : "123",
+            "groupCode" : "45",
+            "serialNumber" : "6789"
+          },
+          "birthDate" : "1968-05-12T00:00:00Z",
+          "creditScore" : 500,
+          "firstName" : "John",
+          "lastName" : "Doe",
+          "yearlyIncome" : 100000,
+          "zipCode" : "91320"
+        },
+        "loan" : {
+          "amount" : 185000,
+          "loanToValue" : 0.7,
+          "numberOfMonthlyPayments" : 72,
+          "startDate" : "2005-06-01T00:00:00Z"
+        },
+        "currentTime" : "2020-02-03T16:43:04.609Z"
+      },
+      "nestedRecords" : [ {
+        "recordType" : "DecisionModelNode",
+        "recordIndex" : "1.1",
+        "properties" : {
+          "name" : "Borrower",
+          "kind" : "InputData",
+          "hitPolicy" : "sequence",
+          "input" : {
+            "borrower" : {
+              "SSN" : {
+                "areaNumber" : "123",
+                "groupCode" : "45",
+                "serialNumber" : "6789"
+              },
+              "birthDate" : "1968-05-12T00:00:00Z",
+              "creditScore" : 500,
+              "firstName" : "John",
+              "lastName" : "Doe",
+              "yearlyIncome" : 100000,
+              "zipCode" : "91320"
+            }
+          },
+          "output" : {
+            "borrower" : {
+              "SSN" : {
+                "areaNumber" : "123",
+                "groupCode" : "45",
+                "serialNumber" : "6789"
+              },
+              "birthDate" : "1968-05-12T00:00:00Z",
+              "creditScore" : 500,
+              "firstName" : "John",
+              "lastName" : "Doe",
+              "yearlyIncome" : 100000,
+              "zipCode" : "91320"
+            }
+          }
+        }
+      }, {
+        "recordType" : "DecisionModelNode",
+        "recordIndex" : "1.2",
+        "properties" : {
+          "name" : "Loan",
+          "kind" : "InputData",
+          "hitPolicy" : "sequence",
+          "input" : {
+            "loan" : {
+              "amount" : 185000,
+              "loanToValue" : 0.7,
+              "numberOfMonthlyPayments" : 72,
+              "startDate" : "2005-06-01T00:00:00Z"
+            }
+          },
+          "output" : {
+            "loan" : {
+              "amount" : 185000,
+              "loanToValue" : 0.7,
+              "numberOfMonthlyPayments" : 72,
+              "startDate" : "2005-06-01T00:00:00Z"
+            }
+          }
+        }
+      }, {
+        "recordType" : "DecisionModelNode",
+        "recordIndex" : "1.3",
+        "properties" : {
+          "name" : "current time",
+          "kind" : "InputData",
+          "hitPolicy" : "sequence",
+          "input" : {
+            "currentTime" : "2020-02-03T16:43:04.609Z"
+          },
+          "output" : {
+            "currentTime" : "2020-02-03T16:43:04.609Z"
+          }
+        }
+      }, {
+        "recordType" : "DecisionModelNode",
+        "recordIndex" : "1.4",
+        "properties" : {
+          "name" : "Duration",
+          "kind" : "Decision",
+          "hitPolicy" : "sequence",
+          "input" : {
+            "loan" : {
+              "amount" : 185000,
+              "loanToValue" : 0.7,
+              "numberOfMonthlyPayments" : 72,
+              "startDate" : "2005-06-01T00:00:00Z"
+            }
+          },
+          "nestedRecords" : [ {
+            "recordType" : "SequentialEngine",
+            "recordIndex" : "1.4.1",
+            "properties" : {
+              "allRules" : [ "samples.duration" ],
+              "nonExecutedRules" : [ ],
+              "selectedRules" : [ "samples.duration" ],
+              "nestedRecords" : [ {
+                "recordType" : "Rule",
+                "recordIndex" : "1.4.1.1",
+                "properties" : {
+                  "name" : "samples.duration",
+                  "boundObjectsAtStart" : {
+                    "loan" : {
+                      "amount" : 185000,
+                      "loanToValue" : 0.7,
+                      "numberOfMonthlyPayments" : 72,
+                      "startDate" : "2005-06-01T00:00:00Z"
+                    }
+                  },
+                  "actionIndex" : "0",
+                  "actionName" : "then",
+                  "boundObjectsAtEnd" : {
+                    "duration" : 6,
+                    "loan" : {
+                      "amount" : 185000,
+                      "loanToValue" : 0.7,
+                      "numberOfMonthlyPayments" : 72,
+                      "startDate" : "2005-06-01T00:00:00Z"
+                    }
+                  },
+                  "boundObjectsDiff" : {
+                    "duration" : 6
+                  }
+                }
+              } ]
+            }
+          } ],
+          "output" : {
+            "duration" : 6
+          }
+        }
+      }, {
+        "recordType" : "DecisionModelNode",
+        "recordIndex" : "1.5",
+        "properties" : {
+          "name" : "Bankruptcy Score",
+          "kind" : "Decision",
+          "hitPolicy" : "sequence",
+          "input" : {
+            "borrower" : {
+              "SSN" : {
+                "areaNumber" : "123",
+                "groupCode" : "45",
+                "serialNumber" : "6789"
+              },
+              "birthDate" : "1968-05-12T00:00:00Z",
+              "creditScore" : 500,
+              "firstName" : "John",
+              "lastName" : "Doe",
+              "yearlyIncome" : 100000,
+              "zipCode" : "91320"
+            },
+            "currentTime" : "2020-02-03T16:43:04.609Z"
+          },
+          "nestedRecords" : [ {
+            "recordType" : "SequentialEngine",
+            "recordIndex" : "1.5.1",
+            "properties" : {
+              "allRules" : [ "samples.bankruptcy score" ],
+              "nonExecutedRules" : [ "samples.bankruptcy score" ],
+              "selectedRules" : [ "samples.bankruptcy score" ]
+            }
+          } ],
+          "defaultValueBefore" : {
+            "borrower" : {
+              "SSN" : {
+                "areaNumber" : "123",
+                "groupCode" : "45",
+                "serialNumber" : "6789"
+              },
+              "birthDate" : "1968-05-12T00:00:00Z",
+              "creditScore" : 500,
+              "firstName" : "John",
+              "lastName" : "Doe",
+              "yearlyIncome" : 100000,
+              "zipCode" : "91320"
+            },
+            "currentTime" : "2020-02-03T16:43:04.609Z"
+          },
+          "defaultValueAfter" : {
+            "bankruptcyScore" : 20.0
+          },
+          "output" : {
+            "bankruptcyScore" : 20.0
+          }
+        }
+      }, {
+        "recordType" : "DecisionModelNode",
+        "recordIndex" : "1.6",
+        "properties" : {
+          "name" : "Salary Score",
+          "kind" : "Decision",
+          "hitPolicy" : "sequence",
+          "input" : {
+            "borrower" : {
+              "SSN" : {
+                "areaNumber" : "123",
+                "groupCode" : "45",
+                "serialNumber" : "6789"
+              },
+              "birthDate" : "1968-05-12T00:00:00Z",
+              "creditScore" : 500,
+              "firstName" : "John",
+              "lastName" : "Doe",
+              "yearlyIncome" : 100000,
+              "zipCode" : "91320"
+            }
+          },
+          "nestedRecords" : [ {
+            "recordType" : "SequentialEngine",
+            "recordIndex" : "1.6.1",
+            "properties" : {
+              "allRules" : [ "samples.salary score" ],
+              "nonExecutedRules" : [ ],
+              "selectedRules" : [ "samples.salary score" ],
+              "nestedRecords" : [ {
+                "recordType" : "DecisionTable",
+                "recordIndex" : "1.6.1.1",
+                "properties" : {
+                  "name" : "samples.salary score",
+                  "boundObjectsAtStart" : {
+                    "borrower" : {
+                      "SSN" : {
+                        "areaNumber" : "123",
+                        "groupCode" : "45",
+                        "serialNumber" : "6789"
+                      },
+                      "birthDate" : "1968-05-12T00:00:00Z",
+                      "creditScore" : 500,
+                      "firstName" : "John",
+                      "lastName" : "Doe",
+                      "yearlyIncome" : 100000,
+                      "zipCode" : "91320"
+                    }
+                  },
+                  "actionIndex" : "5",
+                  "actionName" : "#6",
+                  "boundObjectsAtEnd" : {
+                    "borrower" : {
+                      "SSN" : {
+                        "areaNumber" : "123",
+                        "groupCode" : "45",
+                        "serialNumber" : "6789"
+                      },
+                      "birthDate" : "1968-05-12T00:00:00Z",
+                      "creditScore" : 500,
+                      "firstName" : "John",
+                      "lastName" : "Doe",
+                      "yearlyIncome" : 100000,
+                      "zipCode" : "91320"
+                    },
+                    "salaryScore" : 200.0
+                  },
+                  "boundObjectsDiff" : {
+                    "salaryScore" : 200.0
+                  }
+                }
+              } ]
+            }
+          } ],
+          "output" : {
+            "salaryScore" : 200.0
+          }
+        }
+      }, {
+        "recordType" : "DecisionModelNode",
+        "recordIndex" : "1.7",
+        "properties" : {
+          "name" : "Yearly interest rate",
+          "kind" : "Decision",
+          "hitPolicy" : "sequence",
+          "input" : {
+            "duration" : 6,
+            "loan" : {
+              "amount" : 185000,
+              "loanToValue" : 0.7,
+              "numberOfMonthlyPayments" : 72,
+              "startDate" : "2005-06-01T00:00:00Z"
+            }
+          },
+          "nestedRecords" : [ {
+            "recordType" : "SequentialEngine",
+            "recordIndex" : "1.7.1",
+            "properties" : {
+              "allRules" : [ "samples.yearly interest rate" ],
+              "nonExecutedRules" : [ ],
+              "selectedRules" : [ "samples.yearly interest rate" ],
+              "nestedRecords" : [ {
+                "recordType" : "Rule",
+                "recordIndex" : "1.7.1.1",
+                "properties" : {
+                  "name" : "samples.yearly interest rate",
+                  "boundObjectsAtStart" : {
+                    "loan" : {
+                      "amount" : 185000,
+                      "loanToValue" : 0.7,
+                      "numberOfMonthlyPayments" : 72,
+                      "startDate" : "2005-06-01T00:00:00Z"
+                    }
+                  },
+                  "actionIndex" : "5",
+                  "actionName" : "#6",
+                  "boundObjectsAtEnd" : {
+                    "loan" : {
+                      "amount" : 185000,
+                      "loanToValue" : 0.7,
+                      "numberOfMonthlyPayments" : 72,
+                      "startDate" : "2005-06-01T00:00:00Z"
+                    },
+                    "yearlyInterestRate" : 0.057
+                  },
+                  "boundObjectsDiff" : {
+                    "yearlyInterestRate" : 0.057
+                  }
+                }
+              } ]
+            }
+          } ],
+          "output" : {
+            "yearlyInterestRate" : 0.057
+          }
+        }
+      }, {
+        "recordType" : "DecisionModelNode",
+        "recordIndex" : "1.8",
+        "properties" : {
+          "name" : "Corporate Score",
+          "kind" : "Decision",
+          "hitPolicy" : "sequence",
+          "input" : {
+            "salaryScore" : 200.0,
+            "bankruptcyScore" : 20.0,
+            "borrower" : {
+              "SSN" : {
+                "areaNumber" : "123",
+                "groupCode" : "45",
+                "serialNumber" : "6789"
+              },
+              "birthDate" : "1968-05-12T00:00:00Z",
+              "creditScore" : 500,
+              "firstName" : "John",
+              "lastName" : "Doe",
+              "yearlyIncome" : 100000,
+              "zipCode" : "91320"
+            }
+          },
+          "nestedRecords" : [ {
+            "recordType" : "SequentialEngine",
+            "recordIndex" : "1.8.1",
+            "properties" : {
+              "allRules" : [ "samples.corporate score" ],
+              "nonExecutedRules" : [ ],
+              "selectedRules" : [ "samples.corporate score" ],
+              "nestedRecords" : [ {
+                "recordType" : "Rule",
+                "recordIndex" : "1.8.1.1",
+                "properties" : {
+                  "name" : "samples.corporate score",
+                  "boundObjectsAtStart" : {
+                    "bankruptcyScore" : 20.0,
+                    "borrower" : {
+                      "SSN" : {
+                        "areaNumber" : "123",
+                        "groupCode" : "45",
+                        "serialNumber" : "6789"
+                      },
+                      "birthDate" : "1968-05-12T00:00:00Z",
+                      "creditScore" : 500,
+                      "firstName" : "John",
+                      "lastName" : "Doe",
+                      "yearlyIncome" : 100000,
+                      "zipCode" : "91320"
+                    },
+                    "salaryScore" : 200.0
+                  },
+                  "actionIndex" : "0",
+                  "actionName" : "then",
+                  "boundObjectsAtEnd" : {
+                    "bankruptcyScore" : 20.0,
+                    "corporateScore" : 720.0,
+                    "borrower" : {
+                      "SSN" : {
+                        "areaNumber" : "123",
+                        "groupCode" : "45",
+                        "serialNumber" : "6789"
+                      },
+                      "birthDate" : "1968-05-12T00:00:00Z",
+                      "creditScore" : 500,
+                      "firstName" : "John",
+                      "lastName" : "Doe",
+                      "yearlyIncome" : 100000,
+                      "zipCode" : "91320"
+                    },
+                    "salaryScore" : 200.0
+                  },
+                  "boundObjectsDiff" : {
+                    "corporateScore" : 720.0
+                  }
+                }
+              } ]
+            }
+          } ],
+          "output" : {
+            "corporateScore" : 720.0
+          }
+        }
+      }, {
+        "recordType" : "DecisionModelNode",
+        "recordIndex" : "1.9",
+        "properties" : {
+          "name" : "Repayment",
+          "kind" : "Decision",
+          "hitPolicy" : "sequence",
+          "input" : {
+            "loan" : {
+              "amount" : 185000,
+              "loanToValue" : 0.7,
+              "numberOfMonthlyPayments" : 72,
+              "startDate" : "2005-06-01T00:00:00Z"
+            },
+            "yearlyInterestRate" : 0.057
+          },
+          "nestedRecords" : [ {
+            "recordType" : "SequentialEngine",
+            "recordIndex" : "1.9.1",
+            "properties" : {
+              "allRules" : [ "samples.repayment" ],
+              "nonExecutedRules" : [ ],
+              "selectedRules" : [ "samples.repayment" ],
+              "nestedRecords" : [ {
+                "recordType" : "Rule",
+                "recordIndex" : "1.9.1.1",
+                "properties" : {
+                  "name" : "samples.repayment",
+                  "boundObjectsAtStart" : {
+                    "duration" : 72,
+                    "amount" : 185000,
+                    "loan" : {
+                      "amount" : 185000,
+                      "loanToValue" : 0.7,
+                      "numberOfMonthlyPayments" : 72,
+                      "startDate" : "2005-06-01T00:00:00Z"
+                    },
+                    "monthly rate" : 0.00475,
+                    "yearlyInterestRate" : 0.057
+                  },
+                  "actionIndex" : "0",
+                  "actionName" : "then",
+                  "boundObjectsAtEnd" : {
+                    "duration" : 72,
+                    "amount" : 185000,
+                    "loan" : {
+                      "amount" : 185000,
+                      "loanToValue" : 0.7,
+                      "numberOfMonthlyPayments" : 72,
+                      "startDate" : "2005-06-01T00:00:00Z"
+                    },
+                    "monthly rate" : 0.00475,
+                    "yearlyInterestRate" : 0.057,
+                    "repayment" : 3039.8537960439126
+                  },
+                  "boundObjectsDiff" : {
+                    "repayment" : 3039.8537960439126
+                  }
+                }
+              } ]
+            }
+          } ],
+          "output" : {
+            "repayment" : 3039.8537960439126
+          }
+        }
+      }, {
+        "recordType" : "DecisionModelNode",
+        "recordIndex" : "1.10",
+        "properties" : {
+          "name" : "Grade",
+          "kind" : "Decision",
+          "hitPolicy" : "sequence",
+          "input" : {
+            "corporateScore" : 720.0,
+            "repayment" : 3039.8537960439126
+          },
+          "nestedRecords" : [ {
+            "recordType" : "SequentialEngine",
+            "recordIndex" : "1.10.1",
+            "properties" : {
+              "allRules" : [ "samples.grade" ],
+              "nonExecutedRules" : [ ],
+              "selectedRules" : [ "samples.grade" ],
+              "nestedRecords" : [ {
+                "recordType" : "Rule",
+                "recordIndex" : "1.10.1.1",
+                "properties" : {
+                  "name" : "samples.grade",
+                  "boundObjectsAtStart" : { },
+                  "actionIndex" : "7",
+                  "actionName" : "#8",
+                  "boundObjectsAtEnd" : {
+                    "grade" : {
+                      "grade" : "C",
+                      "message" : "Average risk loan"
+                    }
+                  },
+                  "boundObjectsDiff" : {
+                    "grade" : {
+                      "grade" : "C",
+                      "message" : "Average risk loan"
+                    }
+                  }
+                }
+              } ]
+            }
+          } ],
+          "output" : {
+            "grade" : {
+              "grade" : "C",
+              "message" : "Average risk loan"
+            }
+          }
+        }
+      }, {
+        "recordType" : "DecisionModelNode",
+        "recordIndex" : "1.11",
+        "properties" : {
+          "name" : "Insurance",
+          "kind" : "Decision",
+          "hitPolicy" : "sequence",
+          "input" : {
+            "grade" : {
+              "grade" : "C",
+              "message" : "Average risk loan"
+            },
+            "loan" : {
+              "amount" : 185000,
+              "loanToValue" : 0.7,
+              "numberOfMonthlyPayments" : 72,
+              "startDate" : "2005-06-01T00:00:00Z"
+            }
+          },
+          "nestedRecords" : [ {
+            "recordType" : "SequentialEngine",
+            "recordIndex" : "1.11.1",
+            "properties" : {
+              "allRules" : [ "samples.insurance" ],
+              "nonExecutedRules" : [ ],
+              "selectedRules" : [ "samples.insurance" ],
+              "nestedRecords" : [ {
+                "recordType" : "Rule",
+                "recordIndex" : "1.11.1.1",
+                "properties" : {
+                  "name" : "samples.insurance",
+                  "boundObjectsAtStart" : {
+                    "loan" : {
+                      "amount" : 185000,
+                      "loanToValue" : 0.7,
+                      "numberOfMonthlyPayments" : 72,
+                      "startDate" : "2005-06-01T00:00:00Z"
+                    },
+                    "grade" : {
+                      "grade" : "C",
+                      "message" : "Average risk loan"
+                    }
+                  },
+                  "actionIndex" : "9",
+                  "actionName" : "#10",
+                  "boundObjectsAtEnd" : {
+                    "insurance" : {
+                      "rate" : 0.006,
+                      "required" : true
+                    },
+                    "loan" : {
+                      "amount" : 185000,
+                      "loanToValue" : 0.7,
+                      "numberOfMonthlyPayments" : 72,
+                      "startDate" : "2005-06-01T00:00:00Z"
+                    },
+                    "grade" : {
+                      "grade" : "C",
+                      "message" : "Average risk loan"
+                    }
+                  },
+                  "boundObjectsDiff" : {
+                    "insurance" : {
+                      "rate" : 0.006,
+                      "required" : true
+                    }
+                  }
+                }
+              } ]
+            }
+          } ],
+          "output" : {
+            "insurance" : {
+              "rate" : 0.006,
+              "required" : true
+            }
+          }
+        }
+      }, {
+        "recordType" : "DecisionModelNode",
+        "recordIndex" : "1.12",
+        "properties" : {
+          "name" : "Approval",
+          "kind" : "Decision",
+          "hitPolicy" : "sequence",
+          "input" : {
+            "borrower" : {
+              "SSN" : {
+                "areaNumber" : "123",
+                "groupCode" : "45",
+                "serialNumber" : "6789"
+              },
+              "birthDate" : "1968-05-12T00:00:00Z",
+              "creditScore" : 500,
+              "firstName" : "John",
+              "lastName" : "Doe",
+              "yearlyIncome" : 100000,
+              "zipCode" : "91320"
+            },
+            "loan" : {
+              "amount" : 185000,
+              "loanToValue" : 0.7,
+              "numberOfMonthlyPayments" : 72,
+              "startDate" : "2005-06-01T00:00:00Z"
+            },
+            "currentTime" : "2020-02-03T16:43:04.609Z",
+            "repayment" : 3039.8537960439126,
+            "grade" : {
+              "grade" : "C",
+              "message" : "Average risk loan"
+            }
+          },
+          "nestedRecords" : [ {
+            "recordType" : "SequentialEngine",
+            "recordIndex" : "1.12.1",
+            "properties" : {
+              "allRules" : [ "samples.bad score", "samples.risky grade", "samples.too big Debt to Income ratio", "samples.age not valid", "samples.no name", "samples.wrong SSN", "samples.wrong SSN format", "samples.wrong zip format", "samples.max amount exceeded" ],
+              "nonExecutedRules" : [ "samples.bad score", "samples.risky grade", "samples.too big Debt to Income ratio", "samples.age not valid", "samples.no name", "samples.wrong SSN", "samples.wrong SSN format", "samples.wrong zip format", "samples.max amount exceeded" ],
+              "selectedRules" : [ "samples.bad score", "samples.risky grade", "samples.too big Debt to Income ratio", "samples.age not valid", "samples.no name", "samples.wrong SSN", "samples.wrong SSN format", "samples.wrong zip format", "samples.max amount exceeded" ]
+            }
+          } ],
+          "defaultValueBefore" : {
+            "borrower" : {
+              "SSN" : {
+                "areaNumber" : "123",
+                "groupCode" : "45",
+                "serialNumber" : "6789"
+              },
+              "birthDate" : "1968-05-12T00:00:00Z",
+              "creditScore" : 500,
+              "firstName" : "John",
+              "lastName" : "Doe",
+              "yearlyIncome" : 100000,
+              "zipCode" : "91320"
+            },
+            "loan" : {
+              "amount" : 185000,
+              "loanToValue" : 0.7,
+              "numberOfMonthlyPayments" : 72,
+              "startDate" : "2005-06-01T00:00:00Z"
+            },
+            "currentTime" : "2020-02-03T16:43:04.609Z",
+            "repayment" : 3039.8537960439126,
+            "grade" : {
+              "grade" : "C",
+              "message" : "Average risk loan"
+            }
+          },
+          "defaultValueAfter" : {
+            "approval" : {
+              "approved" : true,
+              "message" : "Congratulations! Your loan has been approved"
+            }
+          },
+          "output" : {
+            "approval" : {
+              "approved" : true,
+              "message" : "Congratulations! Your loan has been approved"
+            }
+          }
+        }
+      } ],
+      "output" : {
+        "approval" : {
+          "approved" : true,
+          "message" : "Congratulations! Your loan has been approved"
+        },
+        "insurance" : {
+          "rate" : 0.006,
+          "required" : true
+        }
+      }
+    }
+  },
+  "printedMessages" : [ ],
+  "exceptionsRaised" : [ ]
+}

@@ -1,0 +1,109 @@
+{
+    "configuration": {
+        "executionDuration": false,
+        "printedMessages": true,
+        "objectsInMemoryLimit": -1,
+        "decisionModel": {
+            "inputParameters": "None",
+            "outputParameters": "ToString",
+            "inputNode": "None",
+            "outputNode": "ToString"
+        },
+        "rules": {
+            "boundObjectsAtStart": "None",
+            "boundObjectsAtEnd": "None",
+            "allRules": false,
+            "executedRules": true,
+            "nonExecutedRules": false,
+            "exceptions": "NotHandled"
+        },
+        "ruleflow": {
+            "inputParameters": "Object",
+            "outputParameters": "Object",
+            "allTasks": false,
+            "executedTasks": true,
+            "notExecutedTasks": false,
+            "selectedRules": false
+        }
+    },
+    "rootRecord": {
+        "recordType": "DecisionModel",
+        "recordIndex": "1",
+        "properties": {
+            "engineVersion": "LATEST-SNAPSHOT",
+            "name": "mySimpleDecision",
+            "nestedRecords": [
+                {
+                    "recordType": "DecisionModelNode",
+                    "recordIndex": "1.1",
+                    "properties": {
+                        "name": "input 1",
+                        "kind": "InputData",
+                        "hitPolicy": "sequence",
+                        "output": {
+                            "input_1": "toto"
+                        }
+                    }
+                },
+                {
+                    "recordType": "DecisionModelNode",
+                    "recordIndex": "1.2",
+                    "properties": {
+                        "name": "input 2",
+                        "kind": "InputData",
+                        "hitPolicy": "sequence",
+                        "output": {}
+                    }
+                },
+                {
+                    "recordType": "DecisionModelNode",
+                    "recordIndex": "1.3",
+                    "properties": {
+                        "name": "decision 1",
+                        "kind": "Decision",
+                        "hitPolicy": "first",
+                        "nestedRecords": [
+                            {
+                                "recordType": "SequentialEngine",
+                                "recordIndex": "1.3.1",
+                                "properties": {
+                                    "engineVersion": "LATEST-SNAPSHOT",
+                                    "nestedRecords": [
+                                        {
+                                            "recordType": "Rule",
+                                            "recordIndex": "1.3.1.1",
+                                            "properties": {
+                                                "name": "rule0NullDecision1",
+                                                "actionIndex": "0"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "defaultValueAfter": {
+                            "decision_1": 2425
+                        },
+                        "output": {
+                            "decision_1": 2425
+                        }
+                    }
+                }
+            ],
+            "output": {
+                "decision_1": 2425
+            }
+        }
+    },
+    "printedMessages": [
+        {
+            "recordIndex": "1.3.1.1",
+            "message": "OK : note in action part of decision Node"
+        },
+        {
+            "recordIndex": "1.3",
+            "message": "OK : note in defaultValueBlock of decision Node"
+        }
+    ],
+    "exceptionsRaised": []
+}

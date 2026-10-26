@@ -1,0 +1,153 @@
+{
+    "configuration": {
+        "executionDuration": false,
+        "printedMessages": true,
+        "objectsInMemoryLimit": -1,
+        "decisionModel": {
+            "inputParameters": "ToString",
+            "outputParameters": "ToString",
+            "inputNode": "ToString",
+            "outputNode": "ToString"
+        },
+        "rules": {
+            "boundObjectsAtStart": "ToString",
+            "boundObjectsAtEnd": "ToString",
+            "allRules": false,
+            "executedRules": true,
+            "nonExecutedRules": false,
+            "exceptions": "NotHandled"
+        },
+        "ruleflow": {
+            "inputParameters": "Object",
+            "outputParameters": "Object",
+            "allTasks": false,
+            "executedTasks": true,
+            "notExecutedTasks": false,
+            "selectedRules": false
+        }
+    },
+    "rootRecord": {
+        "recordType": "DecisionModel",
+        "recordIndex": "1",
+        "properties": {
+            "engineVersion": "LATEST-SNAPSHOT",
+            "name": "DOperation",
+            "input": {
+                "input_1": "toto",
+                "input_2": "tititi"
+            },
+            "nestedRecords": [
+                {
+                    "recordType": "DecisionModelNode",
+                    "recordIndex": "1.1",
+                    "properties": {
+                        "name": "input_1",
+                        "kind": "InputData",
+                        "hitPolicy": "sequence",
+                        "input": {
+                            "input_1": "toto"
+                        },
+                        "output": {
+                            "input_1": "toto"
+                        }
+                    }
+                },
+                {
+                    "recordType": "DecisionModelNode",
+                    "recordIndex": "1.2",
+                    "properties": {
+                        "name": "input_2",
+                        "kind": "InputData",
+                        "hitPolicy": "sequence",
+                        "input": {
+                            "input_2": "tititi"
+                        },
+                        "output": {
+                            "input_2": "tititi"
+                        }
+                    }
+                },
+                {
+                    "recordType": "DecisionModelNode",
+                    "recordIndex": "1.3",
+                    "properties": {
+                        "name": "decision_1",
+                        "kind": "Decision",
+                        "hitPolicy": "sequence",
+                        "input": {
+                            "input_2": "tititi",
+                            "input_1": "toto"
+                        },
+                        "nestedRecords": [
+                            {
+                                "recordType": "SequentialEngine",
+                                "recordIndex": "1.3.1",
+                                "properties": {
+                                    "engineVersion": "LATEST-SNAPSHOT",
+                                    "nestedRecords": [
+                                        {
+                                            "recordType": "Rule",
+                                            "recordIndex": "1.3.1.1",
+                                            "properties": {
+                                                "name": "myModel.myDecisions.my Simple.rule0NullDecision1",
+                                                "boundObjectsAtStart": {
+                                                    "input_2": "tititi",
+                                                    "input_1": "toto"
+                                                },
+                                                "actionIndex": "0",
+                                                "boundObjectsAtEnd": {
+                                                    "input_2": "tititi",
+                                                    "input_1": "toto"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recordType": "Rule",
+                                            "recordIndex": "1.3.1.2",
+                                            "properties": {
+                                                "name": "myModel.myDecisions.my Simple.rule1Decision1",
+                                                "boundObjectsAtStart": {
+                                                    "input_2": "tititi",
+                                                    "input_1": "toto"
+                                                },
+                                                "actionIndex": "1",
+                                                "boundObjectsAtEnd": {
+                                                    "input_2": "tititi",
+                                                    "input_1": "toto"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "recordType": "Rule",
+                                            "recordIndex": "1.3.1.3",
+                                            "properties": {
+                                                "name": "myModel.myDecisions.my Simple.rule2Decision1",
+                                                "boundObjectsAtStart": {
+                                                    "input_2": "tititi",
+                                                    "input_1": "toto"
+                                                },
+                                                "actionIndex": "2",
+                                                "boundObjectsAtEnd": {
+                                                    "input_2": "tititi",
+                                                    "input_1": "toto"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "output": {
+                            "decision_1": 6
+                        }
+                    }
+                }
+            ],
+            "output": {
+                "decision_1": 6
+            }
+        }
+    },
+    "printedMessages": [],
+    "exceptionsRaised": []
+}

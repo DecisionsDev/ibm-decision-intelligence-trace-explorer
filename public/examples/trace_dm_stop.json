@@ -1,0 +1,95 @@
+{
+    "configuration": {
+        "executionDuration": false,
+        "printedMessages": true,
+        "objectsInMemoryLimit": -1,
+        "decisionModel": {
+            "inputParameters": "ToString",
+            "outputParameters": "ToString",
+            "inputNode": "None",
+            "outputNode": "None"
+        },
+        "rules": {
+            "boundObjectsAtStart": "None",
+            "boundObjectsAtEnd": "None",
+            "allRules": false,
+            "executedRules": true,
+            "nonExecutedRules": false,
+            "exceptions": "NotHandled"
+        },
+        "ruleflow": {
+            "inputParameters": "Object",
+            "outputParameters": "Object",
+            "allTasks": true,
+            "executedTasks": true,
+            "notExecutedTasks": false,
+            "selectedRules": false
+        }
+    },
+    "rootRecord": {
+        "recordType": "DecisionModel",
+        "recordIndex": "1",
+        "properties": {
+            "engineVersion": "LATEST-SNAPSHOT",
+            "name": "stopInDMUsingB2X",
+            "input": {
+                "age": 20,
+                "ageLimit": 18
+            },
+            "nestedRecords": [
+                {
+                    "recordType": "DecisionModelNode",
+                    "recordIndex": "1.1",
+                    "properties": {
+                        "name": "age",
+                        "kind": "InputData",
+                        "hitPolicy": "sequence"
+                    }
+                },
+                {
+                    "recordType": "DecisionModelNode",
+                    "recordIndex": "1.2",
+                    "properties": {
+                        "name": "ageLimit",
+                        "kind": "InputData",
+                        "hitPolicy": "sequence"
+                    }
+                },
+                {
+                    "recordType": "DecisionModelNode",
+                    "recordIndex": "1.3",
+                    "properties": {
+                        "name": "approval",
+                        "kind": "Decision",
+                        "hitPolicy": "sequence",
+                        "nestedRecords": [
+                            {
+                                "recordType": "SequentialEngine",
+                                "recordIndex": "1.3.1",
+                                "properties": {
+                                    "engineVersion": "LATEST-SNAPSHOT",
+                                    "nestedRecords": [
+                                        {
+                                            "recordType": "Rule",
+                                            "recordIndex": "1.3.1.1",
+                                            "properties": {
+                                                "name": "stop.checkAge",
+                                                "actionIndex": "0",
+                                                "stopMessage": "b2x stop in rule checkAge action then"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "output": {
+                "approval": "PASSED(mySimpleCustomerDecision)"
+            }
+        }
+    },
+    "printedMessages": [],
+    "exceptionsRaised": []
+}

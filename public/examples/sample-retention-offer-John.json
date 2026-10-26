@@ -1,0 +1,1502 @@
+{
+  "decisionId": "XXX/customer_retention/customerRetentionDecisionService/1.1",
+  "decisionOperation": "retention-offer",
+  "executionId": "string",
+  "output": {
+    "estimatedCost": 0,
+    "message": "Send John a customer satisfaction survey."
+  },
+  "executionTrace": {
+    "configuration": {
+      "executionDuration": true,
+      "printedMessages": true,
+      "objectsInMemoryLimit": -1,
+      "decisionModel": {
+        "inputParameters": "Object",
+        "outputParameters": "Object",
+        "inputNode": "Object",
+        "outputNode": "Object"
+      },
+      "rules": {
+        "boundObjectsAtStart": "Object",
+        "boundObjectsAtEnd": "Object",
+        "allRules": true,
+        "executedRules": true,
+        "nonExecutedRules": true,
+        "exceptions": "None"
+      },
+      "ruleflow": {
+        "inputParameters": "Object",
+        "outputParameters": "Object",
+        "allTasks": true,
+        "executedTasks": true,
+        "notExecutedTasks": true,
+        "selectedRules": true
+      }
+    },
+    "rootRecord": {
+      "recordType": "DecisionModel",
+      "recordIndex": "1",
+      "properties": {
+        "engineVersion": "3.12.1",
+        "name": "RetentionOffer-retention-offer",
+        "input": {
+          "customer": {
+            "age": 43,
+            "carOwner": true,
+            "children": 2,
+            "estimatedIncome": 56000,
+            "gender": "Male",
+            "location": "country",
+            "maritalStatus": "Married",
+            "name": "John"
+          },
+          "subscription": {
+            "internationalCalls": 30,
+            "localCalls": 32,
+            "longDistanceCalls": 43,
+            "paymentMethod": "CreditCard",
+            "ratePlan": "Essentials",
+            "usage": 105
+          }
+        },
+        "nestedRecords": [
+          {
+            "recordType": "DecisionModelNode",
+            "recordIndex": "1.1",
+            "properties": {
+              "name": "Customer",
+              "kind": "InputData",
+              "hitPolicy": "sequence",
+              "input": {
+                "customer": {
+                  "age": 43,
+                  "carOwner": true,
+                  "children": 2,
+                  "estimatedIncome": 56000,
+                  "gender": "Male",
+                  "location": "country",
+                  "maritalStatus": "Married",
+                  "name": "John"
+                }
+              },
+              "output": {
+                "customer": {
+                  "age": 43,
+                  "carOwner": true,
+                  "children": 2,
+                  "estimatedIncome": 56000,
+                  "gender": "Male",
+                  "location": "country",
+                  "maritalStatus": "Married",
+                  "name": "John"
+                }
+              },
+              "executionDuration": 3
+            }
+          },
+          {
+            "recordType": "DecisionModelNode",
+            "recordIndex": "1.2",
+            "properties": {
+              "name": "Subscription",
+              "kind": "InputData",
+              "hitPolicy": "sequence",
+              "input": {
+                "subscription": {
+                  "internationalCalls": 30,
+                  "localCalls": 32,
+                  "longDistanceCalls": 43,
+                  "paymentMethod": "CreditCard",
+                  "ratePlan": "Essentials",
+                  "usage": 105
+                }
+              },
+              "output": {
+                "subscription": {
+                  "internationalCalls": 30,
+                  "localCalls": 32,
+                  "longDistanceCalls": 43,
+                  "paymentMethod": "CreditCard",
+                  "ratePlan": "Essentials",
+                  "usage": 105
+                }
+              },
+              "executionDuration": 0
+            }
+          },
+          {
+            "recordType": "DecisionModelNode",
+            "recordIndex": "1.3",
+            "properties": {
+              "name": "Operation cost",
+              "kind": "Decision",
+              "hitPolicy": "sequence",
+              "input": {
+                "customer": {
+                  "age": 43,
+                  "carOwner": true,
+                  "children": 2,
+                  "estimatedIncome": 56000,
+                  "gender": "Male",
+                  "location": "country",
+                  "maritalStatus": "Married",
+                  "name": "John"
+                },
+                "subscription": {
+                  "internationalCalls": 30,
+                  "localCalls": 32,
+                  "longDistanceCalls": 43,
+                  "paymentMethod": "CreditCard",
+                  "ratePlan": "Essentials",
+                  "usage": 105
+                }
+              },
+              "nestedRecords": [
+                {
+                  "recordType": "SequentialEngine",
+                  "recordIndex": "1.3.1",
+                  "properties": {
+                    "engineVersion": "3.12.1",
+                    "allRules": [
+                      "location table"
+                    ],
+                    "nonExecutedRules": [],
+                    "nestedRecords": [
+                      {
+                        "recordType": "Rule",
+                        "recordIndex": "1.3.1.1",
+                        "properties": {
+                          "name": "location table",
+                          "boundObjectsAtStart": {
+                            "customer": {
+                              "age": 43,
+                              "carOwner": true,
+                              "children": 2,
+                              "estimatedIncome": 56000,
+                              "gender": "Male",
+                              "location": "country",
+                              "maritalStatus": "Married",
+                              "name": "John"
+                            },
+                            "subscription": {
+                              "internationalCalls": 30,
+                              "localCalls": 32,
+                              "longDistanceCalls": 43,
+                              "paymentMethod": "CreditCard",
+                              "ratePlan": "Essentials",
+                              "usage": 105
+                            }
+                          },
+                          "actionIndex": "2",
+                          "boundObjectsAtEnd": {
+                            "operationCost": 0.3,
+                            "customer": {
+                              "age": 43,
+                              "carOwner": true,
+                              "children": 2,
+                              "estimatedIncome": 56000,
+                              "gender": "Male",
+                              "location": "country",
+                              "maritalStatus": "Married",
+                              "name": "John"
+                            },
+                            "subscription": {
+                              "internationalCalls": 30,
+                              "localCalls": 32,
+                              "longDistanceCalls": 43,
+                              "paymentMethod": "CreditCard",
+                              "ratePlan": "Essentials",
+                              "usage": 105
+                            }
+                          },
+                          "executionDuration": 1
+                        }
+                      }
+                    ],
+                    "executionDuration": 5
+                  }
+                }
+              ],
+              "output": {
+                "operationCost": 0.3,
+                "customer": {
+                  "age": 43,
+                  "carOwner": true,
+                  "children": 2,
+                  "estimatedIncome": 56000,
+                  "gender": "Male",
+                  "location": "country",
+                  "maritalStatus": "Married",
+                  "name": "John"
+                },
+                "subscription": {
+                  "internationalCalls": 30,
+                  "localCalls": 32,
+                  "longDistanceCalls": 43,
+                  "paymentMethod": "CreditCard",
+                  "ratePlan": "Essentials",
+                  "usage": 105
+                }
+              },
+              "executionDuration": 20
+            }
+          },
+          {
+            "recordType": "DecisionModelNode",
+            "recordIndex": "1.4",
+            "properties": {
+              "name": "Logical upgrade",
+              "kind": "Decision",
+              "hitPolicy": "sequence",
+              "input": {
+                "subscription": {
+                  "internationalCalls": 30,
+                  "localCalls": 32,
+                  "longDistanceCalls": 43,
+                  "paymentMethod": "CreditCard",
+                  "ratePlan": "Essentials",
+                  "usage": 105
+                }
+              },
+              "nestedRecords": [
+                {
+                  "recordType": "SequentialEngine",
+                  "recordIndex": "1.4.1",
+                  "properties": {
+                    "engineVersion": "3.12.1",
+                    "allRules": [
+                      "upgrade table"
+                    ],
+                    "nonExecutedRules": [
+                      "upgrade table"
+                    ],
+                    "executionDuration": 0
+                  }
+                }
+              ],
+              "defaultValueBefore": {
+                "subscription": {
+                  "internationalCalls": 30,
+                  "localCalls": 32,
+                  "longDistanceCalls": 43,
+                  "paymentMethod": "CreditCard",
+                  "ratePlan": "Essentials",
+                  "usage": 105
+                }
+              },
+              "defaultValueAfter": {
+                "subscription": {
+                  "internationalCalls": 30,
+                  "localCalls": 32,
+                  "longDistanceCalls": 43,
+                  "paymentMethod": "CreditCard",
+                  "ratePlan": "Essentials",
+                  "usage": 105
+                }
+              },
+              "output": {
+                "subscription": {
+                  "internationalCalls": 30,
+                  "localCalls": 32,
+                  "longDistanceCalls": 43,
+                  "paymentMethod": "CreditCard",
+                  "ratePlan": "Essentials",
+                  "usage": 105
+                }
+              },
+              "executionDuration": 3
+            }
+          },
+          {
+            "recordType": "DecisionModelNode",
+            "recordIndex": "1.5",
+            "properties": {
+              "name": "Ranked retention offers",
+              "kind": "Decision",
+              "hitPolicy": "sequence",
+              "input": {
+                "customer": {
+                  "age": 43,
+                  "carOwner": true,
+                  "children": 2,
+                  "estimatedIncome": 56000,
+                  "gender": "Male",
+                  "location": "country",
+                  "maritalStatus": "Married",
+                  "name": "John"
+                },
+                "subscription": {
+                  "internationalCalls": 30,
+                  "localCalls": 32,
+                  "longDistanceCalls": 43,
+                  "paymentMethod": "CreditCard",
+                  "ratePlan": "Essentials",
+                  "usage": 105
+                },
+                "operationCost": 0.3
+              },
+              "nestedRecords": [
+                {
+                  "recordType": "SequentialEngine",
+                  "recordIndex": "1.5.1",
+                  "properties": {
+                    "engineVersion": "3.12.1",
+                    "allRules": [
+                      "Send survey",
+                      "Discount for low cost operations",
+                      "Upgrade",
+                      "High discount"
+                    ],
+                    "nonExecutedRules": [
+                      "Upgrade"
+                    ],
+                    "nestedRecords": [
+                      {
+                        "recordType": "Rule",
+                        "recordIndex": "1.5.1.1",
+                        "properties": {
+                          "name": "Send survey",
+                          "boundObjectsAtStart": {
+                            "customer": {
+                              "age": 43,
+                              "carOwner": true,
+                              "children": 2,
+                              "estimatedIncome": 56000,
+                              "gender": "Male",
+                              "location": "country",
+                              "maritalStatus": "Married",
+                              "name": "John"
+                            },
+                            "subscription": {
+                              "internationalCalls": 30,
+                              "localCalls": 32,
+                              "longDistanceCalls": 43,
+                              "paymentMethod": "CreditCard",
+                              "ratePlan": "Essentials",
+                              "usage": 105
+                            },
+                            "operationCost": 0.3
+                          },
+                          "actionIndex": "0",
+                          "boundObjectsAtEnd": {
+                            "customer": {
+                              "age": 43,
+                              "carOwner": true,
+                              "children": 2,
+                              "estimatedIncome": 56000,
+                              "gender": "Male",
+                              "location": "country",
+                              "maritalStatus": "Married",
+                              "name": "John"
+                            },
+                            "subscription": {
+                              "internationalCalls": 30,
+                              "localCalls": 32,
+                              "longDistanceCalls": 43,
+                              "paymentMethod": "CreditCard",
+                              "ratePlan": "Essentials",
+                              "usage": 105
+                            },
+                            "rankedRetentionOffers": [
+                              {
+                                "estimatedCost": 0,
+                                "message": "Send John a customer satisfaction survey."
+                              }
+                            ],
+                            "operationCost": 0.3
+                          },
+                          "executionDuration": 8
+                        }
+                      },
+                      {
+                        "recordType": "Rule",
+                        "recordIndex": "1.5.1.2",
+                        "properties": {
+                          "name": "Discount for low cost operations",
+                          "boundObjectsAtStart": {
+                            "customer": {
+                              "age": 43,
+                              "carOwner": true,
+                              "children": 2,
+                              "estimatedIncome": 56000,
+                              "gender": "Male",
+                              "location": "country",
+                              "maritalStatus": "Married",
+                              "name": "John"
+                            },
+                            "subscription": {
+                              "internationalCalls": 30,
+                              "localCalls": 32,
+                              "longDistanceCalls": 43,
+                              "paymentMethod": "CreditCard",
+                              "ratePlan": "Essentials",
+                              "usage": 105
+                            },
+                            "rankedRetentionOffers": [
+                              {
+                                "estimatedCost": 0,
+                                "message": "Send John a customer satisfaction survey."
+                              }
+                            ],
+                            "operationCost": 0.3
+                          },
+                          "actionIndex": "2",
+                          "boundObjectsAtEnd": {
+                            "customer": {
+                              "age": 43,
+                              "carOwner": true,
+                              "children": 2,
+                              "estimatedIncome": 56000,
+                              "gender": "Male",
+                              "location": "country",
+                              "maritalStatus": "Married",
+                              "name": "John"
+                            },
+                            "subscription": {
+                              "internationalCalls": 30,
+                              "localCalls": 32,
+                              "longDistanceCalls": 43,
+                              "paymentMethod": "CreditCard",
+                              "ratePlan": "Essentials",
+                              "usage": 105
+                            },
+                            "rankedRetentionOffers": [
+                              {
+                                "estimatedCost": 0,
+                                "message": "Send John a customer satisfaction survey."
+                              },
+                              {
+                                "estimatedCost": 5.25,
+                                "message": "Offer John a 5% discount on his current subscription"
+                              }
+                            ],
+                            "operationCost": 0.3
+                          },
+                          "executionDuration": 1
+                        }
+                      },
+                      {
+                        "recordType": "Rule",
+                        "recordIndex": "1.5.1.3",
+                        "properties": {
+                          "name": "High discount",
+                          "boundObjectsAtStart": {
+                            "customer": {
+                              "age": 43,
+                              "carOwner": true,
+                              "children": 2,
+                              "estimatedIncome": 56000,
+                              "gender": "Male",
+                              "location": "country",
+                              "maritalStatus": "Married",
+                              "name": "John"
+                            },
+                            "subscription": {
+                              "internationalCalls": 30,
+                              "localCalls": 32,
+                              "longDistanceCalls": 43,
+                              "paymentMethod": "CreditCard",
+                              "ratePlan": "Essentials",
+                              "usage": 105
+                            },
+                            "rankedRetentionOffers": [
+                              {
+                                "estimatedCost": 0,
+                                "message": "Send John a customer satisfaction survey."
+                              },
+                              {
+                                "estimatedCost": 5.25,
+                                "message": "Offer John a 5% discount on his current subscription"
+                              }
+                            ],
+                            "operationCost": 0.3
+                          },
+                          "actionIndex": "4",
+                          "boundObjectsAtEnd": {
+                            "customer": {
+                              "age": 43,
+                              "carOwner": true,
+                              "children": 2,
+                              "estimatedIncome": 56000,
+                              "gender": "Male",
+                              "location": "country",
+                              "maritalStatus": "Married",
+                              "name": "John"
+                            },
+                            "subscription": {
+                              "internationalCalls": 30,
+                              "localCalls": 32,
+                              "longDistanceCalls": 43,
+                              "paymentMethod": "CreditCard",
+                              "ratePlan": "Essentials",
+                              "usage": 105
+                            },
+                            "rankedRetentionOffers": [
+                              {
+                                "estimatedCost": 0,
+                                "message": "Send John a customer satisfaction survey."
+                              },
+                              {
+                                "estimatedCost": 5.25,
+                                "message": "Offer John a 5% discount on his current subscription"
+                              },
+                              {
+                                "estimatedCost": 21,
+                                "message": "Offer John a 20% discount on his current subscription"
+                              }
+                            ],
+                            "operationCost": 0.3
+                          },
+                          "executionDuration": 0
+                        }
+                      }
+                    ],
+                    "executionDuration": 10
+                  }
+                }
+              ],
+              "output": {
+                "customer": {
+                  "age": 43,
+                  "carOwner": true,
+                  "children": 2,
+                  "estimatedIncome": 56000,
+                  "gender": "Male",
+                  "location": "country",
+                  "maritalStatus": "Married",
+                  "name": "John"
+                },
+                "subscription": {
+                  "internationalCalls": 30,
+                  "localCalls": 32,
+                  "longDistanceCalls": 43,
+                  "paymentMethod": "CreditCard",
+                  "ratePlan": "Essentials",
+                  "usage": 105
+                },
+                "rankedRetentionOffers": [
+                  {
+                    "estimatedCost": 0,
+                    "message": "Send John a customer satisfaction survey."
+                  },
+                  {
+                    "estimatedCost": 5.25,
+                    "message": "Offer John a 5% discount on his current subscription"
+                  },
+                  {
+                    "estimatedCost": 21,
+                    "message": "Offer John a 20% discount on his current subscription"
+                  }
+                ],
+                "operationCost": 0.3
+              },
+              "executionDuration": 13
+            }
+          },
+          {
+            "recordType": "DecisionModelNode",
+            "recordIndex": "1.6",
+            "properties": {
+              "name": "Retention monthly budget",
+              "kind": "Decision",
+              "hitPolicy": "sequence",
+              "input": {
+                "subscription": {
+                  "internationalCalls": 30,
+                  "localCalls": 32,
+                  "longDistanceCalls": 43,
+                  "paymentMethod": "CreditCard",
+                  "ratePlan": "Essentials",
+                  "usage": 105
+                },
+                "customer": {
+                  "age": 43,
+                  "carOwner": true,
+                  "children": 2,
+                  "estimatedIncome": 56000,
+                  "gender": "Male",
+                  "location": "country",
+                  "maritalStatus": "Married",
+                  "name": "John"
+                },
+                "operationCost": 0.3
+              },
+              "nestedRecords": [
+                {
+                  "recordType": "SequentialEngine",
+                  "recordIndex": "1.6.1",
+                  "properties": {
+                    "engineVersion": "3.12.1",
+                    "allRules": [
+                      "size importance",
+                      "adjust with cost base"
+                    ],
+                    "nonExecutedRules": [],
+                    "nestedRecords": [
+                      {
+                        "recordType": "DecisionModel",
+                        "recordIndex": "1.6.1.1",
+                        "properties": {
+                          "engineVersion": "3.12.1",
+                          "name": "LifetimeValue-Lifetime-Value",
+                          "input": {
+                            "subscription": {
+                              "internationalCalls": 30,
+                              "localCalls": 32,
+                              "longDistanceCalls": 43,
+                              "paymentMethod": "CreditCard",
+                              "ratePlan": "Essentials",
+                              "usage": 105
+                            },
+                            "customer": {
+                              "age": 43,
+                              "carOwner": true,
+                              "children": 2,
+                              "estimatedIncome": 56000,
+                              "gender": "Male",
+                              "location": "country",
+                              "maritalStatus": "Married",
+                              "name": "John"
+                            }
+                          },
+                          "nestedRecords": [
+                            {
+                              "recordType": "DecisionModelNode",
+                              "recordIndex": "1.6.1.1.1",
+                              "properties": {
+                                "name": "Customer",
+                                "kind": "InputData",
+                                "hitPolicy": "sequence",
+                                "input": {
+                                  "customer": {
+                                    "age": 43,
+                                    "carOwner": true,
+                                    "children": 2,
+                                    "estimatedIncome": 56000,
+                                    "gender": "Male",
+                                    "location": "country",
+                                    "maritalStatus": "Married",
+                                    "name": "John"
+                                  }
+                                },
+                                "output": {
+                                  "customer": {
+                                    "age": 43,
+                                    "carOwner": true,
+                                    "children": 2,
+                                    "estimatedIncome": 56000,
+                                    "gender": "Male",
+                                    "location": "country",
+                                    "maritalStatus": "Married",
+                                    "name": "John"
+                                  }
+                                },
+                                "executionDuration": 1
+                              }
+                            },
+                            {
+                              "recordType": "DecisionModelNode",
+                              "recordIndex": "1.6.1.1.2",
+                              "properties": {
+                                "name": "Subscription",
+                                "kind": "InputData",
+                                "hitPolicy": "sequence",
+                                "input": {
+                                  "subscription": {
+                                    "internationalCalls": 30,
+                                    "localCalls": 32,
+                                    "longDistanceCalls": 43,
+                                    "paymentMethod": "CreditCard",
+                                    "ratePlan": "Essentials",
+                                    "usage": 105
+                                  }
+                                },
+                                "output": {
+                                  "subscription": {
+                                    "internationalCalls": 30,
+                                    "localCalls": 32,
+                                    "longDistanceCalls": 43,
+                                    "paymentMethod": "CreditCard",
+                                    "ratePlan": "Essentials",
+                                    "usage": 105
+                                  }
+                                },
+                                "executionDuration": 0
+                              }
+                            },
+                            {
+                              "recordType": "DecisionModelNode",
+                              "recordIndex": "1.6.1.1.3",
+                              "properties": {
+                                "name": "Lifetime Value",
+                                "kind": "Decision",
+                                "hitPolicy": "sequence",
+                                "input": {
+                                  "subscription": {
+                                    "internationalCalls": 30,
+                                    "localCalls": 32,
+                                    "longDistanceCalls": 43,
+                                    "paymentMethod": "CreditCard",
+                                    "ratePlan": "Essentials",
+                                    "usage": 105
+                                  },
+                                  "customer": {
+                                    "age": 43,
+                                    "carOwner": true,
+                                    "children": 2,
+                                    "estimatedIncome": 56000,
+                                    "gender": "Male",
+                                    "location": "country",
+                                    "maritalStatus": "Married",
+                                    "name": "John"
+                                  }
+                                },
+                                "nestedRecords": [
+                                  {
+                                    "recordType": "SequentialEngine",
+                                    "recordIndex": "1.6.1.1.3.1",
+                                    "properties": {
+                                      "engineVersion": "3.12.1",
+                                      "allRules": [
+                                        "Default",
+                                        "Usage"
+                                      ],
+                                      "nonExecutedRules": [],
+                                      "nestedRecords": [
+                                        {
+                                          "recordType": "Rule",
+                                          "recordIndex": "1.6.1.1.3.1.1",
+                                          "properties": {
+                                            "name": "Default",
+                                            "boundObjectsAtStart": {
+                                              "subscription": {
+                                                "internationalCalls": 30,
+                                                "localCalls": 32,
+                                                "longDistanceCalls": 43,
+                                                "paymentMethod": "CreditCard",
+                                                "ratePlan": "Essentials",
+                                                "usage": 105
+                                              },
+                                              "customer": {
+                                                "age": 43,
+                                                "carOwner": true,
+                                                "children": 2,
+                                                "estimatedIncome": 56000,
+                                                "gender": "Male",
+                                                "location": "country",
+                                                "maritalStatus": "Married",
+                                                "name": "John"
+                                              }
+                                            },
+                                            "actionIndex": "0",
+                                            "boundObjectsAtEnd": {
+                                              "subscription": {
+                                                "internationalCalls": 30,
+                                                "localCalls": 32,
+                                                "longDistanceCalls": 43,
+                                                "paymentMethod": "CreditCard",
+                                                "ratePlan": "Essentials",
+                                                "usage": 105
+                                              },
+                                              "lifetimeValue": 250,
+                                              "customer": {
+                                                "age": 43,
+                                                "carOwner": true,
+                                                "children": 2,
+                                                "estimatedIncome": 56000,
+                                                "gender": "Male",
+                                                "location": "country",
+                                                "maritalStatus": "Married",
+                                                "name": "John"
+                                              }
+                                            },
+                                            "executionDuration": 0
+                                          }
+                                        },
+                                        {
+                                          "recordType": "Rule",
+                                          "recordIndex": "1.6.1.1.3.1.2",
+                                          "properties": {
+                                            "name": "Usage",
+                                            "boundObjectsAtStart": {
+                                              "subscription": {
+                                                "internationalCalls": 30,
+                                                "localCalls": 32,
+                                                "longDistanceCalls": 43,
+                                                "paymentMethod": "CreditCard",
+                                                "ratePlan": "Essentials",
+                                                "usage": 105
+                                              },
+                                              "lifetimeValue": 250,
+                                              "customer": {
+                                                "age": 43,
+                                                "carOwner": true,
+                                                "children": 2,
+                                                "estimatedIncome": 56000,
+                                                "gender": "Male",
+                                                "location": "country",
+                                                "maritalStatus": "Married",
+                                                "name": "John"
+                                              }
+                                            },
+                                            "actionIndex": "1",
+                                            "boundObjectsAtEnd": {
+                                              "subscription": {
+                                                "internationalCalls": 30,
+                                                "localCalls": 32,
+                                                "longDistanceCalls": 43,
+                                                "paymentMethod": "CreditCard",
+                                                "ratePlan": "Essentials",
+                                                "usage": 105
+                                              },
+                                              "lifetimeValue": 945,
+                                              "customer": {
+                                                "age": 43,
+                                                "carOwner": true,
+                                                "children": 2,
+                                                "estimatedIncome": 56000,
+                                                "gender": "Male",
+                                                "location": "country",
+                                                "maritalStatus": "Married",
+                                                "name": "John"
+                                              }
+                                            },
+                                            "executionDuration": 1
+                                          }
+                                        }
+                                      ],
+                                      "executionDuration": 1
+                                    }
+                                  }
+                                ],
+                                "output": {
+                                  "subscription": {
+                                    "internationalCalls": 30,
+                                    "localCalls": 32,
+                                    "longDistanceCalls": 43,
+                                    "paymentMethod": "CreditCard",
+                                    "ratePlan": "Essentials",
+                                    "usage": 105
+                                  },
+                                  "lifetimeValue": 945,
+                                  "customer": {
+                                    "age": 43,
+                                    "carOwner": true,
+                                    "children": 2,
+                                    "estimatedIncome": 56000,
+                                    "gender": "Male",
+                                    "location": "country",
+                                    "maritalStatus": "Married",
+                                    "name": "John"
+                                  }
+                                },
+                                "executionDuration": 4
+                              }
+                            }
+                          ],
+                          "output": {
+                            "lifetimeValue": 945
+                          },
+                          "executionDuration": 34
+                        }
+                      },
+                      {
+                        "recordType": "DecisionModel",
+                        "recordIndex": "1.6.1.2",
+                        "properties": {
+                          "engineVersion": "3.12.1",
+                          "name": "Churn-Churn",
+                          "input": {
+                            "customer": {
+                              "age": 43,
+                              "carOwner": true,
+                              "children": 2,
+                              "estimatedIncome": 56000,
+                              "gender": "Male",
+                              "location": "country",
+                              "maritalStatus": "Married",
+                              "name": "John"
+                            },
+                            "subscription": {
+                              "internationalCalls": 30,
+                              "localCalls": 32,
+                              "longDistanceCalls": 43,
+                              "paymentMethod": "CreditCard",
+                              "ratePlan": "Essentials",
+                              "usage": 105
+                            }
+                          },
+                          "nestedRecords": [
+                            {
+                              "recordType": "DecisionModelNode",
+                              "recordIndex": "1.6.1.2.1",
+                              "properties": {
+                                "name": "Customer",
+                                "kind": "InputData",
+                                "hitPolicy": "sequence",
+                                "input": {
+                                  "customer": {
+                                    "age": 43,
+                                    "carOwner": true,
+                                    "children": 2,
+                                    "estimatedIncome": 56000,
+                                    "gender": "Male",
+                                    "location": "country",
+                                    "maritalStatus": "Married",
+                                    "name": "John"
+                                  }
+                                },
+                                "output": {
+                                  "customer": {
+                                    "age": 43,
+                                    "carOwner": true,
+                                    "children": 2,
+                                    "estimatedIncome": 56000,
+                                    "gender": "Male",
+                                    "location": "country",
+                                    "maritalStatus": "Married",
+                                    "name": "John"
+                                  }
+                                },
+                                "executionDuration": 0
+                              }
+                            },
+                            {
+                              "recordType": "DecisionModelNode",
+                              "recordIndex": "1.6.1.2.2",
+                              "properties": {
+                                "name": "Subscription",
+                                "kind": "InputData",
+                                "hitPolicy": "sequence",
+                                "input": {
+                                  "subscription": {
+                                    "internationalCalls": 30,
+                                    "localCalls": 32,
+                                    "longDistanceCalls": 43,
+                                    "paymentMethod": "CreditCard",
+                                    "ratePlan": "Essentials",
+                                    "usage": 105
+                                  }
+                                },
+                                "output": {
+                                  "subscription": {
+                                    "internationalCalls": 30,
+                                    "localCalls": 32,
+                                    "longDistanceCalls": 43,
+                                    "paymentMethod": "CreditCard",
+                                    "ratePlan": "Essentials",
+                                    "usage": 105
+                                  }
+                                },
+                                "executionDuration": 0
+                              }
+                            },
+                            {
+                              "recordType": "DecisionModelNode",
+                              "recordIndex": "1.6.1.2.3",
+                              "properties": {
+                                "name": "Churn decision",
+                                "kind": "Decision",
+                                "hitPolicy": "sequence",
+                                "input": {
+                                  "customer": {
+                                    "age": 43,
+                                    "carOwner": true,
+                                    "children": 2,
+                                    "estimatedIncome": 56000,
+                                    "gender": "Male",
+                                    "location": "country",
+                                    "maritalStatus": "Married",
+                                    "name": "John"
+                                  },
+                                  "subscription": {
+                                    "internationalCalls": 30,
+                                    "localCalls": 32,
+                                    "longDistanceCalls": 43,
+                                    "paymentMethod": "CreditCard",
+                                    "ratePlan": "Essentials",
+                                    "usage": 105
+                                  }
+                                },
+                                "nestedRecords": [
+                                  {
+                                    "recordType": "SequentialEngine",
+                                    "recordIndex": "1.6.1.2.3.1",
+                                    "properties": {
+                                      "engineVersion": "3.12.1",
+                                      "allRules": [
+                                        "churn table",
+                                        "adjust churn probability",
+                                        "adjust with revenue"
+                                      ],
+                                      "nonExecutedRules": [
+                                        "adjust with revenue"
+                                      ],
+                                      "nestedRecords": [
+                                        {
+                                          "recordType": "Rule",
+                                          "recordIndex": "1.6.1.2.3.1.1",
+                                          "properties": {
+                                            "name": "churn table",
+                                            "boundObjectsAtStart": {
+                                              "customer": {
+                                                "age": 43,
+                                                "carOwner": true,
+                                                "children": 2,
+                                                "estimatedIncome": 56000,
+                                                "gender": "Male",
+                                                "location": "country",
+                                                "maritalStatus": "Married",
+                                                "name": "John"
+                                              },
+                                              "subscription": {
+                                                "internationalCalls": 30,
+                                                "localCalls": 32,
+                                                "longDistanceCalls": 43,
+                                                "paymentMethod": "CreditCard",
+                                                "ratePlan": "Essentials",
+                                                "usage": 105
+                                              }
+                                            },
+                                            "actionIndex": "6",
+                                            "boundObjectsAtEnd": {
+                                              "churnDecision": 0.35,
+                                              "customer": {
+                                                "age": 43,
+                                                "carOwner": true,
+                                                "children": 2,
+                                                "estimatedIncome": 56000,
+                                                "gender": "Male",
+                                                "location": "country",
+                                                "maritalStatus": "Married",
+                                                "name": "John"
+                                              },
+                                              "subscription": {
+                                                "internationalCalls": 30,
+                                                "localCalls": 32,
+                                                "longDistanceCalls": 43,
+                                                "paymentMethod": "CreditCard",
+                                                "ratePlan": "Essentials",
+                                                "usage": 105
+                                              }
+                                            },
+                                            "executionDuration": 1
+                                          }
+                                        },
+                                        {
+                                          "recordType": "Rule",
+                                          "recordIndex": "1.6.1.2.3.1.2",
+                                          "properties": {
+                                            "name": "adjust churn probability",
+                                            "boundObjectsAtStart": {
+                                              "churnDecision": 0.35,
+                                              "customer": {
+                                                "age": 43,
+                                                "carOwner": true,
+                                                "children": 2,
+                                                "estimatedIncome": 56000,
+                                                "gender": "Male",
+                                                "location": "country",
+                                                "maritalStatus": "Married",
+                                                "name": "John"
+                                              },
+                                              "subscription": {
+                                                "internationalCalls": 30,
+                                                "localCalls": 32,
+                                                "longDistanceCalls": 43,
+                                                "paymentMethod": "CreditCard",
+                                                "ratePlan": "Essentials",
+                                                "usage": 105
+                                              }
+                                            },
+                                            "actionIndex": "9",
+                                            "boundObjectsAtEnd": {
+                                              "churnDecision": 0.24999999999999997,
+                                              "customer": {
+                                                "age": 43,
+                                                "carOwner": true,
+                                                "children": 2,
+                                                "estimatedIncome": 56000,
+                                                "gender": "Male",
+                                                "location": "country",
+                                                "maritalStatus": "Married",
+                                                "name": "John"
+                                              },
+                                              "subscription": {
+                                                "internationalCalls": 30,
+                                                "localCalls": 32,
+                                                "longDistanceCalls": 43,
+                                                "paymentMethod": "CreditCard",
+                                                "ratePlan": "Essentials",
+                                                "usage": 105
+                                              }
+                                            },
+                                            "executionDuration": 0
+                                          }
+                                        }
+                                      ],
+                                      "executionDuration": 1
+                                    }
+                                  }
+                                ],
+                                "output": {
+                                  "churnDecision": 0.24999999999999997,
+                                  "customer": {
+                                    "age": 43,
+                                    "carOwner": true,
+                                    "children": 2,
+                                    "estimatedIncome": 56000,
+                                    "gender": "Male",
+                                    "location": "country",
+                                    "maritalStatus": "Married",
+                                    "name": "John"
+                                  },
+                                  "subscription": {
+                                    "internationalCalls": 30,
+                                    "localCalls": 32,
+                                    "longDistanceCalls": 43,
+                                    "paymentMethod": "CreditCard",
+                                    "ratePlan": "Essentials",
+                                    "usage": 105
+                                  }
+                                },
+                                "executionDuration": 4
+                              }
+                            }
+                          ],
+                          "output": {
+                            "churnDecision": 0.24999999999999997
+                          },
+                          "executionDuration": 32
+                        }
+                      },
+                      {
+                        "recordType": "Rule",
+                        "recordIndex": "1.6.1.3",
+                        "properties": {
+                          "name": "size importance",
+                          "boundObjectsAtStart": {
+                            "subscription": {
+                              "internationalCalls": 30,
+                              "localCalls": 32,
+                              "longDistanceCalls": 43,
+                              "paymentMethod": "CreditCard",
+                              "ratePlan": "Essentials",
+                              "usage": 105
+                            },
+                            "customer": {
+                              "age": 43,
+                              "carOwner": true,
+                              "children": 2,
+                              "estimatedIncome": 56000,
+                              "gender": "Male",
+                              "location": "country",
+                              "maritalStatus": "Married",
+                              "name": "John"
+                            },
+                            "operationCost": 0.3
+                          },
+                          "actionIndex": "0",
+                          "boundObjectsAtEnd": {
+                            "subscription": {
+                              "internationalCalls": 30,
+                              "localCalls": 32,
+                              "longDistanceCalls": 43,
+                              "paymentMethod": "CreditCard",
+                              "ratePlan": "Essentials",
+                              "usage": 105
+                            },
+                            "customer": {
+                              "age": 43,
+                              "carOwner": true,
+                              "children": 2,
+                              "estimatedIncome": 56000,
+                              "gender": "Male",
+                              "location": "country",
+                              "maritalStatus": "Married",
+                              "name": "John"
+                            },
+                            "operationCost": 0.3,
+                            "retentionMonthlyBudget": 3.9374999999999996
+                          },
+                          "executionDuration": 2
+                        }
+                      },
+                      {
+                        "recordType": "Rule",
+                        "recordIndex": "1.6.1.4",
+                        "properties": {
+                          "name": "adjust with cost base",
+                          "boundObjectsAtStart": {
+                            "subscription": {
+                              "internationalCalls": 30,
+                              "localCalls": 32,
+                              "longDistanceCalls": 43,
+                              "paymentMethod": "CreditCard",
+                              "ratePlan": "Essentials",
+                              "usage": 105
+                            },
+                            "customer": {
+                              "age": 43,
+                              "carOwner": true,
+                              "children": 2,
+                              "estimatedIncome": 56000,
+                              "gender": "Male",
+                              "location": "country",
+                              "maritalStatus": "Married",
+                              "name": "John"
+                            },
+                            "operationCost": 0.3,
+                            "retentionMonthlyBudget": 3.9374999999999996
+                          },
+                          "actionIndex": "1",
+                          "boundObjectsAtEnd": {
+                            "subscription": {
+                              "internationalCalls": 30,
+                              "localCalls": 32,
+                              "longDistanceCalls": 43,
+                              "paymentMethod": "CreditCard",
+                              "ratePlan": "Essentials",
+                              "usage": 105
+                            },
+                            "customer": {
+                              "age": 43,
+                              "carOwner": true,
+                              "children": 2,
+                              "estimatedIncome": 56000,
+                              "gender": "Male",
+                              "location": "country",
+                              "maritalStatus": "Married",
+                              "name": "John"
+                            },
+                            "operationCost": 0.3,
+                            "retentionMonthlyBudget": 2.7562499999999996
+                          },
+                          "executionDuration": 0
+                        }
+                      }
+                    ],
+                    "executionDuration": 116
+                  }
+                }
+              ],
+              "output": {
+                "subscription": {
+                  "internationalCalls": 30,
+                  "localCalls": 32,
+                  "longDistanceCalls": 43,
+                  "paymentMethod": "CreditCard",
+                  "ratePlan": "Essentials",
+                  "usage": 105
+                },
+                "customer": {
+                  "age": 43,
+                  "carOwner": true,
+                  "children": 2,
+                  "estimatedIncome": 56000,
+                  "gender": "Male",
+                  "location": "country",
+                  "maritalStatus": "Married",
+                  "name": "John"
+                },
+                "operationCost": 0.3,
+                "retentionMonthlyBudget": 2.7562499999999996
+              },
+              "executionDuration": 119
+            }
+          },
+          {
+            "recordType": "DecisionModelNode",
+            "recordIndex": "1.7",
+            "properties": {
+              "name": "Determine retention offer",
+              "kind": "Decision",
+              "hitPolicy": "sequence",
+              "input": {
+                "retentionMonthlyBudget": 2.7562499999999996,
+                "rankedRetentionOffers": [
+                  {
+                    "estimatedCost": 0,
+                    "message": "Send John a customer satisfaction survey."
+                  },
+                  {
+                    "estimatedCost": 5.25,
+                    "message": "Offer John a 5% discount on his current subscription"
+                  },
+                  {
+                    "estimatedCost": 21,
+                    "message": "Offer John a 20% discount on his current subscription"
+                  }
+                ]
+              },
+              "nestedRecords": [
+                {
+                  "recordType": "SequentialEngine",
+                  "recordIndex": "1.7.1",
+                  "properties": {
+                    "engineVersion": "3.12.1",
+                    "allRules": [
+                      "Default offer",
+                      "Select best offer"
+                    ],
+                    "nonExecutedRules": [],
+                    "nestedRecords": [
+                      {
+                        "recordType": "Rule",
+                        "recordIndex": "1.7.1.1",
+                        "properties": {
+                          "name": "Default offer",
+                          "boundObjectsAtStart": {
+                            "retentionMonthlyBudget": 2.7562499999999996,
+                            "rankedRetentionOffers": [
+                              {
+                                "estimatedCost": 0,
+                                "message": "Send John a customer satisfaction survey."
+                              },
+                              {
+                                "estimatedCost": 5.25,
+                                "message": "Offer John a 5% discount on his current subscription"
+                              },
+                              {
+                                "estimatedCost": 21,
+                                "message": "Offer John a 20% discount on his current subscription"
+                              }
+                            ]
+                          },
+                          "actionIndex": "0",
+                          "boundObjectsAtEnd": {
+                            "retentionMonthlyBudget": 2.7562499999999996,
+                            "rankedRetentionOffers": [
+                              {
+                                "estimatedCost": 0,
+                                "message": "Send John a customer satisfaction survey."
+                              },
+                              {
+                                "estimatedCost": 5.25,
+                                "message": "Offer John a 5% discount on his current subscription"
+                              },
+                              {
+                                "estimatedCost": 21,
+                                "message": "Offer John a 20% discount on his current subscription"
+                              }
+                            ],
+                            "determineRetentionOffer": {
+                              "estimatedCost": 0,
+                              "message": "No offer for this customer"
+                            }
+                          },
+                          "executionDuration": 0
+                        }
+                      },
+                      {
+                        "recordType": "Rule",
+                        "recordIndex": "1.7.1.2",
+                        "properties": {
+                          "name": "Select best offer",
+                          "boundObjectsAtStart": {
+                            "retentionMonthlyBudget": 2.7562499999999996,
+                            "rankedRetentionOffers": [
+                              {
+                                "estimatedCost": 0,
+                                "message": "Send John a customer satisfaction survey."
+                              },
+                              {
+                                "estimatedCost": 5.25,
+                                "message": "Offer John a 5% discount on his current subscription"
+                              },
+                              {
+                                "estimatedCost": 21,
+                                "message": "Offer John a 20% discount on his current subscription"
+                              }
+                            ],
+                            "determineRetentionOffer": {
+                              "estimatedCost": 0,
+                              "message": "No offer for this customer"
+                            }
+                          },
+                          "actionIndex": "1",
+                          "boundObjectsAtEnd": {
+                            "retentionMonthlyBudget": 2.7562499999999996,
+                            "rankedRetentionOffers": [
+                              {
+                                "estimatedCost": 0,
+                                "message": "Send John a customer satisfaction survey."
+                              },
+                              {
+                                "estimatedCost": 5.25,
+                                "message": "Offer John a 5% discount on his current subscription"
+                              },
+                              {
+                                "estimatedCost": 21,
+                                "message": "Offer John a 20% discount on his current subscription"
+                              }
+                            ],
+                            "determineRetentionOffer": {
+                              "estimatedCost": 0,
+                              "message": "Send John a customer satisfaction survey."
+                            }
+                          },
+                          "executionDuration": 1
+                        }
+                      }
+                    ],
+                    "executionDuration": 5
+                  }
+                }
+              ],
+              "output": {
+                "retentionMonthlyBudget": 2.7562499999999996,
+                "rankedRetentionOffers": [
+                  {
+                    "estimatedCost": 0,
+                    "message": "Send John a customer satisfaction survey."
+                  },
+                  {
+                    "estimatedCost": 5.25,
+                    "message": "Offer John a 5% discount on his current subscription"
+                  },
+                  {
+                    "estimatedCost": 21,
+                    "message": "Offer John a 20% discount on his current subscription"
+                  }
+                ],
+                "determineRetentionOffer": {
+                  "estimatedCost": 0,
+                  "message": "Send John a customer satisfaction survey."
+                }
+              },
+              "executionDuration": 7
+            }
+          }
+        ],
+        "output": {
+          "determineRetentionOffer": {
+            "estimatedCost": 0,
+            "message": "Send John a customer satisfaction survey."
+          }
+        },
+        "executionDuration": 344
+      }
+    },
+    "printedMessages": [
+      {
+        "recordIndex": "1.6.1.3",
+        "message": "LTV: 945.0"
+      },
+      {
+        "recordIndex": "1.6.1.3",
+        "message": "Churn: 0.24999999999999997"
+      },
+      {
+        "recordIndex": "1.6.1.3",
+        "message": "Value: 3.9374999999999996"
+      },
+      {
+        "recordIndex": "1.6.1.4",
+        "message": "Final value: 2.7562499999999996"
+      }
+    ],
+    "exceptionsRaised": []
+  }
+}

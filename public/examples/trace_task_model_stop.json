@@ -1,0 +1,94 @@
+{
+    "configuration": {
+        "executionDuration": false,
+        "printedMessages": true,
+        "objectsInMemoryLimit": -1,
+        "decisionModel": {
+            "inputParameters": "ToString",
+            "outputParameters": "ToString",
+            "inputNode": "None",
+            "outputNode": "None"
+        },
+        "rules": {
+            "boundObjectsAtStart": "None",
+            "boundObjectsAtEnd": "None",
+            "allRules": false,
+            "executedRules": true,
+            "nonExecutedRules": false,
+            "exceptions": "NotHandled"
+        },
+        "ruleflow": {
+            "inputParameters": "Object",
+            "outputParameters": "Object",
+            "allTasks": true,
+            "executedTasks": true,
+            "notExecutedTasks": false,
+            "selectedRules": false
+        }
+    },
+    "rootRecord": {
+        "recordType": "RuleFlow",
+        "recordIndex": "1",
+        "properties": {
+            "engineVersion": "LATEST-SNAPSHOT",
+            "mainTask": "flowa",
+            "input": {
+                "age": 20,
+                "ageLimit": 18
+            },
+            "allTasks": [
+                "flowa"
+            ],
+            "nestedRecords": [
+                {
+                    "recordType": "Task",
+                    "recordIndex": "1.1",
+                    "properties": {
+                        "name": "flowa",
+                        "kind": [
+                            "RULETASK",
+                            "SEQUENTIALTASK"
+                        ],
+                        "input": {
+                            "age": 20,
+                            "ageLimit": 18
+                        },
+                        "nestedRecords": [
+                            {
+                                "recordType": "SequentialEngine",
+                                "recordIndex": "1.1.1",
+                                "properties": {
+                                    "engineVersion": "LATEST-SNAPSHOT",
+                                    "nestedRecords": [
+                                        {
+                                            "recordType": "Rule",
+                                            "recordIndex": "1.1.1.1",
+                                            "properties": {
+                                                "name": "checkAge",
+                                                "actionIndex": "0",
+                                                "stopMessage": "b2x stop in rule checkAge action then"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "output": {
+                            "approval": "before stop"
+                        }
+                    }
+                }
+            ],
+            "output": {
+                "approval": "before stop"
+            }
+        }
+    },
+    "printedMessages": [
+        {
+            "recordIndex": "1.1",
+            "message": "final action"
+        }
+    ],
+    "exceptionsRaised": []
+}

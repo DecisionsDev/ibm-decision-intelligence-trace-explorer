@@ -1,0 +1,94 @@
+{
+  "configuration": {
+    "executionDuration": false,
+    "printedMessages": true,
+    "objectsInMemoryLimit": -1,
+    "decisionModel": {
+      "inputParameters": "Object",
+      "outputParameters": "Object",
+      "inputNode": "None",
+      "outputNode": "None"
+    },
+    "rules": {
+      "boundObjectsAtStart": "None",
+      "boundObjectsAtEnd": "None",
+      "allRules": false,
+      "executedRules": false,
+      "nonExecutedRules": false,
+      "selectedRules": false,
+      "exceptions": "All",
+      "boundObjectsDiff": "None",
+      "dataModifiedInAction": "None",
+      "dataUsedInCondition": "None"
+    },
+    "ruleflow": {
+      "inputParameters": "Object",
+      "outputParameters": "Object",
+      "allTasks": false,
+      "executedTasks": true,
+      "notExecutedTasks": false
+    }
+  },
+  "rootRecord": {
+    "recordType": "RuleFlow",
+    "recordIndex": "1",
+    "properties": {
+      "engineVersion": "LATEST-SNAPSHOT",
+      "name": "decision",
+      "mainTask": "Rf1",
+      "input": {
+        "param3": 0.0,
+        "param4": true,
+        "working_memory": []
+      },
+      "nestedRecords": [
+        {
+          "recordType": "Task",
+          "recordIndex": "1.1",
+          "properties": {
+            "name": "Rf1",
+            "identifier": "Rf1",
+            "kind": [
+              "FLOWTASK"
+            ],
+            "input": {
+              "param3": 0.0,
+              "param4": true,
+              "working_memory": []
+            },
+            "nestedRecords": [
+              {
+                "recordType": "Task",
+                "recordIndex": "1.1.1",
+                "properties": {
+                  "name": "Rf1>task_3",
+                  "identifier": "Rf1>task_3",
+                  "kind": [
+                    "FUNCTIONTASK"
+                  ],
+                  "input": {
+                    "param3": 0.0,
+                    "param4": true,
+                    "working_memory": []
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "output": {
+        "param3": 0.0,
+        "param4": true,
+        "working_memory": []
+      }
+    }
+  },
+  "printedMessages": [
+    {
+      "recordIndex": "1.1.1",
+      "message": "OK2"
+    }
+  ],
+  "exceptionsRaised": []
+}

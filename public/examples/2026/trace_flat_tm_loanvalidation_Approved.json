@@ -1,0 +1,534 @@
+{
+    "configuration": {
+        "executionDuration": false,
+        "printedMessages": true,
+        "objectsInMemoryLimit": -1,
+        "decisionModel": {
+            "inputParameters": "Object",
+            "outputParameters": "Object",
+            "inputNode": "Object",
+            "outputNode": "Object"
+        },
+        "rules": {
+            "boundObjectsAtStart": "Object",
+            "boundObjectsAtEnd": "Object",
+            "allRules": true,
+            "executedRules": true,
+            "nonExecutedRules": true,
+            "selectedRules": true,
+            "exceptions": "NotHandled",
+            "boundObjectsDiff": "JSONMergePatch",
+            "dataModifiedInAction": "None",
+            "dataUsedInCondition": "None"
+        },
+        "ruleflow": {
+            "inputParameters": "Object",
+            "outputParameters": "Object",
+            "allTasks": true,
+            "executedTasks": true,
+            "notExecutedTasks": false,
+            "executedTaskActions": false
+        },
+        "format": "Flat"
+    },
+    "printedMessages": [],
+    "exceptionsRaised": [],
+    "records": {
+        "1.1.1.1.1": {
+            "recordType": "DecisionTable",
+            "recordIndex": "1.1.1.1.1",
+            "name": "Salary Score.salary score",
+            "boundObjectsAtStart": {
+                "salaryScore": 0.0
+            },
+            "actionIndex": "9",
+            "actionName": "#6",
+            "boundObjectsAtEnd": {
+                "salaryScore": 200.0
+            },
+            "boundObjectsDiff": {
+                "salaryScore": 200.0
+            }
+        },
+        "1.1.1.1.2": {
+            "recordType": "Rule",
+            "recordIndex": "1.1.1.1.2",
+            "name": "Corporate Score.corporate score",
+            "boundObjectsAtStart": {
+                "corporateScore": 0.0
+            },
+            "actionIndex": "12",
+            "actionName": "then",
+            "boundObjectsAtEnd": {
+                "corporateScore": 720.0
+            },
+            "boundObjectsDiff": {
+                "corporateScore": 720.0
+            }
+        },
+        "1.1.1.1": {
+            "recordType": "SequentialEngine",
+            "recordIndex": "1.1.1.1",
+            "allRules": [
+                "Bankruptcy Score.bankruptcy score",
+                "Salary Score.salary score",
+                "Corporate Score.corporate score"
+            ],
+            "nonExecutedRules": [
+                "Bankruptcy Score.bankruptcy score"
+            ],
+            "selectedRules": [
+                "Bankruptcy Score.bankruptcy score",
+                "Salary Score.salary score",
+                "Corporate Score.corporate score"
+            ]
+        },
+        "1.1.1": {
+            "recordType": "Task",
+            "recordIndex": "1.1.1",
+            "name": "Scores",
+            "identifier": "Loan Validation>task_2",
+            "kind": [
+                "RULETASK",
+                "SEQUENTIALTASK"
+            ],
+            "input": {
+                "borrower": {
+                    "SSN": {
+                        "areaNumber": "123",
+                        "groupCode": "45",
+                        "serialNumber": "6789"
+                    },
+                    "birthDate": "1968-05-12T00:00:00Z",
+                    "creditScore": 500,
+                    "firstName": "John",
+                    "lastName": "Doe",
+                    "yearlyIncome": 100000,
+                    "zipCode": "91320"
+                },
+                "currentTime": "2005-07-01T00:00:00Z",
+                "loan": {
+                    "amount": 185000,
+                    "loanToValue": 0.7,
+                    "numberOfMonthlyPayments": 72,
+                    "startDate": "2005-06-01T00:00:00Z"
+                }
+            },
+            "output": {}
+        },
+        "1.1.2.1.1": {
+            "recordType": "Rule",
+            "recordIndex": "1.1.2.1.1",
+            "name": "Duration.duration",
+            "boundObjectsAtStart": {
+                "duration": 0
+            },
+            "actionIndex": "0",
+            "actionName": "then",
+            "boundObjectsAtEnd": {
+                "duration": 6
+            },
+            "boundObjectsDiff": {
+                "duration": 6
+            }
+        },
+        "1.1.2.1.2": {
+            "recordType": "DecisionTable",
+            "recordIndex": "1.1.2.1.2",
+            "name": "Yearly interest rate.yearly interest rate",
+            "boundObjectsAtStart": {
+                "yearlyInterestRate": 0.0
+            },
+            "actionIndex": "6",
+            "actionName": "#6",
+            "boundObjectsAtEnd": {
+                "yearlyInterestRate": 0.057
+            },
+            "boundObjectsDiff": {
+                "yearlyInterestRate": 0.057
+            }
+        },
+        "1.1.2.1.3": {
+            "recordType": "Rule",
+            "recordIndex": "1.1.2.1.3",
+            "name": "Repayment.repayment",
+            "boundObjectsAtStart": {
+                "duration": 72,
+                "amount": 185000,
+                "loan": {
+                    "amount": 185000,
+                    "loanToValue": 0.7,
+                    "numberOfMonthlyPayments": 72,
+                    "startDate": "2005-06-01T00:00:00Z"
+                },
+                "monthly rate": 0.00475,
+                "yearlyInterestRate": 0.057,
+                "repayment": 0.0
+            },
+            "actionIndex": "25",
+            "actionName": "then",
+            "boundObjectsAtEnd": {
+                "duration": 72,
+                "amount": 185000,
+                "loan": {
+                    "amount": 185000,
+                    "loanToValue": 0.7,
+                    "numberOfMonthlyPayments": 72,
+                    "startDate": "2005-06-01T00:00:00Z"
+                },
+                "monthly rate": 0.00475,
+                "yearlyInterestRate": 0.057,
+                "repayment": 3039.8537960439126
+            },
+            "boundObjectsDiff": {
+                "repayment": 3039.8537960439126
+            }
+        },
+        "1.1.2.1": {
+            "recordType": "SequentialEngine",
+            "recordIndex": "1.1.2.1",
+            "allRules": [
+                "Duration.duration",
+                "Yearly interest rate.yearly interest rate",
+                "Repayment.repayment"
+            ],
+            "nonExecutedRules": [],
+            "selectedRules": [
+                "Duration.duration",
+                "Yearly interest rate.yearly interest rate",
+                "Repayment.repayment"
+            ]
+        },
+        "1.1.2": {
+            "recordType": "Task",
+            "recordIndex": "1.1.2",
+            "name": "Repayment",
+            "identifier": "Loan Validation>task_3",
+            "kind": [
+                "RULETASK",
+                "SEQUENTIALTASK"
+            ],
+            "input": {
+                "borrower": {
+                    "SSN": {
+                        "areaNumber": "123",
+                        "groupCode": "45",
+                        "serialNumber": "6789"
+                    },
+                    "birthDate": "1968-05-12T00:00:00Z",
+                    "creditScore": 500,
+                    "firstName": "John",
+                    "lastName": "Doe",
+                    "yearlyIncome": 100000,
+                    "zipCode": "91320"
+                },
+                "currentTime": "2005-07-01T00:00:00Z",
+                "loan": {
+                    "amount": 185000,
+                    "loanToValue": 0.7,
+                    "numberOfMonthlyPayments": 72,
+                    "startDate": "2005-06-01T00:00:00Z"
+                }
+            },
+            "output": {}
+        },
+        "1.1.3.1.1": {
+            "recordType": "DecisionTable",
+            "recordIndex": "1.1.3.1.1",
+            "name": "Grade.grade",
+            "boundObjectsAtStart": {},
+            "actionIndex": "7",
+            "actionName": "#8",
+            "boundObjectsAtEnd": {
+                "grade": {
+                    "grade": "C",
+                    "message": "Average risk loan"
+                }
+            },
+            "boundObjectsDiff": {
+                "grade": {
+                    "grade": "C",
+                    "message": "Average risk loan"
+                }
+            }
+        },
+        "1.1.3.1": {
+            "recordType": "SequentialEngine",
+            "recordIndex": "1.1.3.1",
+            "allRules": [
+                "Grade.grade"
+            ],
+            "nonExecutedRules": [],
+            "selectedRules": [
+                "Grade.grade"
+            ]
+        },
+        "1.1.3": {
+            "recordType": "Task",
+            "recordIndex": "1.1.3",
+            "name": "Grade",
+            "identifier": "Loan Validation>task_4",
+            "kind": [
+                "RULETASK",
+                "SEQUENTIALTASK"
+            ],
+            "input": {
+                "borrower": {
+                    "SSN": {
+                        "areaNumber": "123",
+                        "groupCode": "45",
+                        "serialNumber": "6789"
+                    },
+                    "birthDate": "1968-05-12T00:00:00Z",
+                    "creditScore": 500,
+                    "firstName": "John",
+                    "lastName": "Doe",
+                    "yearlyIncome": 100000,
+                    "zipCode": "91320"
+                },
+                "currentTime": "2005-07-01T00:00:00Z",
+                "loan": {
+                    "amount": 185000,
+                    "loanToValue": 0.7,
+                    "numberOfMonthlyPayments": 72,
+                    "startDate": "2005-06-01T00:00:00Z"
+                }
+            },
+            "output": {}
+        },
+        "1.1.4.1": {
+            "recordType": "SequentialEngine",
+            "recordIndex": "1.1.4.1",
+            "allRules": [
+                "Approval.bad score",
+                "Approval.risky grade",
+                "Approval.too big Debt to Income ratio",
+                "Approval.age not valid",
+                "Approval.no name",
+                "Approval.wrong SSN",
+                "Approval.wrong SSN format",
+                "Approval.wrong zip format",
+                "Approval.max amount exceeded"
+            ],
+            "nonExecutedRules": [
+                "Approval.bad score",
+                "Approval.risky grade",
+                "Approval.too big Debt to Income ratio",
+                "Approval.age not valid",
+                "Approval.no name",
+                "Approval.wrong SSN",
+                "Approval.wrong SSN format",
+                "Approval.wrong zip format",
+                "Approval.max amount exceeded"
+            ],
+            "selectedRules": [
+                "Approval.bad score",
+                "Approval.risky grade",
+                "Approval.too big Debt to Income ratio",
+                "Approval.age not valid",
+                "Approval.no name",
+                "Approval.wrong SSN",
+                "Approval.wrong SSN format",
+                "Approval.wrong zip format",
+                "Approval.max amount exceeded"
+            ]
+        },
+        "1.1.4": {
+            "recordType": "Task",
+            "recordIndex": "1.1.4",
+            "name": "Approval",
+            "identifier": "Loan Validation>task_5",
+            "kind": [
+                "RULETASK",
+                "SEQUENTIALTASK"
+            ],
+            "input": {
+                "borrower": {
+                    "SSN": {
+                        "areaNumber": "123",
+                        "groupCode": "45",
+                        "serialNumber": "6789"
+                    },
+                    "birthDate": "1968-05-12T00:00:00Z",
+                    "creditScore": 500,
+                    "firstName": "John",
+                    "lastName": "Doe",
+                    "yearlyIncome": 100000,
+                    "zipCode": "91320"
+                },
+                "currentTime": "2005-07-01T00:00:00Z",
+                "loan": {
+                    "amount": 185000,
+                    "loanToValue": 0.7,
+                    "numberOfMonthlyPayments": 72,
+                    "startDate": "2005-06-01T00:00:00Z"
+                }
+            },
+            "output": {
+                "approval": {
+                    "approved": true,
+                    "message": "Congratulations! Your loan has been approved"
+                },
+                "insurance": {
+                    "rate": 0.02,
+                    "required": true
+                }
+            }
+        },
+        "1.1.5.1.1": {
+            "recordType": "DecisionTable",
+            "recordIndex": "1.1.5.1.1",
+            "name": "Insurance.insurance",
+            "boundObjectsAtStart": {
+                "insurance": {
+                    "rate": 0.02,
+                    "required": true
+                }
+            },
+            "actionIndex": "9",
+            "actionName": "#10",
+            "boundObjectsAtEnd": {
+                "insurance": {
+                    "rate": 0.006,
+                    "required": true
+                }
+            },
+            "boundObjectsDiff": {
+                "insurance": {
+                    "rate": 0.006
+                }
+            }
+        },
+        "1.1.5.1": {
+            "recordType": "SequentialEngine",
+            "recordIndex": "1.1.5.1",
+            "allRules": [
+                "Insurance.insurance"
+            ],
+            "nonExecutedRules": [],
+            "selectedRules": [
+                "Insurance.insurance"
+            ]
+        },
+        "1.1.5": {
+            "recordType": "Task",
+            "recordIndex": "1.1.5",
+            "name": "node_6",
+            "identifier": "Loan Validation>task_6",
+            "kind": [
+                "RULETASK",
+                "SEQUENTIALTASK"
+            ],
+            "input": {
+                "borrower": {
+                    "SSN": {
+                        "areaNumber": "123",
+                        "groupCode": "45",
+                        "serialNumber": "6789"
+                    },
+                    "birthDate": "1968-05-12T00:00:00Z",
+                    "creditScore": 500,
+                    "firstName": "John",
+                    "lastName": "Doe",
+                    "yearlyIncome": 100000,
+                    "zipCode": "91320"
+                },
+                "currentTime": "2005-07-01T00:00:00Z",
+                "loan": {
+                    "amount": 185000,
+                    "loanToValue": 0.7,
+                    "numberOfMonthlyPayments": 72,
+                    "startDate": "2005-06-01T00:00:00Z"
+                }
+            },
+            "output": {
+                "approval": {
+                    "approved": true,
+                    "message": "Congratulations! Your loan has been approved"
+                },
+                "insurance": {
+                    "rate": 0.006,
+                    "required": true
+                }
+            }
+        },
+        "1.1": {
+            "recordType": "Task",
+            "recordIndex": "1.1",
+            "name": "Loan Validation",
+            "identifier": "Loan Validation",
+            "kind": [
+                "FLOWTASK"
+            ],
+            "input": {
+                "borrower": {
+                    "SSN": {
+                        "areaNumber": "123",
+                        "groupCode": "45",
+                        "serialNumber": "6789"
+                    },
+                    "birthDate": "1968-05-12T00:00:00Z",
+                    "creditScore": 500,
+                    "firstName": "John",
+                    "lastName": "Doe",
+                    "yearlyIncome": 100000,
+                    "zipCode": "91320"
+                },
+                "currentTime": "2005-07-01T00:00:00Z",
+                "loan": {
+                    "amount": 185000,
+                    "loanToValue": 0.7,
+                    "numberOfMonthlyPayments": 72,
+                    "startDate": "2005-06-01T00:00:00Z"
+                }
+            }
+        },
+        "1": {
+            "recordType": "RuleFlow",
+            "recordIndex": "1",
+            "engineVersion": "LATEST-SNAPSHOT",
+            "name": "LoanValidation-ruleflow-LoanValidation",
+            "mainTask": "Loan Validation",
+            "input": {
+                "borrower": {
+                    "SSN": {
+                        "areaNumber": "123",
+                        "groupCode": "45",
+                        "serialNumber": "6789"
+                    },
+                    "birthDate": "1968-05-12T00:00:00Z",
+                    "creditScore": 500,
+                    "firstName": "John",
+                    "lastName": "Doe",
+                    "yearlyIncome": 100000,
+                    "zipCode": "91320"
+                },
+                "currentTime": "2005-07-01T00:00:00Z",
+                "loan": {
+                    "amount": 185000,
+                    "loanToValue": 0.7,
+                    "numberOfMonthlyPayments": 72,
+                    "startDate": "2005-06-01T00:00:00Z"
+                }
+            },
+            "allTasks": [
+                "node_6",
+                "Approval",
+                "Scores",
+                "Grade",
+                "Repayment",
+                "Loan Validation"
+            ],
+            "output": {
+                "approval": {
+                    "approved": true,
+                    "message": "Congratulations! Your loan has been approved"
+                },
+                "insurance": {
+                    "rate": 0.006,
+                    "required": true
+                }
+            }
+        }
+    }
+}

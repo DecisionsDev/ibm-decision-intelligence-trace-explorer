@@ -1,0 +1,1528 @@
+{
+    "configuration": {
+        "executionDuration": true,
+        "printedMessages": true,
+        "objectsInMemoryLimit": -1,
+        "decisionModel": {
+            "inputParameters": "Object",
+            "outputParameters": "Object",
+            "inputNode": "None",
+            "outputNode": "None"
+        },
+        "rules": {
+            "boundObjectsAtStart": "None",
+            "boundObjectsAtEnd": "Object",
+            "allRules": true,
+            "executedRules": true,
+            "nonExecutedRules": true,
+            "exceptions": "NotHandled"
+        },
+        "ruleflow": {
+            "inputParameters": "Object",
+            "outputParameters": "Object",
+            "allTasks": true,
+            "executedTasks": true,
+            "notExecutedTasks": true,
+            "selectedRules": false
+        }
+    },
+    "rootRecord": {
+        "recordType": "RuleFlow",
+        "recordIndex": "1",
+        "properties": {
+            "engineVersion": "LATEST-SNAPSHOT",
+            "name": "mySimpleCustomerReuseDecision",
+            "mainTask": "flowTaskL2Displayname",
+            "input": {
+                "customerTop": {
+                    "age": 17,
+                    "name": "mary"
+                }
+            },
+            "allTasks": [
+                "flowTaskL2Displayname",
+                "Approval",
+                "functiontask4L2",
+                "Default value task",
+                "Check age"
+            ],
+            "notExecutedTasks": [],
+            "nestedRecords": [
+                {
+                    "recordType": "Task",
+                    "recordIndex": "1.1",
+                    "properties": {
+                        "name": "flowTaskL2Displayname",
+                        "identifier": "flowTaskL2",
+                        "kind": [
+                            "FLOWTASK"
+                        ],
+                        "input": {
+                            "customerTop": {
+                                "age": 17,
+                                "name": "mary"
+                            }
+                        },
+                        "nestedRecords": [
+                            {
+                                "recordType": "RuleFlow",
+                                "recordIndex": "1.1.1",
+                                "properties": {
+                                    "engineVersion": "LATEST-SNAPSHOT",
+                                    "name": "mySimpleCustomerDecision",
+                                    "mainTask": "Top flow",
+                                    "input": {},
+                                    "allTasks": [
+                                        "Top flow",
+                                        "Default value task",
+                                        "Check age",
+                                        "Approval"
+                                    ],
+                                    "notExecutedTasks": [],
+                                    "nestedRecords": [
+                                        {
+                                            "recordType": "Task",
+                                            "recordIndex": "1.1.1.1",
+                                            "properties": {
+                                                "name": "Top flow",
+                                                "identifier": "flowTaskL1",
+                                                "comments": "Comments for flowTaskL1",
+                                                "kind": [
+                                                    "FLOWTASK"
+                                                ],
+                                                "input": {},
+                                                "nestedRecords": [
+                                                    {
+                                                        "recordType": "Task",
+                                                        "recordIndex": "1.1.1.1.1",
+                                                        "properties": {
+                                                            "name": "Default value task",
+                                                            "identifier": "ruletask1L1",
+                                                            "comments": "Comments for ruletask1L1",
+                                                            "kind": [
+                                                                "RULETASK",
+                                                                "SEQUENTIALTASK"
+                                                            ],
+                                                            "input": {},
+                                                            "nestedRecords": [
+                                                                {
+                                                                    "recordType": "SequentialEngine",
+                                                                    "recordIndex": "1.1.1.1.1.1",
+                                                                    "properties": {
+                                                                        "engineVersion": "LATEST-SNAPSHOT",
+                                                                        "allRules": [
+                                                                            "rule1L1"
+                                                                        ],
+                                                                        "nonExecutedRules": [],
+                                                                        "nestedRecords": [
+                                                                            {
+                                                                                "recordType": "Rule",
+                                                                                "recordIndex": "1.1.1.1.1.1.1",
+                                                                                "properties": {
+                                                                                    "name": "rule1L1",
+                                                                                    "actionIndex": "0",
+                                                                                    "boundObjectsAtEnd": {
+                                                                                        "ageLimit": 18
+                                                                                    },
+                                                                                    "executionDuration": 0,
+                                                                                    "executionStartTime": 1,
+                                                                                    "executionEndTime": 1
+                                                                                }
+                                                                            }
+                                                                        ],
+                                                                        "executionDuration": 0,
+                                                                        "executionStartTime": 1,
+                                                                        "executionEndTime": 1
+                                                                    }
+                                                                }
+                                                            ],
+                                                            "output": {},
+                                                            "executionDuration": 0,
+                                                            "executionStartTime": 1,
+                                                            "executionEndTime": 1
+                                                        }
+                                                    },
+                                                    {
+                                                        "recordType": "Task",
+                                                        "recordIndex": "1.1.1.1.2",
+                                                        "properties": {
+                                                            "name": "Check age",
+                                                            "identifier": "ruletask2L1",
+                                                            "comments": "Comments for ruletask2L1",
+                                                            "kind": [
+                                                                "RULETASK",
+                                                                "SEQUENTIALTASK"
+                                                            ],
+                                                            "input": {
+                                                                "ageLimit": 18
+                                                            },
+                                                            "nestedRecords": [
+                                                                {
+                                                                    "recordType": "SequentialEngine",
+                                                                    "recordIndex": "1.1.1.1.2.1",
+                                                                    "properties": {
+                                                                        "engineVersion": "LATEST-SNAPSHOT",
+                                                                        "allRules": [
+                                                                            "checkAge"
+                                                                        ],
+                                                                        "nonExecutedRules": [
+                                                                            "checkAge"
+                                                                        ],
+                                                                        "executionDuration": 0,
+                                                                        "executionStartTime": 1,
+                                                                        "executionEndTime": 1
+                                                                    }
+                                                                }
+                                                            ],
+                                                            "output": {},
+                                                            "executionDuration": 0,
+                                                            "executionStartTime": 1,
+                                                            "executionEndTime": 1
+                                                        }
+                                                    },
+                                                    {
+                                                        "recordType": "Task",
+                                                        "recordIndex": "1.1.1.1.3",
+                                                        "properties": {
+                                                            "name": "Approval",
+                                                            "identifier": "ruletask3L1",
+                                                            "comments": "Comments for ruletask3L1",
+                                                            "kind": [
+                                                                "RULETASK",
+                                                                "SEQUENTIALTASK"
+                                                            ],
+                                                            "input": {
+                                                                "ageLimit": 18
+                                                            },
+                                                            "nestedRecords": [
+                                                                {
+                                                                    "recordType": "SequentialEngine",
+                                                                    "recordIndex": "1.1.1.1.3.1",
+                                                                    "properties": {
+                                                                        "engineVersion": "LATEST-SNAPSHOT",
+                                                                        "allRules": [
+                                                                            "rule3L1"
+                                                                        ],
+                                                                        "nonExecutedRules": [],
+                                                                        "nestedRecords": [
+                                                                            {
+                                                                                "recordType": "Rule",
+                                                                                "recordIndex": "1.1.1.1.3.1.1",
+                                                                                "properties": {
+                                                                                    "name": "rule3L1",
+                                                                                    "actionIndex": "0",
+                                                                                    "boundObjectsAtEnd": {
+                                                                                        "ageLimit": 18
+                                                                                    },
+                                                                                    "executionDuration": 0,
+                                                                                    "executionStartTime": 1,
+                                                                                    "executionEndTime": 1
+                                                                                }
+                                                                            }
+                                                                        ],
+                                                                        "executionDuration": 0,
+                                                                        "executionStartTime": 1,
+                                                                        "executionEndTime": 1
+                                                                    }
+                                                                }
+                                                            ],
+                                                            "output": {
+                                                                "approval": "NEED_MORE_INFORMATION(mySimpleCustomerDecision)"
+                                                            },
+                                                            "executionDuration": 0,
+                                                            "executionStartTime": 1,
+                                                            "executionEndTime": 1
+                                                        }
+                                                    }
+                                                ],
+                                                "executionDuration": 0,
+                                                "executionStartTime": 1,
+                                                "executionEndTime": 1
+                                            }
+                                        }
+                                    ],
+                                    "output": {
+                                        "approval": "NEED_MORE_INFORMATION(mySimpleCustomerDecision)"
+                                    },
+                                    "executionDuration": 0,
+                                    "executionStartTime": 1,
+                                    "executionEndTime": 1
+                                }
+                            },
+                            {
+                                "recordType": "Task",
+                                "recordIndex": "1.1.2",
+                                "properties": {
+                                    "name": "Default value task",
+                                    "identifier": "ruletask1L2",
+                                    "comments": "Comments for ruletask1L2",
+                                    "kind": [
+                                        "RULETASK",
+                                        "SEQUENTIALTASK"
+                                    ],
+                                    "input": {
+                                        "customerTop": {
+                                            "age": 17,
+                                            "name": "mary"
+                                        }
+                                    },
+                                    "nestedRecords": [
+                                        {
+                                            "recordType": "SequentialEngine",
+                                            "recordIndex": "1.1.2.1",
+                                            "properties": {
+                                                "engineVersion": "LATEST-SNAPSHOT",
+                                                "allRules": [
+                                                    "rule1L2"
+                                                ],
+                                                "nonExecutedRules": [],
+                                                "nestedRecords": [
+                                                    {
+                                                        "recordType": "Rule",
+                                                        "recordIndex": "1.1.2.1.1",
+                                                        "properties": {
+                                                            "name": "rule1L2",
+                                                            "actionIndex": "0",
+                                                            "boundObjectsAtEnd": {
+                                                                "customerTop": {
+                                                                    "age": 17,
+                                                                    "name": "mary"
+                                                                },
+                                                                "ageLimitTop": 18
+                                                            },
+                                                            "executionDuration": 0,
+                                                            "executionStartTime": 1,
+                                                            "executionEndTime": 1
+                                                        }
+                                                    }
+                                                ],
+                                                "executionDuration": 0,
+                                                "executionStartTime": 1,
+                                                "executionEndTime": 1
+                                            }
+                                        }
+                                    ],
+                                    "output": {},
+                                    "executionDuration": 0,
+                                    "executionStartTime": 1,
+                                    "executionEndTime": 1
+                                }
+                            },
+                            {
+                                "recordType": "Task",
+                                "recordIndex": "1.1.3",
+                                "properties": {
+                                    "name": "Check age",
+                                    "identifier": "ruletask2L2",
+                                    "comments": "Comments for ruletask2L2",
+                                    "kind": [
+                                        "RULETASK",
+                                        "SEQUENTIALTASK"
+                                    ],
+                                    "input": {
+                                        "ageLimitTop": 18,
+                                        "customerTop": {
+                                            "age": 17,
+                                            "name": "mary"
+                                        }
+                                    },
+                                    "nestedRecords": [
+                                        {
+                                            "recordType": "SequentialEngine",
+                                            "recordIndex": "1.1.3.1",
+                                            "properties": {
+                                                "engineVersion": "LATEST-SNAPSHOT",
+                                                "allRules": [
+                                                    "checkAgeTop"
+                                                ],
+                                                "nonExecutedRules": [],
+                                                "nestedRecords": [
+                                                    {
+                                                        "recordType": "Rule",
+                                                        "recordIndex": "1.1.3.1.1",
+                                                        "properties": {
+                                                            "name": "checkAgeTop",
+                                                            "actionIndex": "0",
+                                                            "nestedRecords": [
+                                                                {
+                                                                    "recordType": "RuleFlow",
+                                                                    "recordIndex": "1.1.3.1.1.1",
+                                                                    "properties": {
+                                                                        "engineVersion": "LATEST-SNAPSHOT",
+                                                                        "name": "mySimpleCustomerDecision",
+                                                                        "mainTask": "Top flow",
+                                                                        "input": {
+                                                                            "ageLimit": 18,
+                                                                            "customer": {
+                                                                                "age": 17,
+                                                                                "name": "mary"
+                                                                            }
+                                                                        },
+                                                                        "allTasks": [
+                                                                            "Top flow",
+                                                                            "Default value task",
+                                                                            "Check age",
+                                                                            "Approval"
+                                                                        ],
+                                                                        "notExecutedTasks": [
+                                                                            "Approval"
+                                                                        ],
+                                                                        "nestedRecords": [
+                                                                            {
+                                                                                "recordType": "Task",
+                                                                                "recordIndex": "1.1.3.1.1.1.1",
+                                                                                "properties": {
+                                                                                    "name": "Top flow",
+                                                                                    "identifier": "flowTaskL1",
+                                                                                    "comments": "Comments for flowTaskL1",
+                                                                                    "kind": [
+                                                                                        "FLOWTASK"
+                                                                                    ],
+                                                                                    "input": {
+                                                                                        "ageLimit": 18,
+                                                                                        "customer": {
+                                                                                            "age": 17,
+                                                                                            "name": "mary"
+                                                                                        }
+                                                                                    },
+                                                                                    "nestedRecords": [
+                                                                                        {
+                                                                                            "recordType": "Task",
+                                                                                            "recordIndex": "1.1.3.1.1.1.1.1",
+                                                                                            "properties": {
+                                                                                                "name": "Default value task",
+                                                                                                "identifier": "ruletask1L1",
+                                                                                                "comments": "Comments for ruletask1L1",
+                                                                                                "kind": [
+                                                                                                    "RULETASK",
+                                                                                                    "SEQUENTIALTASK"
+                                                                                                ],
+                                                                                                "input": {
+                                                                                                    "ageLimit": 18,
+                                                                                                    "customer": {
+                                                                                                        "age": 17,
+                                                                                                        "name": "mary"
+                                                                                                    }
+                                                                                                },
+                                                                                                "nestedRecords": [
+                                                                                                    {
+                                                                                                        "recordType": "SequentialEngine",
+                                                                                                        "recordIndex": "1.1.3.1.1.1.1.1.1",
+                                                                                                        "properties": {
+                                                                                                            "engineVersion": "LATEST-SNAPSHOT",
+                                                                                                            "allRules": [
+                                                                                                                "rule1L1"
+                                                                                                            ],
+                                                                                                            "nonExecutedRules": [
+                                                                                                                "rule1L1"
+                                                                                                            ],
+                                                                                                            "executionDuration": 0,
+                                                                                                            "executionStartTime": 2,
+                                                                                                            "executionEndTime": 2
+                                                                                                        }
+                                                                                                    }
+                                                                                                ],
+                                                                                                "output": {},
+                                                                                                "executionDuration": 1,
+                                                                                                "executionStartTime": 1,
+                                                                                                "executionEndTime": 2
+                                                                                            }
+                                                                                        },
+                                                                                        {
+                                                                                            "recordType": "Task",
+                                                                                            "recordIndex": "1.1.3.1.1.1.1.2",
+                                                                                            "properties": {
+                                                                                                "name": "Check age",
+                                                                                                "identifier": "ruletask2L1",
+                                                                                                "comments": "Comments for ruletask2L1",
+                                                                                                "kind": [
+                                                                                                    "RULETASK",
+                                                                                                    "SEQUENTIALTASK"
+                                                                                                ],
+                                                                                                "input": {
+                                                                                                    "ageLimit": 18,
+                                                                                                    "customer": {
+                                                                                                        "age": 17,
+                                                                                                        "name": "mary"
+                                                                                                    }
+                                                                                                },
+                                                                                                "nestedRecords": [
+                                                                                                    {
+                                                                                                        "recordType": "SequentialEngine",
+                                                                                                        "recordIndex": "1.1.3.1.1.1.1.2.1",
+                                                                                                        "properties": {
+                                                                                                            "engineVersion": "LATEST-SNAPSHOT",
+                                                                                                            "allRules": [
+                                                                                                                "checkAge"
+                                                                                                            ],
+                                                                                                            "nonExecutedRules": [],
+                                                                                                            "nestedRecords": [
+                                                                                                                {
+                                                                                                                    "recordType": "Rule",
+                                                                                                                    "recordIndex": "1.1.3.1.1.1.1.2.1.1",
+                                                                                                                    "properties": {
+                                                                                                                        "name": "checkAge",
+                                                                                                                        "actionIndex": "1",
+                                                                                                                        "boundObjectsAtEnd": {
+                                                                                                                            "ageLimit": 18,
+                                                                                                                            "customer": {
+                                                                                                                                "age": 17,
+                                                                                                                                "name": "mary"
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "executionDuration": 0,
+                                                                                                                        "executionStartTime": 2,
+                                                                                                                        "executionEndTime": 2
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            ],
+                                                                                                            "executionDuration": 0,
+                                                                                                            "executionStartTime": 2,
+                                                                                                            "executionEndTime": 2
+                                                                                                        }
+                                                                                                    }
+                                                                                                ],
+                                                                                                "output": {
+                                                                                                    "approval": "UNDER_AGE(mySimpleCustomerDecision): 18 is required, Customer is too young17"
+                                                                                                },
+                                                                                                "executionDuration": 0,
+                                                                                                "executionStartTime": 2,
+                                                                                                "executionEndTime": 2
+                                                                                            }
+                                                                                        }
+                                                                                    ],
+                                                                                    "executionDuration": 1,
+                                                                                    "executionStartTime": 1,
+                                                                                    "executionEndTime": 2
+                                                                                }
+                                                                            }
+                                                                        ],
+                                                                        "output": {
+                                                                            "approval": "UNDER_AGE(mySimpleCustomerDecision): 18 is required, Customer is too young17"
+                                                                        },
+                                                                        "executionDuration": 1,
+                                                                        "executionStartTime": 1,
+                                                                        "executionEndTime": 2
+                                                                    }
+                                                                }
+                                                            ],
+                                                            "boundObjectsAtEnd": {
+                                                                "customerTop": {
+                                                                    "age": 17,
+                                                                    "name": "mary"
+                                                                },
+                                                                "ageLimitTop": 18
+                                                            },
+                                                            "executionDuration": 1,
+                                                            "executionStartTime": 1,
+                                                            "executionEndTime": 2
+                                                        }
+                                                    }
+                                                ],
+                                                "executionDuration": 1,
+                                                "executionStartTime": 1,
+                                                "executionEndTime": 2
+                                            }
+                                        }
+                                    ],
+                                    "output": {
+                                        "approvalTop": "UNDER_AGE(mySimpleCustomerDecision): 18 is required, Customer is too young17"
+                                    },
+                                    "executionDuration": 1,
+                                    "executionStartTime": 1,
+                                    "executionEndTime": 2
+                                }
+                            },
+                            {
+                                "recordType": "Task",
+                                "recordIndex": "1.1.4",
+                                "properties": {
+                                    "name": "Approval",
+                                    "identifier": "ruletask3L2",
+                                    "comments": "Comments for ruletask3L2",
+                                    "kind": [
+                                        "RULETASK",
+                                        "SEQUENTIALTASK"
+                                    ],
+                                    "input": {
+                                        "ageLimitTop": 18,
+                                        "customerTop": {
+                                            "age": 17,
+                                            "name": "mary"
+                                        }
+                                    },
+                                    "nestedRecords": [
+                                        {
+                                            "recordType": "SequentialEngine",
+                                            "recordIndex": "1.1.4.1",
+                                            "properties": {
+                                                "engineVersion": "LATEST-SNAPSHOT",
+                                                "allRules": [
+                                                    "rule3L2"
+                                                ],
+                                                "nonExecutedRules": [],
+                                                "nestedRecords": [
+                                                    {
+                                                        "recordType": "RuleFlow",
+                                                        "recordIndex": "1.1.4.1.1",
+                                                        "properties": {
+                                                            "engineVersion": "LATEST-SNAPSHOT",
+                                                            "name": "mySimpleCustomerDecision",
+                                                            "mainTask": "Top flow",
+                                                            "input": {
+                                                                "ageLimit": 15,
+                                                                "customer": {
+                                                                    "age": 17,
+                                                                    "name": "mary"
+                                                                }
+                                                            },
+                                                            "allTasks": [
+                                                                "Top flow",
+                                                                "Default value task",
+                                                                "Check age",
+                                                                "Approval"
+                                                            ],
+                                                            "notExecutedTasks": [
+                                                                "Approval"
+                                                            ],
+                                                            "nestedRecords": [
+                                                                {
+                                                                    "recordType": "Task",
+                                                                    "recordIndex": "1.1.4.1.1.1",
+                                                                    "properties": {
+                                                                        "name": "Top flow",
+                                                                        "identifier": "flowTaskL1",
+                                                                        "comments": "Comments for flowTaskL1",
+                                                                        "kind": [
+                                                                            "FLOWTASK"
+                                                                        ],
+                                                                        "input": {
+                                                                            "ageLimit": 15,
+                                                                            "customer": {
+                                                                                "age": 17,
+                                                                                "name": "mary"
+                                                                            }
+                                                                        },
+                                                                        "nestedRecords": [
+                                                                            {
+                                                                                "recordType": "Task",
+                                                                                "recordIndex": "1.1.4.1.1.1.1",
+                                                                                "properties": {
+                                                                                    "name": "Default value task",
+                                                                                    "identifier": "ruletask1L1",
+                                                                                    "comments": "Comments for ruletask1L1",
+                                                                                    "kind": [
+                                                                                        "RULETASK",
+                                                                                        "SEQUENTIALTASK"
+                                                                                    ],
+                                                                                    "input": {
+                                                                                        "ageLimit": 15,
+                                                                                        "customer": {
+                                                                                            "age": 17,
+                                                                                            "name": "mary"
+                                                                                        }
+                                                                                    },
+                                                                                    "nestedRecords": [
+                                                                                        {
+                                                                                            "recordType": "SequentialEngine",
+                                                                                            "recordIndex": "1.1.4.1.1.1.1.1",
+                                                                                            "properties": {
+                                                                                                "engineVersion": "LATEST-SNAPSHOT",
+                                                                                                "allRules": [
+                                                                                                    "rule1L1"
+                                                                                                ],
+                                                                                                "nonExecutedRules": [
+                                                                                                    "rule1L1"
+                                                                                                ],
+                                                                                                "executionDuration": 0,
+                                                                                                "executionStartTime": 2,
+                                                                                                "executionEndTime": 2
+                                                                                            }
+                                                                                        }
+                                                                                    ],
+                                                                                    "output": {},
+                                                                                    "executionDuration": 0,
+                                                                                    "executionStartTime": 2,
+                                                                                    "executionEndTime": 2
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                "recordType": "Task",
+                                                                                "recordIndex": "1.1.4.1.1.1.2",
+                                                                                "properties": {
+                                                                                    "name": "Check age",
+                                                                                    "identifier": "ruletask2L1",
+                                                                                    "comments": "Comments for ruletask2L1",
+                                                                                    "kind": [
+                                                                                        "RULETASK",
+                                                                                        "SEQUENTIALTASK"
+                                                                                    ],
+                                                                                    "input": {
+                                                                                        "ageLimit": 15,
+                                                                                        "customer": {
+                                                                                            "age": 17,
+                                                                                            "name": "mary"
+                                                                                        }
+                                                                                    },
+                                                                                    "nestedRecords": [
+                                                                                        {
+                                                                                            "recordType": "SequentialEngine",
+                                                                                            "recordIndex": "1.1.4.1.1.1.2.1",
+                                                                                            "properties": {
+                                                                                                "engineVersion": "LATEST-SNAPSHOT",
+                                                                                                "allRules": [
+                                                                                                    "checkAge"
+                                                                                                ],
+                                                                                                "nonExecutedRules": [],
+                                                                                                "nestedRecords": [
+                                                                                                    {
+                                                                                                        "recordType": "Rule",
+                                                                                                        "recordIndex": "1.1.4.1.1.1.2.1.1",
+                                                                                                        "properties": {
+                                                                                                            "name": "checkAge",
+                                                                                                            "actionIndex": "0",
+                                                                                                            "boundObjectsAtEnd": {
+                                                                                                                "ageLimit": 15,
+                                                                                                                "customer": {
+                                                                                                                    "age": 17,
+                                                                                                                    "name": "mary"
+                                                                                                                }
+                                                                                                            },
+                                                                                                            "executionDuration": 0,
+                                                                                                            "executionStartTime": 2,
+                                                                                                            "executionEndTime": 2
+                                                                                                        }
+                                                                                                    }
+                                                                                                ],
+                                                                                                "executionDuration": 0,
+                                                                                                "executionStartTime": 2,
+                                                                                                "executionEndTime": 2
+                                                                                            }
+                                                                                        }
+                                                                                    ],
+                                                                                    "output": {
+                                                                                        "approval": "PASSED(mySimpleCustomerDecision)"
+                                                                                    },
+                                                                                    "executionDuration": 0,
+                                                                                    "executionStartTime": 2,
+                                                                                    "executionEndTime": 2
+                                                                                }
+                                                                            }
+                                                                        ],
+                                                                        "executionDuration": 0,
+                                                                        "executionStartTime": 2,
+                                                                        "executionEndTime": 2
+                                                                    }
+                                                                }
+                                                            ],
+                                                            "output": {
+                                                                "approval": "PASSED(mySimpleCustomerDecision)"
+                                                            },
+                                                            "executionDuration": 0,
+                                                            "executionStartTime": 2,
+                                                            "executionEndTime": 2
+                                                        }
+                                                    },
+                                                    {
+                                                        "recordType": "Rule",
+                                                        "recordIndex": "1.1.4.1.2",
+                                                        "properties": {
+                                                            "name": "rule3L2",
+                                                            "actionIndex": "0",
+                                                            "boundObjectsAtEnd": {
+                                                                "customerTop": {
+                                                                    "age": 17,
+                                                                    "name": "mary"
+                                                                },
+                                                                "ageLimitTop": 18
+                                                            },
+                                                            "executionDuration": 0,
+                                                            "executionStartTime": 2,
+                                                            "executionEndTime": 2
+                                                        }
+                                                    }
+                                                ],
+                                                "executionDuration": 0,
+                                                "executionStartTime": 2,
+                                                "executionEndTime": 2
+                                            }
+                                        }
+                                    ],
+                                    "output": {
+                                        "approvalTop": "WILL_BE_OK_IN_3_YEARS(mySimpleReuseCustomerDecision)"
+                                    },
+                                    "executionDuration": 0,
+                                    "executionStartTime": 2,
+                                    "executionEndTime": 2
+                                }
+                            },
+                            {
+                                "recordType": "Task",
+                                "recordIndex": "1.1.5",
+                                "properties": {
+                                    "name": "functiontask4L2",
+                                    "identifier": "functiontask4L2",
+                                    "kind": [
+                                        "FUNCTIONTASK"
+                                    ],
+                                    "input": {
+                                        "ageLimitTop": 18,
+                                        "customerTop": {
+                                            "age": 17,
+                                            "name": "mary"
+                                        }
+                                    },
+                                    "nestedRecords": [
+                                        {
+                                            "recordType": "RuleFlow",
+                                            "recordIndex": "1.1.5.1",
+                                            "properties": {
+                                                "engineVersion": "LATEST-SNAPSHOT",
+                                                "name": "mySimpleCustomerDecision",
+                                                "mainTask": "Top flow",
+                                                "input": {},
+                                                "allTasks": [
+                                                    "Top flow",
+                                                    "Default value task",
+                                                    "Check age",
+                                                    "Approval"
+                                                ],
+                                                "notExecutedTasks": [],
+                                                "nestedRecords": [
+                                                    {
+                                                        "recordType": "Task",
+                                                        "recordIndex": "1.1.5.1.1",
+                                                        "properties": {
+                                                            "name": "Top flow",
+                                                            "identifier": "flowTaskL1",
+                                                            "comments": "Comments for flowTaskL1",
+                                                            "kind": [
+                                                                "FLOWTASK"
+                                                            ],
+                                                            "input": {},
+                                                            "nestedRecords": [
+                                                                {
+                                                                    "recordType": "Task",
+                                                                    "recordIndex": "1.1.5.1.1.1",
+                                                                    "properties": {
+                                                                        "name": "Default value task",
+                                                                        "identifier": "ruletask1L1",
+                                                                        "comments": "Comments for ruletask1L1",
+                                                                        "kind": [
+                                                                            "RULETASK",
+                                                                            "SEQUENTIALTASK"
+                                                                        ],
+                                                                        "input": {},
+                                                                        "nestedRecords": [
+                                                                            {
+                                                                                "recordType": "SequentialEngine",
+                                                                                "recordIndex": "1.1.5.1.1.1.1",
+                                                                                "properties": {
+                                                                                    "engineVersion": "LATEST-SNAPSHOT",
+                                                                                    "allRules": [
+                                                                                        "rule1L1"
+                                                                                    ],
+                                                                                    "nonExecutedRules": [],
+                                                                                    "nestedRecords": [
+                                                                                        {
+                                                                                            "recordType": "Rule",
+                                                                                            "recordIndex": "1.1.5.1.1.1.1.1",
+                                                                                            "properties": {
+                                                                                                "name": "rule1L1",
+                                                                                                "actionIndex": "0",
+                                                                                                "boundObjectsAtEnd": {
+                                                                                                    "ageLimit": 18
+                                                                                                },
+                                                                                                "executionDuration": 0,
+                                                                                                "executionStartTime": 2,
+                                                                                                "executionEndTime": 2
+                                                                                            }
+                                                                                        }
+                                                                                    ],
+                                                                                    "executionDuration": 0,
+                                                                                    "executionStartTime": 2,
+                                                                                    "executionEndTime": 2
+                                                                                }
+                                                                            }
+                                                                        ],
+                                                                        "output": {},
+                                                                        "executionDuration": 0,
+                                                                        "executionStartTime": 2,
+                                                                        "executionEndTime": 2
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "recordType": "Task",
+                                                                    "recordIndex": "1.1.5.1.1.2",
+                                                                    "properties": {
+                                                                        "name": "Check age",
+                                                                        "identifier": "ruletask2L1",
+                                                                        "comments": "Comments for ruletask2L1",
+                                                                        "kind": [
+                                                                            "RULETASK",
+                                                                            "SEQUENTIALTASK"
+                                                                        ],
+                                                                        "input": {
+                                                                            "ageLimit": 18
+                                                                        },
+                                                                        "nestedRecords": [
+                                                                            {
+                                                                                "recordType": "SequentialEngine",
+                                                                                "recordIndex": "1.1.5.1.1.2.1",
+                                                                                "properties": {
+                                                                                    "engineVersion": "LATEST-SNAPSHOT",
+                                                                                    "allRules": [
+                                                                                        "checkAge"
+                                                                                    ],
+                                                                                    "nonExecutedRules": [
+                                                                                        "checkAge"
+                                                                                    ],
+                                                                                    "executionDuration": 0,
+                                                                                    "executionStartTime": 2,
+                                                                                    "executionEndTime": 2
+                                                                                }
+                                                                            }
+                                                                        ],
+                                                                        "output": {},
+                                                                        "executionDuration": 0,
+                                                                        "executionStartTime": 2,
+                                                                        "executionEndTime": 2
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "recordType": "Task",
+                                                                    "recordIndex": "1.1.5.1.1.3",
+                                                                    "properties": {
+                                                                        "name": "Approval",
+                                                                        "identifier": "ruletask3L1",
+                                                                        "comments": "Comments for ruletask3L1",
+                                                                        "kind": [
+                                                                            "RULETASK",
+                                                                            "SEQUENTIALTASK"
+                                                                        ],
+                                                                        "input": {
+                                                                            "ageLimit": 18
+                                                                        },
+                                                                        "nestedRecords": [
+                                                                            {
+                                                                                "recordType": "SequentialEngine",
+                                                                                "recordIndex": "1.1.5.1.1.3.1",
+                                                                                "properties": {
+                                                                                    "engineVersion": "LATEST-SNAPSHOT",
+                                                                                    "allRules": [
+                                                                                        "rule3L1"
+                                                                                    ],
+                                                                                    "nonExecutedRules": [],
+                                                                                    "nestedRecords": [
+                                                                                        {
+                                                                                            "recordType": "Rule",
+                                                                                            "recordIndex": "1.1.5.1.1.3.1.1",
+                                                                                            "properties": {
+                                                                                                "name": "rule3L1",
+                                                                                                "actionIndex": "0",
+                                                                                                "boundObjectsAtEnd": {
+                                                                                                    "ageLimit": 18
+                                                                                                },
+                                                                                                "executionDuration": 0,
+                                                                                                "executionStartTime": 2,
+                                                                                                "executionEndTime": 2
+                                                                                            }
+                                                                                        }
+                                                                                    ],
+                                                                                    "executionDuration": 0,
+                                                                                    "executionStartTime": 2,
+                                                                                    "executionEndTime": 2
+                                                                                }
+                                                                            }
+                                                                        ],
+                                                                        "output": {
+                                                                            "approval": "NEED_MORE_INFORMATION(mySimpleCustomerDecision)"
+                                                                        },
+                                                                        "executionDuration": 0,
+                                                                        "executionStartTime": 2,
+                                                                        "executionEndTime": 2
+                                                                    }
+                                                                }
+                                                            ],
+                                                            "executionDuration": 0,
+                                                            "executionStartTime": 2,
+                                                            "executionEndTime": 2
+                                                        }
+                                                    }
+                                                ],
+                                                "output": {
+                                                    "approval": "NEED_MORE_INFORMATION(mySimpleCustomerDecision)"
+                                                },
+                                                "executionDuration": 0,
+                                                "executionStartTime": 2,
+                                                "executionEndTime": 2
+                                            }
+                                        },
+                                        {
+                                            "recordType": "RuleFlow",
+                                            "recordIndex": "1.1.5.2",
+                                            "properties": {
+                                                "engineVersion": "LATEST-SNAPSHOT",
+                                                "name": "mySimpleCustomerDecision",
+                                                "mainTask": "Top flow",
+                                                "input": {
+                                                    "ageLimit": 111,
+                                                    "customer": {
+                                                        "age": 17,
+                                                        "name": "mary"
+                                                    }
+                                                },
+                                                "allTasks": [
+                                                    "Top flow",
+                                                    "Default value task",
+                                                    "Check age",
+                                                    "Approval"
+                                                ],
+                                                "notExecutedTasks": [
+                                                    "Approval"
+                                                ],
+                                                "nestedRecords": [
+                                                    {
+                                                        "recordType": "Task",
+                                                        "recordIndex": "1.1.5.2.1",
+                                                        "properties": {
+                                                            "name": "Top flow",
+                                                            "identifier": "flowTaskL1",
+                                                            "comments": "Comments for flowTaskL1",
+                                                            "kind": [
+                                                                "FLOWTASK"
+                                                            ],
+                                                            "input": {
+                                                                "ageLimit": 111,
+                                                                "customer": {
+                                                                    "age": 17,
+                                                                    "name": "mary"
+                                                                }
+                                                            },
+                                                            "nestedRecords": [
+                                                                {
+                                                                    "recordType": "Task",
+                                                                    "recordIndex": "1.1.5.2.1.1",
+                                                                    "properties": {
+                                                                        "name": "Default value task",
+                                                                        "identifier": "ruletask1L1",
+                                                                        "comments": "Comments for ruletask1L1",
+                                                                        "kind": [
+                                                                            "RULETASK",
+                                                                            "SEQUENTIALTASK"
+                                                                        ],
+                                                                        "input": {
+                                                                            "ageLimit": 111,
+                                                                            "customer": {
+                                                                                "age": 17,
+                                                                                "name": "mary"
+                                                                            }
+                                                                        },
+                                                                        "nestedRecords": [
+                                                                            {
+                                                                                "recordType": "SequentialEngine",
+                                                                                "recordIndex": "1.1.5.2.1.1.1",
+                                                                                "properties": {
+                                                                                    "engineVersion": "LATEST-SNAPSHOT",
+                                                                                    "allRules": [
+                                                                                        "rule1L1"
+                                                                                    ],
+                                                                                    "nonExecutedRules": [
+                                                                                        "rule1L1"
+                                                                                    ],
+                                                                                    "executionDuration": 0,
+                                                                                    "executionStartTime": 2,
+                                                                                    "executionEndTime": 2
+                                                                                }
+                                                                            }
+                                                                        ],
+                                                                        "output": {},
+                                                                        "executionDuration": 0,
+                                                                        "executionStartTime": 2,
+                                                                        "executionEndTime": 2
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "recordType": "Task",
+                                                                    "recordIndex": "1.1.5.2.1.2",
+                                                                    "properties": {
+                                                                        "name": "Check age",
+                                                                        "identifier": "ruletask2L1",
+                                                                        "comments": "Comments for ruletask2L1",
+                                                                        "kind": [
+                                                                            "RULETASK",
+                                                                            "SEQUENTIALTASK"
+                                                                        ],
+                                                                        "input": {
+                                                                            "ageLimit": 111,
+                                                                            "customer": {
+                                                                                "age": 17,
+                                                                                "name": "mary"
+                                                                            }
+                                                                        },
+                                                                        "nestedRecords": [
+                                                                            {
+                                                                                "recordType": "SequentialEngine",
+                                                                                "recordIndex": "1.1.5.2.1.2.1",
+                                                                                "properties": {
+                                                                                    "engineVersion": "LATEST-SNAPSHOT",
+                                                                                    "allRules": [
+                                                                                        "checkAge"
+                                                                                    ],
+                                                                                    "nonExecutedRules": [],
+                                                                                    "nestedRecords": [
+                                                                                        {
+                                                                                            "recordType": "Rule",
+                                                                                            "recordIndex": "1.1.5.2.1.2.1.1",
+                                                                                            "properties": {
+                                                                                                "name": "checkAge",
+                                                                                                "actionIndex": "1",
+                                                                                                "boundObjectsAtEnd": {
+                                                                                                    "ageLimit": 111,
+                                                                                                    "customer": {
+                                                                                                        "age": 17,
+                                                                                                        "name": "mary"
+                                                                                                    }
+                                                                                                },
+                                                                                                "executionDuration": 0,
+                                                                                                "executionStartTime": 2,
+                                                                                                "executionEndTime": 2
+                                                                                            }
+                                                                                        }
+                                                                                    ],
+                                                                                    "executionDuration": 0,
+                                                                                    "executionStartTime": 2,
+                                                                                    "executionEndTime": 2
+                                                                                }
+                                                                            }
+                                                                        ],
+                                                                        "output": {
+                                                                            "approval": "UNDER_AGE(mySimpleCustomerDecision): 111 is required, Customer is too young17"
+                                                                        },
+                                                                        "executionDuration": 0,
+                                                                        "executionStartTime": 2,
+                                                                        "executionEndTime": 2
+                                                                    }
+                                                                }
+                                                            ],
+                                                            "executionDuration": 0,
+                                                            "executionStartTime": 2,
+                                                            "executionEndTime": 2
+                                                        }
+                                                    }
+                                                ],
+                                                "output": {
+                                                    "approval": "UNDER_AGE(mySimpleCustomerDecision): 111 is required, Customer is too young17"
+                                                },
+                                                "executionDuration": 1,
+                                                "executionStartTime": 2,
+                                                "executionEndTime": 3
+                                            }
+                                        },
+                                        {
+                                            "recordType": "RuleFlow",
+                                            "recordIndex": "1.1.5.3",
+                                            "properties": {
+                                                "engineVersion": "LATEST-SNAPSHOT",
+                                                "name": "mySimpleCustomerDecision",
+                                                "mainTask": "Top flow",
+                                                "input": {
+                                                    "ageLimit": -1,
+                                                    "customer": {
+                                                        "age": 17,
+                                                        "name": "mary"
+                                                    }
+                                                },
+                                                "allTasks": [
+                                                    "Top flow",
+                                                    "Default value task",
+                                                    "Check age",
+                                                    "Approval"
+                                                ],
+                                                "notExecutedTasks": [
+                                                    "Approval"
+                                                ],
+                                                "nestedRecords": [
+                                                    {
+                                                        "recordType": "Task",
+                                                        "recordIndex": "1.1.5.3.1",
+                                                        "properties": {
+                                                            "name": "Top flow",
+                                                            "identifier": "flowTaskL1",
+                                                            "comments": "Comments for flowTaskL1",
+                                                            "kind": [
+                                                                "FLOWTASK"
+                                                            ],
+                                                            "input": {
+                                                                "ageLimit": -1,
+                                                                "customer": {
+                                                                    "age": 17,
+                                                                    "name": "mary"
+                                                                }
+                                                            },
+                                                            "nestedRecords": [
+                                                                {
+                                                                    "recordType": "Task",
+                                                                    "recordIndex": "1.1.5.3.1.1",
+                                                                    "properties": {
+                                                                        "name": "Default value task",
+                                                                        "identifier": "ruletask1L1",
+                                                                        "comments": "Comments for ruletask1L1",
+                                                                        "kind": [
+                                                                            "RULETASK",
+                                                                            "SEQUENTIALTASK"
+                                                                        ],
+                                                                        "input": {
+                                                                            "ageLimit": -1,
+                                                                            "customer": {
+                                                                                "age": 17,
+                                                                                "name": "mary"
+                                                                            }
+                                                                        },
+                                                                        "nestedRecords": [
+                                                                            {
+                                                                                "recordType": "SequentialEngine",
+                                                                                "recordIndex": "1.1.5.3.1.1.1",
+                                                                                "properties": {
+                                                                                    "engineVersion": "LATEST-SNAPSHOT",
+                                                                                    "allRules": [
+                                                                                        "rule1L1"
+                                                                                    ],
+                                                                                    "nonExecutedRules": [
+                                                                                        "rule1L1"
+                                                                                    ],
+                                                                                    "executionDuration": 0,
+                                                                                    "executionStartTime": 3,
+                                                                                    "executionEndTime": 3
+                                                                                }
+                                                                            }
+                                                                        ],
+                                                                        "output": {},
+                                                                        "executionDuration": 0,
+                                                                        "executionStartTime": 3,
+                                                                        "executionEndTime": 3
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "recordType": "Task",
+                                                                    "recordIndex": "1.1.5.3.1.2",
+                                                                    "properties": {
+                                                                        "name": "Check age",
+                                                                        "identifier": "ruletask2L1",
+                                                                        "comments": "Comments for ruletask2L1",
+                                                                        "kind": [
+                                                                            "RULETASK",
+                                                                            "SEQUENTIALTASK"
+                                                                        ],
+                                                                        "input": {
+                                                                            "ageLimit": -1,
+                                                                            "customer": {
+                                                                                "age": 17,
+                                                                                "name": "mary"
+                                                                            }
+                                                                        },
+                                                                        "nestedRecords": [
+                                                                            {
+                                                                                "recordType": "SequentialEngine",
+                                                                                "recordIndex": "1.1.5.3.1.2.1",
+                                                                                "properties": {
+                                                                                    "engineVersion": "LATEST-SNAPSHOT",
+                                                                                    "allRules": [
+                                                                                        "checkAge"
+                                                                                    ],
+                                                                                    "nonExecutedRules": [],
+                                                                                    "nestedRecords": [
+                                                                                        {
+                                                                                            "recordType": "Rule",
+                                                                                            "recordIndex": "1.1.5.3.1.2.1.1",
+                                                                                            "properties": {
+                                                                                                "name": "checkAge",
+                                                                                                "actionIndex": "0",
+                                                                                                "boundObjectsAtEnd": {
+                                                                                                    "ageLimit": -1,
+                                                                                                    "customer": {
+                                                                                                        "age": 17,
+                                                                                                        "name": "mary"
+                                                                                                    }
+                                                                                                },
+                                                                                                "executionDuration": 0,
+                                                                                                "executionStartTime": 3,
+                                                                                                "executionEndTime": 3
+                                                                                            }
+                                                                                        }
+                                                                                    ],
+                                                                                    "executionDuration": 0,
+                                                                                    "executionStartTime": 3,
+                                                                                    "executionEndTime": 3
+                                                                                }
+                                                                            }
+                                                                        ],
+                                                                        "output": {
+                                                                            "approval": "PASSED(mySimpleCustomerDecision)"
+                                                                        },
+                                                                        "executionDuration": 0,
+                                                                        "executionStartTime": 3,
+                                                                        "executionEndTime": 3
+                                                                    }
+                                                                }
+                                                            ],
+                                                            "executionDuration": 0,
+                                                            "executionStartTime": 3,
+                                                            "executionEndTime": 3
+                                                        }
+                                                    }
+                                                ],
+                                                "output": {
+                                                    "approval": "PASSED(mySimpleCustomerDecision)"
+                                                },
+                                                "executionDuration": 0,
+                                                "executionStartTime": 3,
+                                                "executionEndTime": 3
+                                            }
+                                        }
+                                    ],
+                                    "executionDuration": 1,
+                                    "executionStartTime": 2,
+                                    "executionEndTime": 3
+                                }
+                            },
+                            {
+                                "recordType": "RuleFlow",
+                                "recordIndex": "1.1.6",
+                                "properties": {
+                                    "engineVersion": "LATEST-SNAPSHOT",
+                                    "name": "mySimpleCustomerDecision",
+                                    "mainTask": "Top flow",
+                                    "input": {
+                                        "ageLimit": 1033,
+                                        "customer": {
+                                            "age": 17,
+                                            "name": "mary"
+                                        }
+                                    },
+                                    "allTasks": [
+                                        "Top flow",
+                                        "Default value task",
+                                        "Check age",
+                                        "Approval"
+                                    ],
+                                    "notExecutedTasks": [
+                                        "Approval"
+                                    ],
+                                    "nestedRecords": [
+                                        {
+                                            "recordType": "Task",
+                                            "recordIndex": "1.1.6.1",
+                                            "properties": {
+                                                "name": "Top flow",
+                                                "identifier": "flowTaskL1",
+                                                "comments": "Comments for flowTaskL1",
+                                                "kind": [
+                                                    "FLOWTASK"
+                                                ],
+                                                "input": {
+                                                    "ageLimit": 1033,
+                                                    "customer": {
+                                                        "age": 17,
+                                                        "name": "mary"
+                                                    }
+                                                },
+                                                "nestedRecords": [
+                                                    {
+                                                        "recordType": "Task",
+                                                        "recordIndex": "1.1.6.1.1",
+                                                        "properties": {
+                                                            "name": "Default value task",
+                                                            "identifier": "ruletask1L1",
+                                                            "comments": "Comments for ruletask1L1",
+                                                            "kind": [
+                                                                "RULETASK",
+                                                                "SEQUENTIALTASK"
+                                                            ],
+                                                            "input": {
+                                                                "ageLimit": 1033,
+                                                                "customer": {
+                                                                    "age": 17,
+                                                                    "name": "mary"
+                                                                }
+                                                            },
+                                                            "nestedRecords": [
+                                                                {
+                                                                    "recordType": "SequentialEngine",
+                                                                    "recordIndex": "1.1.6.1.1.1",
+                                                                    "properties": {
+                                                                        "engineVersion": "LATEST-SNAPSHOT",
+                                                                        "allRules": [
+                                                                            "rule1L1"
+                                                                        ],
+                                                                        "nonExecutedRules": [
+                                                                            "rule1L1"
+                                                                        ],
+                                                                        "executionDuration": 0,
+                                                                        "executionStartTime": 3,
+                                                                        "executionEndTime": 3
+                                                                    }
+                                                                }
+                                                            ],
+                                                            "output": {},
+                                                            "executionDuration": 0,
+                                                            "executionStartTime": 3,
+                                                            "executionEndTime": 3
+                                                        }
+                                                    },
+                                                    {
+                                                        "recordType": "Task",
+                                                        "recordIndex": "1.1.6.1.2",
+                                                        "properties": {
+                                                            "name": "Check age",
+                                                            "identifier": "ruletask2L1",
+                                                            "comments": "Comments for ruletask2L1",
+                                                            "kind": [
+                                                                "RULETASK",
+                                                                "SEQUENTIALTASK"
+                                                            ],
+                                                            "input": {
+                                                                "ageLimit": 1033,
+                                                                "customer": {
+                                                                    "age": 17,
+                                                                    "name": "mary"
+                                                                }
+                                                            },
+                                                            "nestedRecords": [
+                                                                {
+                                                                    "recordType": "SequentialEngine",
+                                                                    "recordIndex": "1.1.6.1.2.1",
+                                                                    "properties": {
+                                                                        "engineVersion": "LATEST-SNAPSHOT",
+                                                                        "allRules": [
+                                                                            "checkAge"
+                                                                        ],
+                                                                        "nonExecutedRules": [],
+                                                                        "nestedRecords": [
+                                                                            {
+                                                                                "recordType": "Rule",
+                                                                                "recordIndex": "1.1.6.1.2.1.1",
+                                                                                "properties": {
+                                                                                    "name": "checkAge",
+                                                                                    "actionIndex": "1",
+                                                                                    "boundObjectsAtEnd": {
+                                                                                        "ageLimit": 1033,
+                                                                                        "customer": {
+                                                                                            "age": 17,
+                                                                                            "name": "mary"
+                                                                                        }
+                                                                                    },
+                                                                                    "executionDuration": 0,
+                                                                                    "executionStartTime": 3,
+                                                                                    "executionEndTime": 3
+                                                                                }
+                                                                            }
+                                                                        ],
+                                                                        "executionDuration": 0,
+                                                                        "executionStartTime": 3,
+                                                                        "executionEndTime": 3
+                                                                    }
+                                                                }
+                                                            ],
+                                                            "output": {
+                                                                "approval": "UNDER_AGE(mySimpleCustomerDecision): 1033 is required, Customer is too young17"
+                                                            },
+                                                            "executionDuration": 0,
+                                                            "executionStartTime": 3,
+                                                            "executionEndTime": 3
+                                                        }
+                                                    }
+                                                ],
+                                                "executionDuration": 0,
+                                                "executionStartTime": 3,
+                                                "executionEndTime": 3
+                                            }
+                                        }
+                                    ],
+                                    "output": {
+                                        "approval": "UNDER_AGE(mySimpleCustomerDecision): 1033 is required, Customer is too young17"
+                                    },
+                                    "executionDuration": 0,
+                                    "executionStartTime": 3,
+                                    "executionEndTime": 3
+                                }
+                            }
+                        ],
+                        "executionDuration": 2,
+                        "executionStartTime": 1,
+                        "executionEndTime": 3
+                    }
+                }
+            ],
+            "output": {
+                "approvalTop": "WILL_BE_OK_IN_3_YEARS(mySimpleReuseCustomerDecision)"
+            },
+            "executionDuration": 3,
+            "executionStartTime": 0,
+            "executionEndTime": 3
+        }
+    },
+    "printedMessages": [
+        {
+            "recordIndex": "1.1.1.1.1.1.1",
+            "message": "This is a note message from action part of rule rule1L1"
+        },
+        {
+            "recordIndex": "1.1.1.1.3.1.1",
+            "message": "note in inner decision default value NEED_MORE_INFORMATION"
+        },
+        {
+            "recordIndex": "1.1",
+            "message": "This is a note message from initial action running decision in flowTaskL2,  with null customer and null age returns: NEED_MORE_INFORMATION(mySimpleCustomerDecision)"
+        },
+        {
+            "recordIndex": "1.1.2.1.1",
+            "message": "This is a note message from action part of rule rule1L2"
+        },
+        {
+            "recordIndex": "1.1.3.1.1.1.1.2.1.1",
+            "message": "note in inner decision rule checkAge action UNDER_AGE"
+        },
+        {
+            "recordIndex": "1.1.3.1.1",
+            "message": "This is a note message from action part running decision in rule ruleset2L2"
+        },
+        {
+            "recordIndex": "1.1.4.1.2",
+            "message": "This is a note message from condition part running decision in rule rule3L2: WILL_BE_OK_IN_3_YEARS(mySimpleReuseCustomerDecision)"
+        },
+        {
+            "recordIndex": "1.1.5.1.1.1.1.1",
+            "message": "This is a note message from action part of rule rule1L1"
+        },
+        {
+            "recordIndex": "1.1.5.1.1.3.1.1",
+            "message": "note in inner decision default value NEED_MORE_INFORMATION"
+        },
+        {
+            "recordIndex": "1.1.5",
+            "message": "This is a note message from initial action running decision in functiontask4L2,  with null customer and null age returns: NEED_MORE_INFORMATION(mySimpleCustomerDecision)"
+        },
+        {
+            "recordIndex": "1.1.5.2.1.2.1.1",
+            "message": "note in inner decision rule checkAge action UNDER_AGE"
+        },
+        {
+            "recordIndex": "1.1.5",
+            "message": "This is a note message from body running decision in functiontask4L2,  with input customer  and age 111 returns: UNDER_AGE(mySimpleCustomerDecision): 111 is required, Customer is too young17"
+        },
+        {
+            "recordIndex": "1.1.5",
+            "message": "This is a note message from final action running decision in functiontask4L2,  with input customer  and age -1 returns: PASSED(mySimpleCustomerDecision)"
+        },
+        {
+            "recordIndex": "1.1.6.1.2.1.1",
+            "message": "note in inner decision rule checkAge action UNDER_AGE"
+        },
+        {
+            "recordIndex": "1.1",
+            "message": "This is a note message from final action running decision in flowTaskL2,  with input customer  and age 1033 returns: UNDER_AGE(mySimpleCustomerDecision): 1033 is required, Customer is too young17"
+        }
+    ],
+    "exceptionsRaised": []
+}

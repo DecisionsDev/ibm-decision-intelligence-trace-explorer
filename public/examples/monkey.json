@@ -1,0 +1,2535 @@
+{
+  "configuration" : {
+    "executionDuration" : true,
+    "printedMessages" : true,
+    "objectsInMemoryLimit" : -1,
+    "decisionModel" : {
+      "inputParameters" : "Object",
+      "outputParameters" : "Object",
+      "inputNode" : "None",
+      "outputNode" : "None"
+    },
+    "rules" : {
+      "boundObjectsAtStart" : "Object",
+      "boundObjectsAtEnd" : "Object",
+      "allRules" : true,
+      "executedRules" : true,
+      "nonExecutedRules" : true,
+      "selectedRules" : true,
+      "exceptions" : "NotHandled"
+    },
+    "ruleflow" : {
+      "inputParameters" : "Object",
+      "outputParameters" : "Object",
+      "allTasks" : false,
+      "executedTasks" : true,
+      "notExecutedTasks" : false
+    }
+  },
+  "rootRecord" : {
+    "recordType" : "ReteEngine",
+    "recordIndex" : "1",
+    "properties" : {
+      "engineVersion" : "LATEST-SNAPSHOT",
+      "allRules" : [ "monkey.WalkEmptyHanded", "monkey.PlanMoveLadder", "monkey.PlanUnlockChest", "monkey.PlanChestOnFloor", "monkey.PutChestOnFloor", "monkey.PlanGetKey", "monkey.PlanMoveToChestWithKey", "monkey.UnlockChestWithKey", "monkey.PlanClimbLadder", "monkey.JumpOntoFloor", "monkey.GetObject", "monkey.PlanWalkOnFloor", "monkey.PlanWalkOnFloorBis", "monkey.GrabObjectOnAnyObject", "monkey.PlanHoldLightObject", "monkey.PlanWalkToObject", "monkey.ObjectMovedToPlace", "monkey.MonkeyAlreadyAtPlace", "monkey.PlanGetOnFloor", "monkey.PlanGetOnFloorBis", "monkey.WalkWithObject", "monkey.PlanWalkToGetObject", "monkey.PlanDropDesiredObject", "monkey.PlanClimbOnObject", "monkey.ClimbOnObject", "monkey.DropObject", "monkey.SatisfyHunger" ],
+      "nonExecutedRules" : [ "monkey.MonkeyAlreadyAtPlace", "monkey.PlanWalkToGetObject" ],
+      "selectedRules" : [ "monkey.WalkEmptyHanded", "monkey.PlanMoveLadder", "monkey.PlanUnlockChest", "monkey.PlanChestOnFloor", "monkey.PutChestOnFloor", "monkey.PlanGetKey", "monkey.PlanMoveToChestWithKey", "monkey.UnlockChestWithKey", "monkey.PlanClimbLadder", "monkey.JumpOntoFloor", "monkey.GetObject", "monkey.PlanWalkOnFloor", "monkey.PlanWalkOnFloorBis", "monkey.GrabObjectOnAnyObject", "monkey.PlanHoldLightObject", "monkey.PlanWalkToObject", "monkey.ObjectMovedToPlace", "monkey.MonkeyAlreadyAtPlace", "monkey.PlanGetOnFloor", "monkey.PlanGetOnFloorBis", "monkey.WalkWithObject", "monkey.PlanWalkToGetObject", "monkey.PlanDropDesiredObject", "monkey.PlanClimbOnObject", "monkey.ClimbOnObject", "monkey.DropObject", "monkey.SatisfyHunger" ],
+      "nestedRecords" : [ {
+        "recordType" : "Rule",
+        "recordIndex" : "1.1",
+        "properties" : {
+          "name" : "monkey.PlanChestOnFloor",
+          "boundObjectsAtStart" : {
+            "objectV" : "bananas",
+            "chestV" : "blue chest"
+          },
+          "actionIndex" : "3",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "objectV" : "bananas",
+            "chestV" : "blue chest"
+          },
+          "executionDuration" : 8,
+          "executionStartTime" : 4
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.2",
+        "properties" : {
+          "name" : "monkey.PlanMoveLadder",
+          "boundObjectsAtStart" : {
+            "objectV" : "blue chest",
+            "pV" : "place no 4"
+          },
+          "actionIndex" : "1",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "objectV" : "blue chest",
+            "pV" : "place no 4"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 12
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.3",
+        "properties" : {
+          "name" : "monkey.PlanChestOnFloor",
+          "boundObjectsAtStart" : {
+            "objectV" : "ladder",
+            "chestV" : "red chest"
+          },
+          "actionIndex" : "3",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "objectV" : "ladder",
+            "chestV" : "red chest"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 12
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.4",
+        "properties" : {
+          "name" : "monkey.PlanWalkOnFloor",
+          "boundObjectsAtStart" : {
+            "pV" : "place no 2",
+            "objV" : "red chest"
+          },
+          "actionIndex" : "11",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "pV" : "place no 2",
+            "objV" : "red chest"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 12
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.5",
+        "properties" : {
+          "name" : "monkey.PlanGetOnFloorBis",
+          "boundObjectsAtStart" : {
+            "pV" : "place no 2"
+          },
+          "actionIndex" : "19",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "pV" : "place no 2"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 12
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.6",
+        "properties" : {
+          "name" : "monkey.JumpOntoFloor",
+          "boundObjectsAtStart" : {
+            "goal" : {
+              "action" : "on",
+              "thing" : "floor"
+            },
+            "monkey" : {
+              "on" : "green couch",
+              "place" : "place no 3"
+            }
+          },
+          "actionIndex" : "9",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "goal" : {
+              "action" : "on",
+              "thing" : "floor"
+            },
+            "monkey" : {
+              "on" : "floor",
+              "place" : "place no 3"
+            }
+          },
+          "executionDuration" : 3,
+          "executionStartTime" : 12
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.7",
+        "properties" : {
+          "name" : "monkey.WalkEmptyHanded",
+          "boundObjectsAtStart" : {
+            "goal" : {
+              "action" : "walk to",
+              "place" : "place no 2"
+            },
+            "monkey" : {
+              "on" : "floor",
+              "place" : "place no 3"
+            }
+          },
+          "actionIndex" : "0",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "goal" : {
+              "action" : "walk to",
+              "place" : "place no 2"
+            },
+            "monkey" : {
+              "on" : "floor",
+              "place" : "place no 2"
+            }
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 15
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.8",
+        "properties" : {
+          "name" : "monkey.PlanGetOnFloor",
+          "boundObjectsAtStart" : {
+            "pV" : "place no 2",
+            "onV" : "big pillow",
+            "objV" : "red chest"
+          },
+          "actionIndex" : "18",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "pV" : "place no 2",
+            "onV" : "big pillow",
+            "objV" : "red chest"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 15
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.9",
+        "properties" : {
+          "name" : "monkey.PlanClimbOnObject",
+          "boundObjectsAtStart" : {
+            "pV" : "place no 2",
+            "onV" : "red couch",
+            "objV" : "big pillow"
+          },
+          "actionIndex" : "23",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "pV" : "place no 2",
+            "onV" : "red couch",
+            "objV" : "big pillow"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 16
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.10",
+        "properties" : {
+          "name" : "monkey.ClimbOnObject",
+          "boundObjectsAtStart" : {
+            "goal" : {
+              "action" : "on",
+              "thing" : "red couch"
+            },
+            "monkey" : {
+              "on" : "floor",
+              "place" : "place no 2"
+            },
+            "pV" : "place no 2",
+            "onV" : "floor",
+            "objV" : "red couch"
+          },
+          "actionIndex" : "24",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "goal" : {
+              "action" : "on",
+              "thing" : "red couch"
+            },
+            "monkey" : {
+              "on" : "red couch",
+              "place" : "place no 2"
+            },
+            "pV" : "place no 2",
+            "onV" : "floor",
+            "objV" : "red couch"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 16
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.11",
+        "properties" : {
+          "name" : "monkey.ClimbOnObject",
+          "boundObjectsAtStart" : {
+            "goal" : {
+              "action" : "on",
+              "thing" : "big pillow"
+            },
+            "monkey" : {
+              "on" : "red couch",
+              "place" : "place no 2"
+            },
+            "pV" : "place no 2",
+            "onV" : "red couch",
+            "objV" : "big pillow"
+          },
+          "actionIndex" : "24",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "goal" : {
+              "action" : "on",
+              "thing" : "big pillow"
+            },
+            "monkey" : {
+              "on" : "big pillow",
+              "place" : "place no 2"
+            },
+            "pV" : "place no 2",
+            "onV" : "red couch",
+            "objV" : "big pillow"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 16
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.12",
+        "properties" : {
+          "name" : "monkey.GrabObjectOnAnyObject",
+          "boundObjectsAtStart" : {
+            "goal" : {
+              "action" : "holds",
+              "thing" : "red chest"
+            },
+            "lightObject" : {
+              "inside" : "ladder",
+              "key" : "red key",
+              "light" : true,
+              "name" : "red chest",
+              "on" : "big pillow",
+              "place" : "place no 2"
+            },
+            "monkey" : {
+              "on" : "big pillow",
+              "place" : "place no 2"
+            },
+            "pV" : "place no 2",
+            "onV" : "big pillow",
+            "objV" : "red chest"
+          },
+          "actionIndex" : "13",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "goal" : {
+              "action" : "holds",
+              "thing" : "red chest"
+            },
+            "lightObject" : {
+              "inside" : "ladder",
+              "key" : "red key",
+              "light" : true,
+              "name" : "red chest",
+              "on" : "body",
+              "place" : "body"
+            },
+            "monkey" : {
+              "object" : "red chest",
+              "on" : "big pillow",
+              "place" : "place no 2"
+            },
+            "pV" : "body",
+            "onV" : "body",
+            "objV" : "red chest"
+          },
+          "executionDuration" : 2,
+          "executionStartTime" : 16
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.13",
+        "properties" : {
+          "name" : "monkey.PutChestOnFloor",
+          "boundObjectsAtStart" : {
+            "goal" : {
+              "action" : "put on floor",
+              "thing" : "red chest"
+            },
+            "monkey" : {
+              "object" : "red chest",
+              "on" : "big pillow",
+              "place" : "place no 2"
+            },
+            "pV" : "place no 2",
+            "chestV" : "red chest",
+            "o" : {
+              "inside" : "ladder",
+              "key" : "red key",
+              "light" : true,
+              "name" : "red chest",
+              "on" : "body",
+              "place" : "body"
+            }
+          },
+          "actionIndex" : "4",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "goal" : {
+              "action" : "put on floor",
+              "thing" : "red chest"
+            },
+            "monkey" : {
+              "on" : "big pillow",
+              "place" : "place no 2"
+            },
+            "pV" : "place no 2",
+            "chestV" : "red chest",
+            "o" : {
+              "inside" : "ladder",
+              "key" : "red key",
+              "light" : true,
+              "name" : "red chest",
+              "on" : "floor",
+              "place" : "place no 2"
+            }
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 18
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.14",
+        "properties" : {
+          "name" : "monkey.PlanUnlockChest",
+          "boundObjectsAtStart" : {
+            "objectV" : "ladder",
+            "chestV" : "red chest"
+          },
+          "actionIndex" : "2",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "objectV" : "ladder",
+            "chestV" : "red chest"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 18
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.15",
+        "properties" : {
+          "name" : "monkey.PlanGetKey",
+          "boundObjectsAtStart" : {
+            "keyV" : "red key",
+            "objV" : "red chest"
+          },
+          "actionIndex" : "5",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "keyV" : "red key",
+            "objV" : "red chest"
+          },
+          "executionDuration" : 1,
+          "executionStartTime" : 18
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.16",
+        "properties" : {
+          "name" : "monkey.PlanWalkOnFloorBis",
+          "boundObjectsAtStart" : {
+            "pV" : "place no 1",
+            "objV" : "red key"
+          },
+          "actionIndex" : "12",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "pV" : "place no 1",
+            "objV" : "red key"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 19
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.17",
+        "properties" : {
+          "name" : "monkey.PlanGetOnFloorBis",
+          "boundObjectsAtStart" : {
+            "pV" : "place no 1"
+          },
+          "actionIndex" : "19",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "pV" : "place no 1"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 19
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.18",
+        "properties" : {
+          "name" : "monkey.JumpOntoFloor",
+          "boundObjectsAtStart" : {
+            "goal" : {
+              "action" : "on",
+              "thing" : "floor"
+            },
+            "monkey" : {
+              "on" : "big pillow",
+              "place" : "place no 2"
+            }
+          },
+          "actionIndex" : "9",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "goal" : {
+              "action" : "on",
+              "thing" : "floor"
+            },
+            "monkey" : {
+              "on" : "floor",
+              "place" : "place no 2"
+            }
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 19
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.19",
+        "properties" : {
+          "name" : "monkey.WalkEmptyHanded",
+          "boundObjectsAtStart" : {
+            "goal" : {
+              "action" : "walk to",
+              "place" : "place no 1"
+            },
+            "monkey" : {
+              "on" : "floor",
+              "place" : "place no 2"
+            }
+          },
+          "actionIndex" : "0",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "goal" : {
+              "action" : "walk to",
+              "place" : "place no 1"
+            },
+            "monkey" : {
+              "on" : "floor",
+              "place" : "place no 1"
+            }
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 19
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.20",
+        "properties" : {
+          "name" : "monkey.GrabObjectOnAnyObject",
+          "boundObjectsAtStart" : {
+            "goal" : {
+              "action" : "holds",
+              "thing" : "red key"
+            },
+            "lightObject" : {
+              "light" : true,
+              "name" : "red key",
+              "on" : "floor",
+              "place" : "place no 1"
+            },
+            "monkey" : {
+              "on" : "floor",
+              "place" : "place no 1"
+            },
+            "pV" : "place no 1",
+            "onV" : "floor",
+            "objV" : "red key"
+          },
+          "actionIndex" : "13",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "goal" : {
+              "action" : "holds",
+              "thing" : "red key"
+            },
+            "lightObject" : {
+              "light" : true,
+              "name" : "red key",
+              "on" : "body",
+              "place" : "body"
+            },
+            "monkey" : {
+              "object" : "red key",
+              "on" : "floor",
+              "place" : "place no 1"
+            },
+            "pV" : "body",
+            "onV" : "body",
+            "objV" : "red key"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 19
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.21",
+        "properties" : {
+          "name" : "monkey.PlanMoveToChestWithKey",
+          "boundObjectsAtStart" : {
+            "keyV" : "red key",
+            "p2V" : "place no 2",
+            "pV" : "place no 1",
+            "chestV" : "red chest"
+          },
+          "actionIndex" : "6",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "keyV" : "red key",
+            "p2V" : "place no 2",
+            "pV" : "place no 1",
+            "chestV" : "red chest"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 19
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.22",
+        "properties" : {
+          "name" : "monkey.WalkWithObject",
+          "boundObjectsAtStart" : {
+            "goal" : {
+              "action" : "walk to",
+              "place" : "place no 2"
+            },
+            "monkey" : {
+              "object" : "red key",
+              "on" : "floor",
+              "place" : "place no 1"
+            },
+            "pV" : "place no 2",
+            "objV" : "red key"
+          },
+          "actionIndex" : "20",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "goal" : {
+              "action" : "walk to",
+              "place" : "place no 2"
+            },
+            "monkey" : {
+              "object" : "red key",
+              "on" : "floor",
+              "place" : "place no 2"
+            },
+            "pV" : "place no 2",
+            "objV" : "red key"
+          },
+          "executionDuration" : 1,
+          "executionStartTime" : 19
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.23",
+        "properties" : {
+          "name" : "monkey.UnlockChestWithKey",
+          "boundObjectsAtStart" : {
+            "inV" : "ladder",
+            "chest" : {
+              "inside" : "ladder",
+              "key" : "red key",
+              "light" : true,
+              "name" : "red chest",
+              "on" : "floor",
+              "place" : "place no 2"
+            },
+            "goal" : {
+              "action" : "unlock",
+              "thing" : "red chest"
+            },
+            "keyV" : "red key",
+            "pV" : "place no 2",
+            "onV" : "floor",
+            "chestV" : "red chest"
+          },
+          "actionIndex" : "7",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "chest" : {
+              "key" : "red key",
+              "light" : true,
+              "name" : "red chest",
+              "on" : "floor",
+              "place" : "place no 2"
+            },
+            "goal" : {
+              "action" : "unlock",
+              "thing" : "red chest"
+            },
+            "keyV" : "red key",
+            "pV" : "place no 2",
+            "onV" : "floor",
+            "chestV" : "red chest"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 20
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.24",
+        "properties" : {
+          "name" : "monkey.PlanHoldLightObject",
+          "boundObjectsAtStart" : {
+            "pV" : "place no 4",
+            "objV" : "ladder"
+          },
+          "actionIndex" : "14",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "pV" : "place no 4",
+            "objV" : "ladder"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 20
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.25",
+        "properties" : {
+          "name" : "monkey.PlanGetOnFloor",
+          "boundObjectsAtStart" : {
+            "pV" : "place no 2",
+            "onV" : "red chest",
+            "objV" : "ladder"
+          },
+          "actionIndex" : "18",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "pV" : "place no 2",
+            "onV" : "red chest",
+            "objV" : "ladder"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 20
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.26",
+        "properties" : {
+          "name" : "monkey.PlanDropDesiredObject",
+          "boundObjectsAtStart" : {
+            "pV" : "place no 2",
+            "objV" : "red chest"
+          },
+          "actionIndex" : "22",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "pV" : "place no 2",
+            "objV" : "red chest"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 20
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.27",
+        "properties" : {
+          "name" : "monkey.DropObject",
+          "boundObjectsAtStart" : {
+            "goal" : {
+              "action" : "holds"
+            },
+            "monkey" : {
+              "object" : "red key",
+              "on" : "floor",
+              "place" : "place no 2"
+            },
+            "lightObject" : {
+              "light" : true,
+              "name" : "red key",
+              "on" : "body",
+              "place" : "body"
+            },
+            "pV" : "place no 2",
+            "onV" : "floor",
+            "objV" : "red key"
+          },
+          "actionIndex" : "25",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "goal" : {
+              "action" : "holds"
+            },
+            "monkey" : {
+              "on" : "floor",
+              "place" : "place no 2"
+            },
+            "lightObject" : {
+              "light" : true,
+              "name" : "red key",
+              "on" : "floor",
+              "place" : "place no 2"
+            },
+            "pV" : "place no 2",
+            "onV" : "floor"
+          },
+          "executionDuration" : 1,
+          "executionStartTime" : 20
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.28",
+        "properties" : {
+          "name" : "monkey.ClimbOnObject",
+          "boundObjectsAtStart" : {
+            "goal" : {
+              "action" : "on",
+              "thing" : "red chest"
+            },
+            "monkey" : {
+              "on" : "floor",
+              "place" : "place no 2"
+            },
+            "pV" : "place no 2",
+            "onV" : "floor",
+            "objV" : "red chest"
+          },
+          "actionIndex" : "24",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "goal" : {
+              "action" : "on",
+              "thing" : "red chest"
+            },
+            "monkey" : {
+              "on" : "red chest",
+              "place" : "place no 2"
+            },
+            "pV" : "place no 2",
+            "onV" : "floor",
+            "objV" : "red chest"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 21
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.29",
+        "properties" : {
+          "name" : "monkey.GrabObjectOnAnyObject",
+          "boundObjectsAtStart" : {
+            "goal" : {
+              "action" : "holds",
+              "thing" : "ladder"
+            },
+            "lightObject" : {
+              "light" : true,
+              "name" : "ladder",
+              "on" : "red chest",
+              "place" : "place no 2"
+            },
+            "monkey" : {
+              "on" : "red chest",
+              "place" : "place no 2"
+            },
+            "pV" : "place no 2",
+            "onV" : "red chest",
+            "objV" : "ladder"
+          },
+          "actionIndex" : "13",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "goal" : {
+              "action" : "holds",
+              "thing" : "ladder"
+            },
+            "lightObject" : {
+              "light" : true,
+              "name" : "ladder",
+              "on" : "body",
+              "place" : "body"
+            },
+            "monkey" : {
+              "object" : "ladder",
+              "on" : "red chest",
+              "place" : "place no 2"
+            },
+            "pV" : "body",
+            "onV" : "body",
+            "objV" : "ladder"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 21
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.30",
+        "properties" : {
+          "name" : "monkey.PlanWalkToObject",
+          "boundObjectsAtStart" : {
+            "pV" : "place no 4",
+            "objV" : "ladder"
+          },
+          "actionIndex" : "15",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "pV" : "place no 4",
+            "objV" : "ladder"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 21
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.31",
+        "properties" : {
+          "name" : "monkey.PlanGetOnFloorBis",
+          "boundObjectsAtStart" : {
+            "pV" : "place no 4"
+          },
+          "actionIndex" : "19",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "pV" : "place no 4"
+          },
+          "executionDuration" : 1,
+          "executionStartTime" : 21
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.32",
+        "properties" : {
+          "name" : "monkey.JumpOntoFloor",
+          "boundObjectsAtStart" : {
+            "goal" : {
+              "action" : "on",
+              "thing" : "floor"
+            },
+            "monkey" : {
+              "object" : "ladder",
+              "on" : "red chest",
+              "place" : "place no 2"
+            }
+          },
+          "actionIndex" : "9",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "goal" : {
+              "action" : "on",
+              "thing" : "floor"
+            },
+            "monkey" : {
+              "object" : "ladder",
+              "on" : "floor",
+              "place" : "place no 2"
+            }
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 22
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.33",
+        "properties" : {
+          "name" : "monkey.WalkWithObject",
+          "boundObjectsAtStart" : {
+            "goal" : {
+              "action" : "walk to",
+              "place" : "place no 4"
+            },
+            "monkey" : {
+              "object" : "ladder",
+              "on" : "floor",
+              "place" : "place no 2"
+            },
+            "pV" : "place no 4",
+            "objV" : "ladder"
+          },
+          "actionIndex" : "20",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "goal" : {
+              "action" : "walk to",
+              "place" : "place no 4"
+            },
+            "monkey" : {
+              "object" : "ladder",
+              "on" : "floor",
+              "place" : "place no 4"
+            },
+            "pV" : "place no 4",
+            "objV" : "ladder"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 22
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.34",
+        "properties" : {
+          "name" : "monkey.ObjectMovedToPlace",
+          "boundObjectsAtStart" : {
+            "goal" : {
+              "action" : "move",
+              "place" : "place no 4",
+              "thing" : "ladder"
+            },
+            "monkey" : {
+              "object" : "ladder",
+              "on" : "floor",
+              "place" : "place no 4"
+            },
+            "lightObject" : {
+              "light" : true,
+              "name" : "ladder",
+              "on" : "body",
+              "place" : "body"
+            },
+            "pV" : "place no 4",
+            "objV" : "ladder"
+          },
+          "actionIndex" : "16",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "goal" : {
+              "action" : "move",
+              "place" : "place no 4",
+              "thing" : "ladder"
+            },
+            "monkey" : {
+              "on" : "floor",
+              "place" : "place no 4"
+            },
+            "lightObject" : {
+              "light" : true,
+              "name" : "ladder",
+              "on" : "floor",
+              "place" : "place no 4"
+            },
+            "pV" : "place no 4",
+            "objV" : "ladder"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 22
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.35",
+        "properties" : {
+          "name" : "monkey.PlanClimbLadder",
+          "boundObjectsAtStart" : {
+            "pV" : "place no 4",
+            "objV" : "blue chest"
+          },
+          "actionIndex" : "8",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "pV" : "place no 4",
+            "objV" : "blue chest"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 22
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.36",
+        "properties" : {
+          "name" : "monkey.ClimbOnObject",
+          "boundObjectsAtStart" : {
+            "goal" : {
+              "action" : "on",
+              "thing" : "ladder"
+            },
+            "monkey" : {
+              "on" : "floor",
+              "place" : "place no 4"
+            },
+            "pV" : "place no 4",
+            "onV" : "floor",
+            "objV" : "ladder"
+          },
+          "actionIndex" : "24",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "goal" : {
+              "action" : "on",
+              "thing" : "ladder"
+            },
+            "monkey" : {
+              "on" : "ladder",
+              "place" : "place no 4"
+            },
+            "pV" : "place no 4",
+            "onV" : "floor",
+            "objV" : "ladder"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 22
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.37",
+        "properties" : {
+          "name" : "monkey.GetObject",
+          "boundObjectsAtStart" : {
+            "goal" : {
+              "action" : "holds",
+              "thing" : "blue chest"
+            },
+            "monkey" : {
+              "on" : "ladder",
+              "place" : "place no 4"
+            },
+            "pV" : "place no 4",
+            "objV" : "blue chest"
+          },
+          "actionIndex" : "10",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "goal" : {
+              "action" : "holds",
+              "thing" : "blue chest"
+            },
+            "monkey" : {
+              "object" : "blue chest",
+              "on" : "ladder",
+              "place" : "place no 4"
+            },
+            "pV" : "place no 4",
+            "objV" : "blue chest"
+          },
+          "executionDuration" : 1,
+          "executionStartTime" : 22
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.38",
+        "properties" : {
+          "name" : "monkey.PutChestOnFloor",
+          "boundObjectsAtStart" : {
+            "goal" : {
+              "action" : "put on floor",
+              "thing" : "blue chest"
+            },
+            "monkey" : {
+              "object" : "blue chest",
+              "on" : "ladder",
+              "place" : "place no 4"
+            },
+            "pV" : "place no 4",
+            "chestV" : "blue chest",
+            "o" : {
+              "inside" : "bananas",
+              "key" : "blue key",
+              "light" : true,
+              "name" : "blue chest",
+              "on" : "ceiling",
+              "place" : "place no 4"
+            }
+          },
+          "actionIndex" : "4",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "goal" : {
+              "action" : "put on floor",
+              "thing" : "blue chest"
+            },
+            "monkey" : {
+              "on" : "ladder",
+              "place" : "place no 4"
+            },
+            "pV" : "place no 4",
+            "chestV" : "blue chest",
+            "o" : {
+              "inside" : "bananas",
+              "key" : "blue key",
+              "light" : true,
+              "name" : "blue chest",
+              "on" : "floor",
+              "place" : "place no 4"
+            }
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 23
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.39",
+        "properties" : {
+          "name" : "monkey.PlanUnlockChest",
+          "boundObjectsAtStart" : {
+            "objectV" : "bananas",
+            "chestV" : "blue chest"
+          },
+          "actionIndex" : "2",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "objectV" : "bananas",
+            "chestV" : "blue chest"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 23
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.40",
+        "properties" : {
+          "name" : "monkey.PlanGetKey",
+          "boundObjectsAtStart" : {
+            "keyV" : "blue key",
+            "objV" : "blue chest"
+          },
+          "actionIndex" : "5",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "keyV" : "blue key",
+            "objV" : "blue chest"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 23
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.41",
+        "properties" : {
+          "name" : "monkey.PlanChestOnFloor",
+          "boundObjectsAtStart" : {
+            "objectV" : "blue key",
+            "chestV" : "green chest"
+          },
+          "actionIndex" : "3",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "objectV" : "blue key",
+            "chestV" : "green chest"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 23
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.42",
+        "properties" : {
+          "name" : "monkey.PlanMoveLadder",
+          "boundObjectsAtStart" : {
+            "objectV" : "green chest",
+            "pV" : "place no 5"
+          },
+          "actionIndex" : "1",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "objectV" : "green chest",
+            "pV" : "place no 5"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 23
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.43",
+        "properties" : {
+          "name" : "monkey.PlanHoldLightObject",
+          "boundObjectsAtStart" : {
+            "pV" : "place no 5",
+            "objV" : "ladder"
+          },
+          "actionIndex" : "14",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "pV" : "place no 5",
+            "objV" : "ladder"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 23
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.44",
+        "properties" : {
+          "name" : "monkey.PlanGetOnFloor",
+          "boundObjectsAtStart" : {
+            "pV" : "place no 4",
+            "onV" : "floor",
+            "objV" : "ladder"
+          },
+          "actionIndex" : "18",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "pV" : "place no 4",
+            "onV" : "floor",
+            "objV" : "ladder"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 23
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.45",
+        "properties" : {
+          "name" : "monkey.JumpOntoFloor",
+          "boundObjectsAtStart" : {
+            "goal" : {
+              "action" : "on",
+              "thing" : "floor"
+            },
+            "monkey" : {
+              "on" : "ladder",
+              "place" : "place no 4"
+            }
+          },
+          "actionIndex" : "9",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "goal" : {
+              "action" : "on",
+              "thing" : "floor"
+            },
+            "monkey" : {
+              "on" : "floor",
+              "place" : "place no 4"
+            }
+          },
+          "executionDuration" : 1,
+          "executionStartTime" : 23
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.46",
+        "properties" : {
+          "name" : "monkey.GrabObjectOnAnyObject",
+          "boundObjectsAtStart" : {
+            "goal" : {
+              "action" : "holds",
+              "thing" : "ladder"
+            },
+            "lightObject" : {
+              "light" : true,
+              "name" : "ladder",
+              "on" : "floor",
+              "place" : "place no 4"
+            },
+            "monkey" : {
+              "on" : "floor",
+              "place" : "place no 4"
+            },
+            "pV" : "place no 4",
+            "onV" : "floor",
+            "objV" : "ladder"
+          },
+          "actionIndex" : "13",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "goal" : {
+              "action" : "holds",
+              "thing" : "ladder"
+            },
+            "lightObject" : {
+              "light" : true,
+              "name" : "ladder",
+              "on" : "body",
+              "place" : "body"
+            },
+            "monkey" : {
+              "object" : "ladder",
+              "on" : "floor",
+              "place" : "place no 4"
+            },
+            "pV" : "body",
+            "onV" : "body",
+            "objV" : "ladder"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 24
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.47",
+        "properties" : {
+          "name" : "monkey.PlanWalkToObject",
+          "boundObjectsAtStart" : {
+            "pV" : "place no 5",
+            "objV" : "ladder"
+          },
+          "actionIndex" : "15",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "pV" : "place no 5",
+            "objV" : "ladder"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 24
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.48",
+        "properties" : {
+          "name" : "monkey.WalkWithObject",
+          "boundObjectsAtStart" : {
+            "goal" : {
+              "action" : "walk to",
+              "place" : "place no 5"
+            },
+            "monkey" : {
+              "object" : "ladder",
+              "on" : "floor",
+              "place" : "place no 4"
+            },
+            "pV" : "place no 5",
+            "objV" : "ladder"
+          },
+          "actionIndex" : "20",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "goal" : {
+              "action" : "walk to",
+              "place" : "place no 5"
+            },
+            "monkey" : {
+              "object" : "ladder",
+              "on" : "floor",
+              "place" : "place no 5"
+            },
+            "pV" : "place no 5",
+            "objV" : "ladder"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 24
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.49",
+        "properties" : {
+          "name" : "monkey.ObjectMovedToPlace",
+          "boundObjectsAtStart" : {
+            "goal" : {
+              "action" : "move",
+              "place" : "place no 5",
+              "thing" : "ladder"
+            },
+            "monkey" : {
+              "object" : "ladder",
+              "on" : "floor",
+              "place" : "place no 5"
+            },
+            "lightObject" : {
+              "light" : true,
+              "name" : "ladder",
+              "on" : "body",
+              "place" : "body"
+            },
+            "pV" : "place no 5",
+            "objV" : "ladder"
+          },
+          "actionIndex" : "16",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "goal" : {
+              "action" : "move",
+              "place" : "place no 5",
+              "thing" : "ladder"
+            },
+            "monkey" : {
+              "on" : "floor",
+              "place" : "place no 5"
+            },
+            "lightObject" : {
+              "light" : true,
+              "name" : "ladder",
+              "on" : "floor",
+              "place" : "place no 5"
+            },
+            "pV" : "place no 5",
+            "objV" : "ladder"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 24
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.50",
+        "properties" : {
+          "name" : "monkey.PlanClimbLadder",
+          "boundObjectsAtStart" : {
+            "pV" : "place no 5",
+            "objV" : "green chest"
+          },
+          "actionIndex" : "8",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "pV" : "place no 5",
+            "objV" : "green chest"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 24
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.51",
+        "properties" : {
+          "name" : "monkey.ClimbOnObject",
+          "boundObjectsAtStart" : {
+            "goal" : {
+              "action" : "on",
+              "thing" : "ladder"
+            },
+            "monkey" : {
+              "on" : "floor",
+              "place" : "place no 5"
+            },
+            "pV" : "place no 5",
+            "onV" : "floor",
+            "objV" : "ladder"
+          },
+          "actionIndex" : "24",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "goal" : {
+              "action" : "on",
+              "thing" : "ladder"
+            },
+            "monkey" : {
+              "on" : "ladder",
+              "place" : "place no 5"
+            },
+            "pV" : "place no 5",
+            "onV" : "floor",
+            "objV" : "ladder"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 24
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.52",
+        "properties" : {
+          "name" : "monkey.GetObject",
+          "boundObjectsAtStart" : {
+            "goal" : {
+              "action" : "holds",
+              "thing" : "green chest"
+            },
+            "monkey" : {
+              "on" : "ladder",
+              "place" : "place no 5"
+            },
+            "pV" : "place no 5",
+            "objV" : "green chest"
+          },
+          "actionIndex" : "10",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "goal" : {
+              "action" : "holds",
+              "thing" : "green chest"
+            },
+            "monkey" : {
+              "object" : "green chest",
+              "on" : "ladder",
+              "place" : "place no 5"
+            },
+            "pV" : "place no 5",
+            "objV" : "green chest"
+          },
+          "executionDuration" : 1,
+          "executionStartTime" : 24
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.53",
+        "properties" : {
+          "name" : "monkey.PutChestOnFloor",
+          "boundObjectsAtStart" : {
+            "goal" : {
+              "action" : "put on floor",
+              "thing" : "green chest"
+            },
+            "monkey" : {
+              "object" : "green chest",
+              "on" : "ladder",
+              "place" : "place no 5"
+            },
+            "pV" : "place no 5",
+            "chestV" : "green chest",
+            "o" : {
+              "inside" : "blue key",
+              "key" : "red key",
+              "light" : true,
+              "name" : "green chest",
+              "on" : "ceiling",
+              "place" : "place no 5"
+            }
+          },
+          "actionIndex" : "4",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "goal" : {
+              "action" : "put on floor",
+              "thing" : "green chest"
+            },
+            "monkey" : {
+              "on" : "ladder",
+              "place" : "place no 5"
+            },
+            "pV" : "place no 5",
+            "chestV" : "green chest",
+            "o" : {
+              "inside" : "blue key",
+              "key" : "red key",
+              "light" : true,
+              "name" : "green chest",
+              "on" : "floor",
+              "place" : "place no 5"
+            }
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 25
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.54",
+        "properties" : {
+          "name" : "monkey.PlanUnlockChest",
+          "boundObjectsAtStart" : {
+            "objectV" : "blue key",
+            "chestV" : "green chest"
+          },
+          "actionIndex" : "2",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "objectV" : "blue key",
+            "chestV" : "green chest"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 25
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.55",
+        "properties" : {
+          "name" : "monkey.PlanGetKey",
+          "boundObjectsAtStart" : {
+            "keyV" : "red key",
+            "objV" : "green chest"
+          },
+          "actionIndex" : "5",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "keyV" : "red key",
+            "objV" : "green chest"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 25
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.56",
+        "properties" : {
+          "name" : "monkey.PlanWalkOnFloorBis",
+          "boundObjectsAtStart" : {
+            "pV" : "place no 2",
+            "objV" : "red key"
+          },
+          "actionIndex" : "12",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "pV" : "place no 2",
+            "objV" : "red key"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 25
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.57",
+        "properties" : {
+          "name" : "monkey.PlanGetOnFloorBis",
+          "boundObjectsAtStart" : {
+            "pV" : "place no 2"
+          },
+          "actionIndex" : "19",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "pV" : "place no 2"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 25
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.58",
+        "properties" : {
+          "name" : "monkey.JumpOntoFloor",
+          "boundObjectsAtStart" : {
+            "goal" : {
+              "action" : "on",
+              "thing" : "floor"
+            },
+            "monkey" : {
+              "on" : "ladder",
+              "place" : "place no 5"
+            }
+          },
+          "actionIndex" : "9",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "goal" : {
+              "action" : "on",
+              "thing" : "floor"
+            },
+            "monkey" : {
+              "on" : "floor",
+              "place" : "place no 5"
+            }
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 25
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.59",
+        "properties" : {
+          "name" : "monkey.WalkEmptyHanded",
+          "boundObjectsAtStart" : {
+            "goal" : {
+              "action" : "walk to",
+              "place" : "place no 2"
+            },
+            "monkey" : {
+              "on" : "floor",
+              "place" : "place no 5"
+            }
+          },
+          "actionIndex" : "0",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "goal" : {
+              "action" : "walk to",
+              "place" : "place no 2"
+            },
+            "monkey" : {
+              "on" : "floor",
+              "place" : "place no 2"
+            }
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 25
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.60",
+        "properties" : {
+          "name" : "monkey.GrabObjectOnAnyObject",
+          "boundObjectsAtStart" : {
+            "goal" : {
+              "action" : "holds",
+              "thing" : "red key"
+            },
+            "lightObject" : {
+              "light" : true,
+              "name" : "red key",
+              "on" : "floor",
+              "place" : "place no 2"
+            },
+            "monkey" : {
+              "on" : "floor",
+              "place" : "place no 2"
+            },
+            "pV" : "place no 2",
+            "onV" : "floor",
+            "objV" : "red key"
+          },
+          "actionIndex" : "13",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "goal" : {
+              "action" : "holds",
+              "thing" : "red key"
+            },
+            "lightObject" : {
+              "light" : true,
+              "name" : "red key",
+              "on" : "body",
+              "place" : "body"
+            },
+            "monkey" : {
+              "object" : "red key",
+              "on" : "floor",
+              "place" : "place no 2"
+            },
+            "pV" : "body",
+            "onV" : "body",
+            "objV" : "red key"
+          },
+          "executionDuration" : 1,
+          "executionStartTime" : 25
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.61",
+        "properties" : {
+          "name" : "monkey.PlanMoveToChestWithKey",
+          "boundObjectsAtStart" : {
+            "keyV" : "red key",
+            "p2V" : "place no 5",
+            "pV" : "place no 2",
+            "chestV" : "green chest"
+          },
+          "actionIndex" : "6",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "keyV" : "red key",
+            "p2V" : "place no 5",
+            "pV" : "place no 2",
+            "chestV" : "green chest"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 26
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.62",
+        "properties" : {
+          "name" : "monkey.WalkWithObject",
+          "boundObjectsAtStart" : {
+            "goal" : {
+              "action" : "walk to",
+              "place" : "place no 5"
+            },
+            "monkey" : {
+              "object" : "red key",
+              "on" : "floor",
+              "place" : "place no 2"
+            },
+            "pV" : "place no 5",
+            "objV" : "red key"
+          },
+          "actionIndex" : "20",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "goal" : {
+              "action" : "walk to",
+              "place" : "place no 5"
+            },
+            "monkey" : {
+              "object" : "red key",
+              "on" : "floor",
+              "place" : "place no 5"
+            },
+            "pV" : "place no 5",
+            "objV" : "red key"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 26
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.63",
+        "properties" : {
+          "name" : "monkey.UnlockChestWithKey",
+          "boundObjectsAtStart" : {
+            "inV" : "blue key",
+            "chest" : {
+              "inside" : "blue key",
+              "key" : "red key",
+              "light" : true,
+              "name" : "green chest",
+              "on" : "floor",
+              "place" : "place no 5"
+            },
+            "goal" : {
+              "action" : "unlock",
+              "thing" : "green chest"
+            },
+            "keyV" : "red key",
+            "pV" : "place no 5",
+            "onV" : "floor",
+            "chestV" : "green chest"
+          },
+          "actionIndex" : "7",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "chest" : {
+              "key" : "red key",
+              "light" : true,
+              "name" : "green chest",
+              "on" : "floor",
+              "place" : "place no 5"
+            },
+            "goal" : {
+              "action" : "unlock",
+              "thing" : "green chest"
+            },
+            "keyV" : "red key",
+            "pV" : "place no 5",
+            "onV" : "floor",
+            "chestV" : "green chest"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 26
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.64",
+        "properties" : {
+          "name" : "monkey.PlanGetOnFloor",
+          "boundObjectsAtStart" : {
+            "pV" : "place no 5",
+            "onV" : "green chest",
+            "objV" : "blue key"
+          },
+          "actionIndex" : "18",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "pV" : "place no 5",
+            "onV" : "green chest",
+            "objV" : "blue key"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 26
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.65",
+        "properties" : {
+          "name" : "monkey.PlanDropDesiredObject",
+          "boundObjectsAtStart" : {
+            "pV" : "place no 5",
+            "objV" : "green chest"
+          },
+          "actionIndex" : "22",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "pV" : "place no 5",
+            "objV" : "green chest"
+          },
+          "executionDuration" : 1,
+          "executionStartTime" : 26
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.66",
+        "properties" : {
+          "name" : "monkey.DropObject",
+          "boundObjectsAtStart" : {
+            "goal" : {
+              "action" : "holds"
+            },
+            "monkey" : {
+              "object" : "red key",
+              "on" : "floor",
+              "place" : "place no 5"
+            },
+            "lightObject" : {
+              "light" : true,
+              "name" : "red key",
+              "on" : "body",
+              "place" : "body"
+            },
+            "pV" : "place no 5",
+            "onV" : "floor",
+            "objV" : "red key"
+          },
+          "actionIndex" : "25",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "goal" : {
+              "action" : "holds"
+            },
+            "monkey" : {
+              "on" : "floor",
+              "place" : "place no 5"
+            },
+            "lightObject" : {
+              "light" : true,
+              "name" : "red key",
+              "on" : "floor",
+              "place" : "place no 5"
+            },
+            "pV" : "place no 5",
+            "onV" : "floor"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 27
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.67",
+        "properties" : {
+          "name" : "monkey.ClimbOnObject",
+          "boundObjectsAtStart" : {
+            "goal" : {
+              "action" : "on",
+              "thing" : "green chest"
+            },
+            "monkey" : {
+              "on" : "floor",
+              "place" : "place no 5"
+            },
+            "pV" : "place no 5",
+            "onV" : "floor",
+            "objV" : "green chest"
+          },
+          "actionIndex" : "24",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "goal" : {
+              "action" : "on",
+              "thing" : "green chest"
+            },
+            "monkey" : {
+              "on" : "green chest",
+              "place" : "place no 5"
+            },
+            "pV" : "place no 5",
+            "onV" : "floor",
+            "objV" : "green chest"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 27
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.68",
+        "properties" : {
+          "name" : "monkey.GrabObjectOnAnyObject",
+          "boundObjectsAtStart" : {
+            "goal" : {
+              "action" : "holds",
+              "thing" : "blue key"
+            },
+            "lightObject" : {
+              "light" : true,
+              "name" : "blue key",
+              "on" : "green chest",
+              "place" : "place no 5"
+            },
+            "monkey" : {
+              "on" : "green chest",
+              "place" : "place no 5"
+            },
+            "pV" : "place no 5",
+            "onV" : "green chest",
+            "objV" : "blue key"
+          },
+          "actionIndex" : "13",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "goal" : {
+              "action" : "holds",
+              "thing" : "blue key"
+            },
+            "lightObject" : {
+              "light" : true,
+              "name" : "blue key",
+              "on" : "body",
+              "place" : "body"
+            },
+            "monkey" : {
+              "object" : "blue key",
+              "on" : "green chest",
+              "place" : "place no 5"
+            },
+            "pV" : "body",
+            "onV" : "body",
+            "objV" : "blue key"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 27
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.69",
+        "properties" : {
+          "name" : "monkey.PlanMoveToChestWithKey",
+          "boundObjectsAtStart" : {
+            "keyV" : "blue key",
+            "p2V" : "place no 4",
+            "pV" : "place no 5",
+            "chestV" : "blue chest"
+          },
+          "actionIndex" : "6",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "keyV" : "blue key",
+            "p2V" : "place no 4",
+            "pV" : "place no 5",
+            "chestV" : "blue chest"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 27
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.70",
+        "properties" : {
+          "name" : "monkey.PlanGetOnFloorBis",
+          "boundObjectsAtStart" : {
+            "pV" : "place no 4"
+          },
+          "actionIndex" : "19",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "pV" : "place no 4"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 27
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.71",
+        "properties" : {
+          "name" : "monkey.JumpOntoFloor",
+          "boundObjectsAtStart" : {
+            "goal" : {
+              "action" : "on",
+              "thing" : "floor"
+            },
+            "monkey" : {
+              "object" : "blue key",
+              "on" : "green chest",
+              "place" : "place no 5"
+            }
+          },
+          "actionIndex" : "9",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "goal" : {
+              "action" : "on",
+              "thing" : "floor"
+            },
+            "monkey" : {
+              "object" : "blue key",
+              "on" : "floor",
+              "place" : "place no 5"
+            }
+          },
+          "executionDuration" : 1,
+          "executionStartTime" : 27
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.72",
+        "properties" : {
+          "name" : "monkey.WalkWithObject",
+          "boundObjectsAtStart" : {
+            "goal" : {
+              "action" : "walk to",
+              "place" : "place no 4"
+            },
+            "monkey" : {
+              "object" : "blue key",
+              "on" : "floor",
+              "place" : "place no 5"
+            },
+            "pV" : "place no 4",
+            "objV" : "blue key"
+          },
+          "actionIndex" : "20",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "goal" : {
+              "action" : "walk to",
+              "place" : "place no 4"
+            },
+            "monkey" : {
+              "object" : "blue key",
+              "on" : "floor",
+              "place" : "place no 4"
+            },
+            "pV" : "place no 4",
+            "objV" : "blue key"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 28
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.73",
+        "properties" : {
+          "name" : "monkey.UnlockChestWithKey",
+          "boundObjectsAtStart" : {
+            "inV" : "bananas",
+            "chest" : {
+              "inside" : "bananas",
+              "key" : "blue key",
+              "light" : true,
+              "name" : "blue chest",
+              "on" : "floor",
+              "place" : "place no 4"
+            },
+            "goal" : {
+              "action" : "unlock",
+              "thing" : "blue chest"
+            },
+            "keyV" : "blue key",
+            "pV" : "place no 4",
+            "onV" : "floor",
+            "chestV" : "blue chest"
+          },
+          "actionIndex" : "7",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "chest" : {
+              "key" : "blue key",
+              "light" : true,
+              "name" : "blue chest",
+              "on" : "floor",
+              "place" : "place no 4"
+            },
+            "goal" : {
+              "action" : "unlock",
+              "thing" : "blue chest"
+            },
+            "keyV" : "blue key",
+            "pV" : "place no 4",
+            "onV" : "floor",
+            "chestV" : "blue chest"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 28
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.74",
+        "properties" : {
+          "name" : "monkey.PlanGetOnFloor",
+          "boundObjectsAtStart" : {
+            "pV" : "place no 4",
+            "onV" : "blue chest",
+            "objV" : "bananas"
+          },
+          "actionIndex" : "18",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "pV" : "place no 4",
+            "onV" : "blue chest",
+            "objV" : "bananas"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 28
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.75",
+        "properties" : {
+          "name" : "monkey.PlanDropDesiredObject",
+          "boundObjectsAtStart" : {
+            "pV" : "place no 4",
+            "objV" : "blue chest"
+          },
+          "actionIndex" : "22",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "pV" : "place no 4",
+            "objV" : "blue chest"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 28
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.76",
+        "properties" : {
+          "name" : "monkey.DropObject",
+          "boundObjectsAtStart" : {
+            "goal" : {
+              "action" : "holds"
+            },
+            "monkey" : {
+              "object" : "blue key",
+              "on" : "floor",
+              "place" : "place no 4"
+            },
+            "lightObject" : {
+              "light" : true,
+              "name" : "blue key",
+              "on" : "body",
+              "place" : "body"
+            },
+            "pV" : "place no 4",
+            "onV" : "floor",
+            "objV" : "blue key"
+          },
+          "actionIndex" : "25",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "goal" : {
+              "action" : "holds"
+            },
+            "monkey" : {
+              "on" : "floor",
+              "place" : "place no 4"
+            },
+            "lightObject" : {
+              "light" : true,
+              "name" : "blue key",
+              "on" : "floor",
+              "place" : "place no 4"
+            },
+            "pV" : "place no 4",
+            "onV" : "floor"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 28
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.77",
+        "properties" : {
+          "name" : "monkey.ClimbOnObject",
+          "boundObjectsAtStart" : {
+            "goal" : {
+              "action" : "on",
+              "thing" : "blue chest"
+            },
+            "monkey" : {
+              "on" : "floor",
+              "place" : "place no 4"
+            },
+            "pV" : "place no 4",
+            "onV" : "floor",
+            "objV" : "blue chest"
+          },
+          "actionIndex" : "24",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "goal" : {
+              "action" : "on",
+              "thing" : "blue chest"
+            },
+            "monkey" : {
+              "on" : "blue chest",
+              "place" : "place no 4"
+            },
+            "pV" : "place no 4",
+            "onV" : "floor",
+            "objV" : "blue chest"
+          },
+          "executionDuration" : 1,
+          "executionStartTime" : 28
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.78",
+        "properties" : {
+          "name" : "monkey.GrabObjectOnAnyObject",
+          "boundObjectsAtStart" : {
+            "goal" : {
+              "action" : "holds",
+              "thing" : "bananas"
+            },
+            "lightObject" : {
+              "light" : true,
+              "name" : "bananas",
+              "on" : "blue chest",
+              "place" : "place no 4"
+            },
+            "monkey" : {
+              "on" : "blue chest",
+              "place" : "place no 4"
+            },
+            "pV" : "place no 4",
+            "onV" : "blue chest",
+            "objV" : "bananas"
+          },
+          "actionIndex" : "13",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "goal" : {
+              "action" : "holds",
+              "thing" : "bananas"
+            },
+            "lightObject" : {
+              "light" : true,
+              "name" : "bananas",
+              "on" : "body",
+              "place" : "body"
+            },
+            "monkey" : {
+              "object" : "bananas",
+              "on" : "blue chest",
+              "place" : "place no 4"
+            },
+            "pV" : "body",
+            "onV" : "body",
+            "objV" : "bananas"
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 29
+        }
+      }, {
+        "recordType" : "Rule",
+        "recordIndex" : "1.79",
+        "properties" : {
+          "name" : "monkey.SatisfyHunger",
+          "boundObjectsAtStart" : {
+            "monkey" : {
+              "object" : "bananas",
+              "on" : "blue chest",
+              "place" : "place no 4"
+            },
+            "bananas" : {
+              "light" : true,
+              "name" : "bananas",
+              "on" : "body",
+              "place" : "body"
+            }
+          },
+          "actionIndex" : "26",
+          "actionName" : "then",
+          "boundObjectsAtEnd" : {
+            "monkey" : {
+              "on" : "blue chest",
+              "place" : "place no 4"
+            },
+            "bananas" : {
+              "light" : true,
+              "name" : "bananas",
+              "on" : "body",
+              "place" : "body"
+            }
+          },
+          "executionDuration" : 0,
+          "executionStartTime" : 29
+        }
+      } ],
+      "executionDuration" : 30,
+      "executionStartTime" : 0
+    }
+  },
+  "printedMessages" : [ {
+    "recordIndex" : "1.6",
+    "message" : "Monkey jumps off green couch onto the floor."
+  }, {
+    "recordIndex" : "1.7",
+    "message" : "Monkey walks to place no 2."
+  }, {
+    "recordIndex" : "1.10",
+    "message" : "Monkey climbs onto red couch."
+  }, {
+    "recordIndex" : "1.11",
+    "message" : "Monkey climbs onto big pillow."
+  }, {
+    "recordIndex" : "1.12",
+    "message" : "Monkey grabs the red chest."
+  }, {
+    "recordIndex" : "1.13",
+    "message" : "Monkey throws red chest off big pillow onto floor."
+  }, {
+    "recordIndex" : "1.18",
+    "message" : "Monkey jumps off big pillow onto the floor."
+  }, {
+    "recordIndex" : "1.19",
+    "message" : "Monkey walks to place no 1."
+  }, {
+    "recordIndex" : "1.20",
+    "message" : "Monkey grabs the red key."
+  }, {
+    "recordIndex" : "1.22",
+    "message" : "Monkey walks to place no 2 holding red key."
+  }, {
+    "recordIndex" : "1.23",
+    "message" : "Monkey opens chest with red key revealing ladder."
+  }, {
+    "recordIndex" : "1.27",
+    "message" : "Monkey drops red key."
+  }, {
+    "recordIndex" : "1.28",
+    "message" : "Monkey climbs onto red chest."
+  }, {
+    "recordIndex" : "1.29",
+    "message" : "Monkey grabs the ladder."
+  }, {
+    "recordIndex" : "1.32",
+    "message" : "Monkey jumps off red chest onto the floor."
+  }, {
+    "recordIndex" : "1.33",
+    "message" : "Monkey walks to place no 4 holding ladder."
+  }, {
+    "recordIndex" : "1.34",
+    "message" : "Monkey drops the ladder."
+  }, {
+    "recordIndex" : "1.36",
+    "message" : "Monkey climbs onto ladder."
+  }, {
+    "recordIndex" : "1.37",
+    "message" : "Monkey grabs the blue chest."
+  }, {
+    "recordIndex" : "1.38",
+    "message" : "Monkey throws blue chest off ladder onto floor."
+  }, {
+    "recordIndex" : "1.45",
+    "message" : "Monkey jumps off ladder onto the floor."
+  }, {
+    "recordIndex" : "1.46",
+    "message" : "Monkey grabs the ladder."
+  }, {
+    "recordIndex" : "1.48",
+    "message" : "Monkey walks to place no 5 holding ladder."
+  }, {
+    "recordIndex" : "1.49",
+    "message" : "Monkey drops the ladder."
+  }, {
+    "recordIndex" : "1.51",
+    "message" : "Monkey climbs onto ladder."
+  }, {
+    "recordIndex" : "1.52",
+    "message" : "Monkey grabs the green chest."
+  }, {
+    "recordIndex" : "1.53",
+    "message" : "Monkey throws green chest off ladder onto floor."
+  }, {
+    "recordIndex" : "1.58",
+    "message" : "Monkey jumps off ladder onto the floor."
+  }, {
+    "recordIndex" : "1.59",
+    "message" : "Monkey walks to place no 2."
+  }, {
+    "recordIndex" : "1.60",
+    "message" : "Monkey grabs the red key."
+  }, {
+    "recordIndex" : "1.62",
+    "message" : "Monkey walks to place no 5 holding red key."
+  }, {
+    "recordIndex" : "1.63",
+    "message" : "Monkey opens chest with red key revealing blue key."
+  }, {
+    "recordIndex" : "1.66",
+    "message" : "Monkey drops red key."
+  }, {
+    "recordIndex" : "1.67",
+    "message" : "Monkey climbs onto green chest."
+  }, {
+    "recordIndex" : "1.68",
+    "message" : "Monkey grabs the blue key."
+  }, {
+    "recordIndex" : "1.71",
+    "message" : "Monkey jumps off green chest onto the floor."
+  }, {
+    "recordIndex" : "1.72",
+    "message" : "Monkey walks to place no 4 holding blue key."
+  }, {
+    "recordIndex" : "1.73",
+    "message" : "Monkey opens chest with blue key revealing bananas."
+  }, {
+    "recordIndex" : "1.76",
+    "message" : "Monkey drops blue key."
+  }, {
+    "recordIndex" : "1.77",
+    "message" : "Monkey climbs onto blue chest."
+  }, {
+    "recordIndex" : "1.78",
+    "message" : "Monkey grabs the bananas."
+  }, {
+    "recordIndex" : "1.79",
+    "message" : "Monkey eats the bananas."
+  } ],
+  "exceptionsRaised" : [ ]
+}
