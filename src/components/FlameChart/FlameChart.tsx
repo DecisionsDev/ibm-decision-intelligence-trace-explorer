@@ -109,10 +109,10 @@ export const FlameChart: React.FC = () => {
             onClick={() => handleNodeClick(node)}
             onMouseEnter={() => setHoveredNode(node)}
             onMouseLeave={() => setHoveredNode(null)}
-            title={`${node.label}\nDuration: ${node.duration}ms`}
+            title={`${node.label}\nDuration: ${node.duration === 0 ? '<1' : node.duration}ms`}
           >
             {!isZeroDuration && <span className="flame-node-label">{node.label}</span>}
-            {!isZeroDuration && <span className="flame-node-duration">{node.duration}ms</span>}
+            {!isZeroDuration && <span className="flame-node-duration">{node.duration === 0 ? '<1' : node.duration}ms</span>}
           </div>
           {node.children.map((child) => renderFlameNode(child))}
         </React.Fragment>
@@ -132,7 +132,7 @@ export const FlameChart: React.FC = () => {
   const chartHeight = (maxDepth + 1) * 24 + 40; // 24px per level + padding
 
   const hoveredLabel = hoveredNode?.label ?? 'No node hovered';
-  const hoveredDuration = hoveredNode ? `${hoveredNode.duration}ms` : '—';
+  const hoveredDuration = hoveredNode ? `${hoveredNode.duration === 0 ? '<1' : hoveredNode.duration}ms` : '—';
   const hoveredPercentage =
     hoveredNode && totalDuration > 0
       ? `${((hoveredNode.duration / totalDuration) * 100).toFixed(2)}%`
@@ -143,7 +143,7 @@ export const FlameChart: React.FC = () => {
       <div className="flame-chart-header">
         <div className="flame-chart-info">
           <span className="flame-chart-label">Total Duration:</span>
-          <span className="flame-chart-value">{totalDuration}ms</span>
+          <span className="flame-chart-value">{totalDuration === 0 ? '<1' : totalDuration}ms</span>
         </div>
         <div className="flame-chart-tooltip" aria-live="polite">
           <div className="flame-chart-tooltip-label">{hoveredLabel}</div>

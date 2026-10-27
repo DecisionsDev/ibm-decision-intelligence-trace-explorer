@@ -151,7 +151,7 @@ export const DetailsPanel: React.FC = () => {
                     {selectedRecord.executionDuration != null && (
                       <StructuredListRow>
                         <StructuredListCell className="details-list__label">Execution duration</StructuredListCell>
-                        <StructuredListCell>{selectedRecord.executionDuration} ms</StructuredListCell>
+                        <StructuredListCell>{selectedRecord.executionDuration === 0 ? '<1' : selectedRecord.executionDuration} ms</StructuredListCell>
                       </StructuredListRow>
                     )}
 
