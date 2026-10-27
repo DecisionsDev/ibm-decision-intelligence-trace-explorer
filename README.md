@@ -15,12 +15,12 @@ A React-based web application for visualizing execution traces from decision mod
 1. Clone the repository:
 ```bash
 git clone <repository-url>
-cd TraceExplorer
+cd ibm-decision-intelligence-trace-explorer
 ```
 
 2. Install dependencies:
 ```bash
-npm install
+npm ci
 ```
 
 3. Start the development server:
