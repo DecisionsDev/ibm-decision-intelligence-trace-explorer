@@ -1,5 +1,5 @@
 import React, { useMemo, useCallback, useState } from 'react';
-import { TreeView, TreeNode as CarbonTreeNode, Menu, MenuItem, Tag, Tooltip } from '@carbon/react';
+import { TreeView, TreeNode as CarbonTreeNode, Menu, MenuItem, Tag } from '@carbon/react';
 import { Pin, Chat, Flash } from '@carbon/icons-react';
 import { useTrace } from '../../context/TraceContext';
 import { TraceRecord, isRuleBasedEngine, getRuleEngineStats } from '../../types/trace.types';

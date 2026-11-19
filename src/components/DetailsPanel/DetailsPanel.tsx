@@ -1,9 +1,9 @@
-import React, { useState, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { Breadcrumb, BreadcrumbItem, Tabs, TabList, Tab, TabPanels, TabPanel, Accordion, AccordionItem, Tag, Layer, Tile, StructuredListWrapper, StructuredListHead, StructuredListRow, StructuredListCell, StructuredListBody, DataTable, Table, TableHead, TableRow, TableHeader, TableBody, TableCell } from '@carbon/react';
 import { Checkmark, Close, DocumentBlank } from '@carbon/icons-react';
 import JsonView from '@uiw/react-json-view';
 import { useTrace } from '../../context/TraceContext';
-import { getRecordLabel, buildPathToRecord, getIconKind, getRecordDescription, getRecordKind, buildJsonMergePatch } from '../../utils/traceUtils';
+import { getRecordLabel, buildPathToRecord, getIconKind, getRecordKind, buildJsonMergePatch } from '../../utils/traceUtils';
 import { isRuleBasedEngine, hasValidRules, getRuleEngineStats, hasValidTasks, getTasks } from '../../types/trace.types';
 import { iconByKind } from '../../utils/IconsByKind';
 import './DetailsPanel.scss';
@@ -36,7 +36,6 @@ export const DetailsPanel: React.FC = () => {
   const recordType = selectedRecord?.recordType;
   const recordIndex = selectedRecord?.recordIndex ?? '';
   const recordKind = selectedRecord ? getRecordKind(selectedRecord) : '';
-  const description = selectedRecord ? getRecordDescription(selectedRecord) : '';
   const label = selectedRecord ? getRecordLabel(selectedRecord) : '';
   const path = selectedRecord ? buildPathToRecord(recordIndex) : [];
 

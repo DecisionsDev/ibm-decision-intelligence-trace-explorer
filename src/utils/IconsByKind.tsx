@@ -6,7 +6,6 @@ import {
   Document,
   DocumentBlank,
   DocumentTasks,
-  DocumentUnknown,
   Flash,
   Folder,
   Network_3,

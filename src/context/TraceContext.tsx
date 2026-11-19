@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState, useCallback, useMemo } from
 import {
   TraceData,
   TraceRecord,
+  TraceTabItem,
   LeftPanelTab,
   PrintedMessage,
   Exception,
@@ -14,7 +15,12 @@ import {
 } from '../utils/traceUtils';
 
 interface TraceContextValue {
-  // State
+  // Tabs State
+  tabs: TraceTabItem[];
+  activeTabId: string | null;
+  activeTab: TraceTabItem | null;
+
+  // Active Tab State (derived from current tab)
   traceData: TraceData | null;
   selectedRecordIndex: string | null;
   selectedRecord: TraceRecord | null;
@@ -27,7 +33,10 @@ interface TraceContextValue {
   isCustomRoot: boolean;
 
   // Actions
-  loadTrace: (data: TraceData) => void;
+  loadTrace: (data: TraceData, title?: string) => void;
+  setActiveTabId: (id: string) => void;
+  closeTab: (id: string) => void;
+  closeAllTabs: () => void;
   setSelectedRecordIndex: (index: string | null) => void;
   navigateToRecord: (index: string) => void;
   setActiveLeftTab: (tab: LeftPanelTab) => void;
@@ -53,12 +62,20 @@ interface TraceContextValue {
 const TraceContext = createContext<TraceContextValue | undefined>(undefined);
 
 export const TraceProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [traceData, setTraceData] = useState<TraceData | null>(null);
-  const [selectedRecordIndex, setSelectedRecordIndexState] = useState<string | null>(null);
-  const [activeLeftTab, setActiveLeftTab] = useState<LeftPanelTab>('tree');
-  const [expandedNodes, setExpandedNodes] = useState<Set<string>>(new Set());
-  const [searchQuery, setSearchQuery] = useState('');
-  const [customRootIndex, setCustomRootIndex] = useState<string | null>(null);
+  const [tabs, setTabs] = useState<TraceTabItem[]>([]);
+  const [activeTabId, setActiveTabId] = useState<string | null>(null);
+
+  // Active tab reference
+  const activeTab = useMemo(() => {
+    return tabs.find((t) => t.id === activeTabId) ?? null;
+  }, [tabs, activeTabId]);
+
+  const traceData = activeTab?.traceData ?? null;
+  const selectedRecordIndex = activeTab?.selectedRecordIndex ?? null;
+  const activeLeftTab = activeTab?.activeLeftTab ?? 'tree';
+  const expandedNodes = useMemo(() => activeTab?.expandedNodes ?? new Set<string>(), [activeTab?.expandedNodes]);
+  const searchQuery = activeTab?.searchQuery ?? '';
+  const customRootIndex = activeTab?.customRootIndex ?? null;
 
   // The flat records map is already TraceData.records — expose it directly for O(1) lookup
   const recordIndexMap = useMemo((): Map<string, TraceRecord> => {
@@ -115,101 +132,199 @@ export const TraceProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     return getExceptionsForRecord(rootScopedExceptions, selectedRecordIndex);
   }, [selectedRecordIndex, rootScopedExceptions]);
 
-  // Load trace data
-  const loadTrace = useCallback((data: TraceData) => {
-    setTraceData(data);
-    setSelectedRecordIndexState(null);
-    setCustomRootIndex(null);
+  // Load a new trace as a new tab
+  const loadTrace = useCallback((data: TraceData, title?: string) => {
     const root = getRootRecord(data.records);
-    setExpandedNodes(new Set([root.recordIndex]));
-    setSearchQuery('');
-    setActiveLeftTab('tree');
+    const newTabId = 'trace-' + Date.now() + '-' + Math.random().toString(36).slice(2, 7);
+    const newTab: TraceTabItem = {
+      id: newTabId,
+      title: title || 'Trace',
+      traceData: data,
+      selectedRecordIndex: null,
+      activeLeftTab: 'tree',
+      expandedNodes: new Set([root.recordIndex]),
+      searchQuery: '',
+      customRootIndex: null,
+    };
+
+    setTabs((prev) => [...prev, newTab]);
+    setActiveTabId(newTabId);
   }, []);
 
-  // Set selected record index
-  const setSelectedRecordIndex = useCallback((index: string | null) => {
-    setSelectedRecordIndexState(index);
+  // Close a specific tab
+  const closeTab = useCallback((idToClose: string) => {
+    setTabs((prevTabs) => {
+      const tabIndex = prevTabs.findIndex((t) => t.id === idToClose);
+      if (tabIndex === -1) return prevTabs;
+
+      const newTabs = prevTabs.filter((t) => t.id !== idToClose);
+      return newTabs;
+    });
+
+    setActiveTabId((currentActiveId) => {
+      if (currentActiveId !== idToClose) return currentActiveId;
+      const tabIndex = tabs.findIndex((t) => t.id === idToClose);
+      const remainingTabs = tabs.filter((t) => t.id !== idToClose);
+      if (remainingTabs.length === 0) return null;
+      const nextIndex = Math.min(tabIndex, remainingTabs.length - 1);
+      return remainingTabs[nextIndex].id;
+    });
+  }, [tabs]);
+
+  // Close all tabs
+  const closeAllTabs = useCallback(() => {
+    setTabs([]);
+    setActiveTabId(null);
   }, []);
+
+  // Set selected record index in active tab
+  const setSelectedRecordIndex = useCallback((index: string | null) => {
+    setTabs((prev) =>
+      prev.map((t) => (t.id === activeTabId ? { ...t, selectedRecordIndex: index } : t))
+    );
+  }, [activeTabId]);
 
   // Navigate to a record (from message or exception click)
   const navigateToRecord = useCallback((index: string) => {
-    setActiveLeftTab('tree');
     const path = buildPathToRecord(index);
-    setExpandedNodes((prev) => {
-      const newSet = new Set(prev);
-      path.forEach((nodeIndex) => newSet.add(nodeIndex));
-      return newSet;
-    });
-    setSelectedRecordIndexState(index);
-  }, []);
+    setTabs((prev) =>
+      prev.map((t) => {
+        if (t.id !== activeTabId) return t;
+        const newExpanded = new Set(t.expandedNodes);
+        path.forEach((nodeIndex) => newExpanded.add(nodeIndex));
+        return {
+          ...t,
+          activeLeftTab: 'tree',
+          expandedNodes: newExpanded,
+          selectedRecordIndex: index,
+        };
+      })
+    );
+  }, [activeTabId]);
 
-  // Toggle node expansion
+  // Set active left panel tab in active tab
+  const setActiveLeftTab = useCallback((tab: LeftPanelTab) => {
+    setTabs((prev) =>
+      prev.map((t) => (t.id === activeTabId ? { ...t, activeLeftTab: tab } : t))
+    );
+  }, [activeTabId]);
+
+  // Toggle node expansion in active tab
   const toggleNodeExpansion = useCallback((index: string) => {
-    setExpandedNodes((prev) => {
-      const newSet = new Set(prev);
-      if (newSet.has(index)) {
-        newSet.delete(index);
-      } else {
-        newSet.add(index);
-      }
-      return newSet;
-    });
-  }, []);
+    setTabs((prev) =>
+      prev.map((t) => {
+        if (t.id !== activeTabId) return t;
+        const newExpanded = new Set(t.expandedNodes);
+        if (newExpanded.has(index)) {
+          newExpanded.delete(index);
+        } else {
+          newExpanded.add(index);
+        }
+        return { ...t, expandedNodes: newExpanded };
+      })
+    );
+  }, [activeTabId]);
 
-  // Expand a specific node
+  // Expand a specific node in active tab
   const expandNode = useCallback((index: string) => {
-    setExpandedNodes((prev) => new Set(prev).add(index));
-  }, []);
+    setTabs((prev) =>
+      prev.map((t) => {
+        if (t.id !== activeTabId) return t;
+        return { ...t, expandedNodes: new Set(t.expandedNodes).add(index) };
+      })
+    );
+  }, [activeTabId]);
 
-  // Collapse a specific node
+  // Collapse a specific node in active tab
   const collapseNode = useCallback((index: string) => {
-    setExpandedNodes((prev) => {
-      const newSet = new Set(prev);
-      newSet.delete(index);
-      return newSet;
-    });
-  }, []);
+    setTabs((prev) =>
+      prev.map((t) => {
+        if (t.id !== activeTabId) return t;
+        const newExpanded = new Set(t.expandedNodes);
+        newExpanded.delete(index);
+        return { ...t, expandedNodes: newExpanded };
+      })
+    );
+  }, [activeTabId]);
 
-  // Expand all nodes
+  // Expand all nodes in active tab
   const expandAll = useCallback(() => {
-    if (!recordIndexMap.size) return;
-    setExpandedNodes(new Set(recordIndexMap.keys()));
-  }, [recordIndexMap]);
+    if (!activeTab) return;
+    const allKeys = Array.from(activeTab.traceData.records.keys());
+    setTabs((prev) =>
+      prev.map((t) =>
+        t.id === activeTabId ? { ...t, expandedNodes: new Set(allKeys) } : t
+      )
+    );
+  }, [activeTab, activeTabId]);
 
-  // Collapse all nodes (keep root expanded)
+  // Collapse all nodes in active tab (keep root expanded)
   const collapseAll = useCallback(() => {
-    if (!traceRootIndex) return;
-    setExpandedNodes(new Set([traceRootIndex]));
-  }, [traceRootIndex]);
+    if (!activeTab) return;
+    const root = getRootRecord(activeTab.traceData.records);
+    setTabs((prev) =>
+      prev.map((t) =>
+        t.id === activeTabId
+          ? { ...t, expandedNodes: new Set([root.recordIndex]) }
+          : t
+      )
+    );
+  }, [activeTab, activeTabId]);
 
-  // Set a custom tree root
+  // Set a custom tree root in active tab
   const setTreeRoot = useCallback((index: string) => {
-    setCustomRootIndex(index);
-    setExpandedNodes(new Set([index]));
-    setSelectedRecordIndexState(index);
-  }, []);
+    setTabs((prev) =>
+      prev.map((t) =>
+        t.id === activeTabId
+          ? {
+              ...t,
+              customRootIndex: index,
+              expandedNodes: new Set([index]),
+              selectedRecordIndex: index,
+            }
+          : t
+      )
+    );
+  }, [activeTabId]);
 
-  // Reset to original tree root
+  // Reset to original tree root in active tab
   const resetTreeRoot = useCallback(() => {
-    setCustomRootIndex(null);
-    if (traceRootIndex) {
-      setExpandedNodes(new Set([traceRootIndex]));
-      setSelectedRecordIndexState(traceRootIndex);
-    }
-  }, [traceRootIndex]);
+    if (!activeTab) return;
+    const root = getRootRecord(activeTab.traceData.records);
+    setTabs((prev) =>
+      prev.map((t) =>
+        t.id === activeTabId
+          ? {
+              ...t,
+              customRootIndex: null,
+              expandedNodes: new Set([root.recordIndex]),
+              selectedRecordIndex: root.recordIndex,
+            }
+          : t
+      )
+    );
+  }, [activeTab, activeTabId]);
 
-  // Clear trace data
+  // Set search query in active tab
+  const setSearchQuery = useCallback((query: string) => {
+    setTabs((prev) =>
+      prev.map((t) => (t.id === activeTabId ? { ...t, searchQuery: query } : t))
+    );
+  }, [activeTabId]);
+
+  // Clear trace data / close all tabs
   const clearTrace = useCallback(() => {
-    setTraceData(null);
-    setSelectedRecordIndexState(null);
-    setCustomRootIndex(null);
-    setExpandedNodes(new Set());
-    setSearchQuery('');
-    setActiveLeftTab('tree');
+    setTabs([]);
+    setActiveTabId(null);
   }, []);
 
   const value: TraceContextValue = {
-    // State
+    // Tabs state
+    tabs,
+    activeTabId,
+    activeTab,
+
+    // Active tab state
     traceData,
     selectedRecordIndex,
     selectedRecord,
@@ -223,6 +338,9 @@ export const TraceProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
     // Actions
     loadTrace,
+    setActiveTabId,
+    closeTab,
+    closeAllTabs,
     setSelectedRecordIndex,
     navigateToRecord,
     setActiveLeftTab,

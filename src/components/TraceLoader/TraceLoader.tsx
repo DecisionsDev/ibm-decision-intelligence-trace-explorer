@@ -7,7 +7,7 @@ import {
   MenuItem,
   Modal,
 } from '@carbon/react';
-import { Upload, DocumentBlank, Settings } from '@carbon/icons-react';
+import { Upload, DocumentBlank, Settings, Close } from '@carbon/icons-react';
 import JsonView from '@uiw/react-json-view';
 import { useTrace } from '../../context/TraceContext';
 import { validateTraceData, parseTraceData } from '../../utils/traceUtils';
@@ -35,10 +35,9 @@ const EXAMPLE_TRACES = [
 ];
 
 export const TraceLoader: React.FC = () => {
-  const { loadTrace, traceData } = useTrace();
+  const { loadTrace, traceData, tabs, activeTabId, setActiveTabId, closeTab } = useTrace();
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const [loadedFileName, setLoadedFileName] = useState<string>('');
   const [showConfigModal, setShowConfigModal] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -65,8 +64,7 @@ export const TraceLoader: React.FC = () => {
           throw new Error('Invalid trace data format');
         }
 
-        loadTrace(parseTraceData(raw));
-        setLoadedFileName(file.name);
+        loadTrace(parseTraceData(raw), file.name);
       } catch (err) {
         console.error('Error loading file:', err);
         setError(err instanceof Error ? err.message : 'Failed to load trace file');
@@ -98,8 +96,7 @@ export const TraceLoader: React.FC = () => {
           throw new Error('Invalid trace data format');
         }
 
-        loadTrace(parseTraceData(raw));
-        setLoadedFileName(label);
+        loadTrace(parseTraceData(raw), label);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Failed to load example trace');
       } finally {
@@ -132,23 +129,58 @@ export const TraceLoader: React.FC = () => {
           style={{ display: 'none' }}
         />
 
-        {traceData && loadedFileName && (
-          <div className="trace-loader__status">
-            <DocumentBlank size={16} />
-            <span>{loadedFileName}</span>
-            {traceData && (
-              <Button
-                kind="ghost"
-                size="sm"
-                renderIcon={Settings}
-                iconDescription="View configuration"
-                hasIconOnly
-                onClick={handleOpenConfig}
-                tooltipPosition="bottom"
-              />
-            )}
-          </div>
-        )}
+        {/* Trace tabs */}
+        <div className="trace-loader__tabs" role="tablist" aria-label="Open traces">
+          {tabs.map((tab) => {
+            const isActive = tab.id === activeTabId;
+            return (
+              <div
+                key={tab.id}
+                role="tab"
+                tabIndex={0}
+                aria-selected={isActive}
+                className={`trace-loader__tab ${isActive ? 'trace-loader__tab--active' : ''}`}
+                onClick={() => setActiveTabId(tab.id)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setActiveTabId(tab.id);
+                  }
+                }}
+                title={tab.title}
+              >
+                <DocumentBlank size={16} className="trace-loader__tab-icon" />
+                <span className="trace-loader__tab-title">{tab.title}</span>
+                {isActive && (
+                  <button
+                    type="button"
+                    className="trace-loader__tab-action"
+                    title="View configuration"
+                    aria-label="View configuration"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleOpenConfig();
+                    }}
+                  >
+                    <Settings size={14} />
+                  </button>
+                )}
+                <button
+                  type="button"
+                  className="trace-loader__tab-action trace-loader__tab-action--close"
+                  title={`Close ${tab.title}`}
+                  aria-label={`Close ${tab.title}`}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    closeTab(tab.id);
+                  }}
+                >
+                  <Close size={14} />
+                </button>
+              </div>
+            );
+          })}
+        </div>
 
         {loading && (
           <InlineLoading description="Loading trace…" status="active" className="trace-loader__loading" />

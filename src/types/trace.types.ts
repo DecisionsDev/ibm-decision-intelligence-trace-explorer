@@ -102,6 +102,17 @@ export interface Exception {
 
 export type LeftPanelTab = 'tree' | 'messages' | 'exceptions' | 'flame';
 
+export interface TraceTabItem {
+  id: string;
+  title: string;
+  traceData: TraceData;
+  selectedRecordIndex: string | null;
+  activeLeftTab: LeftPanelTab;
+  expandedNodes: Set<string>;
+  searchQuery: string;
+  customRootIndex: string | null;
+}
+
 export interface TraceContextState {
   traceData: TraceData | null;
   selectedRecordIndex: string | null;

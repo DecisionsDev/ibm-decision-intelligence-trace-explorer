@@ -13,26 +13,100 @@
     flex: 1;
   }
 
-  &__status {
+  &__tabs {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.25rem 0.75rem;
-    background: var(--cds-layer-02);
-    border-radius: 4px;
-    color: var(--cds-text-primary);
-    font-size: 0.875rem;
+    gap: 0.375rem;
+    overflow-x: auto;
+    max-width: 65vw;
+    scrollbar-width: thin;
+    padding-bottom: 2px;
 
-    svg {
-      fill: var(--cds-icon-primary);
-      flex-shrink: 0;
+    &::-webkit-scrollbar {
+      height: 4px;
     }
 
-    span {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 300px;
+    &::-webkit-scrollbar-thumb {
+      background: var(--cds-border-subtle-01);
+      border-radius: 2px;
+    }
+  }
+
+  &__tab {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    height: 2rem;
+    padding: 0 0.5rem 0 0.625rem;
+    background: var(--cds-layer-02);
+    border: 1px solid var(--cds-border-subtle-01);
+    border-radius: 4px;
+    font-size: 0.8125rem;
+    color: var(--cds-text-secondary);
+    cursor: pointer;
+    user-select: none;
+    max-width: 220px;
+    min-width: 110px;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+
+    &:hover {
+      background: var(--cds-layer-hover-02);
+      color: var(--cds-text-primary);
+    }
+
+    &--active {
+      background: var(--cds-layer-01);
+      color: var(--cds-text-primary);
+      border-color: var(--cds-interactive-01, #0f62fe);
+      box-shadow: inset 0 -2px 0 var(--cds-interactive-01, #0f62fe);
+      font-weight: 500;
+    }
+  }
+
+  &__tab-icon {
+    flex-shrink: 0;
+    fill: currentColor;
+  }
+
+  &__tab-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__tab-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    border-radius: 2px;
+    color: var(--cds-icon-secondary);
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.1s ease, color 0.1s ease;
+
+    svg {
+      fill: currentColor;
+    }
+
+    &:hover {
+      background: var(--cds-layer-hover-01);
+      color: var(--cds-icon-primary);
+    }
+
+    &--close:hover {
+      background: var(--cds-button-danger-primary, #da1e28);
+      color: #ffffff;
+
+      svg {
+        fill: #ffffff;
+      }
     }
   }
 
