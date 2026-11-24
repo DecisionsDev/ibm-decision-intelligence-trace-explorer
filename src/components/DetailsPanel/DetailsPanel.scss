@@ -43,6 +43,19 @@
     font-size: 0.75rem;
     font-family: 'IBM Plex Mono', monospace;
 
+    // Clickable (non-current) items: pointer cursor and underline on hover
+    .cds--breadcrumb-item:not(.cds--breadcrumb-item--current) {
+      &,
+      * {
+        cursor: pointer;
+      }
+
+      &:hover .breadcrumb-text {
+        text-decoration: underline;
+      }
+    }
+
+
     .breadcrumb-icon {
       flex-shrink: 0;
       display: inline-flex;
