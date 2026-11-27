@@ -8,7 +8,7 @@ import { DetailsPanel } from './components/DetailsPanel/DetailsPanel';
 import './App.scss';
 
 const AppContent: React.FC = () => {
-  const { tabs } = useTrace();
+  const { tabs, layoutOrientation } = useTrace();
 
   return (
     <div className="app">
@@ -20,7 +20,7 @@ const AppContent: React.FC = () => {
         <TraceLoader />
       </div>
 
-      <div className="app__content">
+      <div className={`app__content app__content--${layoutOrientation}`}>
         {tabs.length > 0 ? (
           <>
             <div className="app__column app__column--left">

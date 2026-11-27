@@ -4,6 +4,7 @@ import {
   TraceRecord,
   TraceTabItem,
   LeftPanelTab,
+  PanelLayoutOrientation,
   PrintedMessage,
   Exception,
 } from '../types/trace.types';
@@ -31,6 +32,7 @@ interface TraceContextValue {
   customRootIndex: string | null;
   customRootRecord: TraceRecord | null;
   isCustomRoot: boolean;
+  layoutOrientation: PanelLayoutOrientation;
 
   // Actions
   loadTrace: (data: TraceData, title?: string) => void;
@@ -46,6 +48,7 @@ interface TraceContextValue {
   expandAll: () => void;
   collapseAll: () => void;
   setSearchQuery: (query: string) => void;
+  setLayoutOrientation: (orientation: PanelLayoutOrientation) => void;
   clearTrace: () => void;
   setTreeRoot: (index: string) => void;
   resetTreeRoot: () => void;
@@ -76,6 +79,7 @@ export const TraceProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const expandedNodes = useMemo(() => activeTab?.expandedNodes ?? new Set<string>(), [activeTab?.expandedNodes]);
   const searchQuery = activeTab?.searchQuery ?? '';
   const customRootIndex = activeTab?.customRootIndex ?? null;
+  const layoutOrientation = activeTab?.layoutOrientation ?? 'side-by-side';
 
   // The flat records map is already TraceData.records — expose it directly for O(1) lookup
   const recordIndexMap = useMemo((): Map<string, TraceRecord> => {
@@ -145,6 +149,7 @@ export const TraceProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       expandedNodes: new Set([root.recordIndex]),
       searchQuery: '',
       customRootIndex: null,
+      layoutOrientation: 'side-by-side',
     };
 
     setTabs((prev) => [...prev, newTab]);
@@ -312,6 +317,13 @@ export const TraceProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     );
   }, [activeTabId]);
 
+  // Set layout orientation in active tab
+  const setLayoutOrientation = useCallback((orientation: PanelLayoutOrientation) => {
+    setTabs((prev) =>
+      prev.map((t) => (t.id === activeTabId ? { ...t, layoutOrientation: orientation } : t))
+    );
+  }, [activeTabId]);
+
   // Clear trace data / close all tabs
   const clearTrace = useCallback(() => {
     setTabs([]);
@@ -335,6 +347,7 @@ export const TraceProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     customRootIndex,
     customRootRecord,
     isCustomRoot,
+    layoutOrientation,
 
     // Actions
     loadTrace,
@@ -350,6 +363,7 @@ export const TraceProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     expandAll,
     collapseAll,
     setSearchQuery,
+    setLayoutOrientation,
     clearTrace,
     setTreeRoot,
     resetTreeRoot,

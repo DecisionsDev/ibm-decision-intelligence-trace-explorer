@@ -1,0 +1,485 @@
+{
+  "decisionId": "XX/testtrace/shopping_cart/shoppingCartDecisionService/1.1-2026-11-25T16:54:25.420Z",
+  "decisionOperation": "shopping-cart-price-and-reward",
+  "executionId": "string",
+  "output": {
+    "givenDiscount": 0.11,
+    "loyaltyPoints": 2804,
+    "price": 1401.93
+  },
+  "executionTrace": {
+    "configuration": {
+      "executionDuration": true,
+      "printedMessages": true,
+      "objectsInMemoryLimit": -1,
+      "decisionModel": {
+        "inputParameters": "Object",
+        "outputParameters": "Object",
+        "inputNode": "Object",
+        "outputNode": "Object"
+      },
+      "rules": {
+        "boundObjectsAtStart": "Object",
+        "boundObjectsAtEnd": "Object",
+        "allRules": true,
+        "executedRules": true,
+        "nonExecutedRules": true,
+        "selectedRules": true,
+        "exceptions": "None",
+        "boundObjectsDiff": "JSONMergePatch",
+        "dataModifiedInAction": "ClassNameNHashcode",
+        "dataUsedInCondition": "ClassNameNHashcode"
+      },
+      "ruleflow": {
+        "inputParameters": "Object",
+        "outputParameters": "Object",
+        "allTasks": true,
+        "executedTasks": true,
+        "notExecutedTasks": true,
+        "executedTaskActions": true
+      },
+      "format": "Flat"
+    },
+    "printedMessages": [
+      {
+        "recordIndex": "1.3.1.1",
+        "message": "Total price before discount is 1575.2"
+      },
+      {
+        "recordIndex": "1.3.1.1",
+        "message": "Total price after discount is 1401.93"
+      }
+    ],
+    "exceptionsRaised": [],
+    "records": {
+      "1": {
+        "recordType": "DecisionModel",
+        "recordIndex": "1",
+        "engineVersion": "3.13.0",
+        "name": "ShoppingCartPriceAndReward-shopping-cart-price-and-reward",
+        "input": {
+          "customer": {
+            "name": "John",
+            "status": "Gold"
+          },
+          "shoppingCart": {
+            "items": [
+              {
+                "name": "Computer",
+                "price": 1000
+              },
+              {
+                "name": "Equipment",
+                "price": 345.2
+              },
+              {
+                "name": "Monitor",
+                "price": 230
+              }
+            ],
+            "price": 0
+          }
+        },
+        "output": {
+          "priceAndReward": {
+            "givenDiscount": 0.11,
+            "loyaltyPoints": 2804,
+            "price": 1401.93
+          }
+        },
+        "executionDuration": 4,
+        "executionStartTime": 0
+      },
+      "1.1": {
+        "recordType": "DecisionModelNode",
+        "recordIndex": "1.1",
+        "name": "Customer",
+        "kind": "InputData",
+        "hitPolicy": "sequence",
+        "input": {
+          "customer": {
+            "name": "John",
+            "status": "Gold"
+          }
+        },
+        "output": {
+          "customer": {
+            "name": "John",
+            "status": "Gold"
+          }
+        },
+        "executionDuration": 0,
+        "executionStartTime": 0
+      },
+      "1.2": {
+        "recordType": "DecisionModelNode",
+        "recordIndex": "1.2",
+        "name": "Shopping cart",
+        "kind": "InputData",
+        "hitPolicy": "sequence",
+        "input": {
+          "shoppingCart": {
+            "items": [
+              {
+                "name": "Computer",
+                "price": 1000
+              },
+              {
+                "name": "Equipment",
+                "price": 345.2
+              },
+              {
+                "name": "Monitor",
+                "price": 230
+              }
+            ],
+            "price": 0
+          }
+        },
+        "output": {
+          "shoppingCart": {
+            "items": [
+              {
+                "name": "Computer",
+                "price": 1000
+              },
+              {
+                "name": "Equipment",
+                "price": 345.2
+              },
+              {
+                "name": "Monitor",
+                "price": 230
+              }
+            ],
+            "price": 0
+          }
+        },
+        "executionDuration": 0,
+        "executionStartTime": 0
+      },
+      "1.3.1.1": {
+        "recordType": "Rule",
+        "recordIndex": "1.3.1.1",
+        "name": "Get price and discount",
+        "boundObjectsAtStart": {
+          "shoppingCart": {
+            "items": [
+              {
+                "name": "Computer",
+                "price": 1000
+              },
+              {
+                "name": "Equipment",
+                "price": 345.2
+              },
+              {
+                "name": "Monitor",
+                "price": 230
+              }
+            ],
+            "price": 0
+          },
+          "customer": {
+            "name": "John",
+            "status": "Gold"
+          }
+        },
+        "actionIndex": "0",
+        "actionName": "then",
+        "boundObjectsAtEnd": {
+          "priceAndReward": {
+            "givenDiscount": 0.11,
+            "loyaltyPoints": 0,
+            "price": 1401.93
+          },
+          "shoppingCart": {
+            "items": [
+              {
+                "name": "Computer",
+                "price": 1000
+              },
+              {
+                "name": "Equipment",
+                "price": 345.2
+              },
+              {
+                "name": "Monitor",
+                "price": 230
+              }
+            ],
+            "price": 0
+          },
+          "customer": {
+            "name": "John",
+            "status": "Gold"
+          }
+        },
+        "boundObjectsDiff": {
+          "priceAndReward": {
+            "givenDiscount": 0.11,
+            "loyaltyPoints": 0,
+            "price": 1401.93
+          }
+        },
+        "executionDuration": 2,
+        "executionStartTime": 0
+      },
+      "1.3.1.2.1.1": {
+        "recordType": "DecisionModelNode",
+        "recordIndex": "1.3.1.2.1.1",
+        "name": "Status",
+        "kind": "InputData",
+        "hitPolicy": "sequence",
+        "input": {
+          "status": "Gold"
+        },
+        "output": {
+          "status": "Gold"
+        },
+        "executionDuration": 0,
+        "executionStartTime": 2
+      },
+      "1.3.1.2.1.2": {
+        "recordType": "DecisionModelNode",
+        "recordIndex": "1.3.1.2.1.2",
+        "name": "Price",
+        "kind": "InputData",
+        "hitPolicy": "sequence",
+        "input": {
+          "price": 1401.93
+        },
+        "output": {
+          "price": 1401.93
+        },
+        "executionDuration": 0,
+        "executionStartTime": 2
+      },
+      "1.3.1.2.1.3.1.1": {
+        "recordType": "Rule",
+        "recordIndex": "1.3.1.2.1.3.1.1",
+        "name": "loyalty table",
+        "boundObjectsAtStart": {
+          "status": "Gold"
+        },
+        "actionIndex": "2",
+        "actionName": "#3",
+        "boundObjectsAtEnd": {
+          "loyaltyFactor": 2,
+          "status": "Gold"
+        },
+        "boundObjectsDiff": {
+          "loyaltyFactor": 2
+        },
+        "executionDuration": 1,
+        "executionStartTime": 2
+      },
+      "1.3.1.2.1.3.1": {
+        "recordType": "SequentialEngine",
+        "recordIndex": "1.3.1.2.1.3.1",
+        "allRules": [
+          "loyalty table"
+        ],
+        "nonExecutedRules": [],
+        "selectedRules": [
+          "loyalty table"
+        ],
+        "executionDuration": 1,
+        "executionStartTime": 2
+      },
+      "1.3.1.2.1.3": {
+        "recordType": "DecisionModelNode",
+        "recordIndex": "1.3.1.2.1.3",
+        "name": "Loyalty factor",
+        "kind": "Decision",
+        "hitPolicy": "sequence",
+        "input": {
+          "status": "Gold"
+        },
+        "output": {
+          "loyaltyFactor": 2,
+          "status": "Gold"
+        },
+        "executionDuration": 1,
+        "executionStartTime": 2
+      },
+      "1.3.1.2.1.4.1.1": {
+        "recordType": "Rule",
+        "recordIndex": "1.3.1.2.1.4.1.1",
+        "name": "Apply loyalty factor",
+        "boundObjectsAtStart": {
+          "price": 1401.93,
+          "loyaltyFactor": 2
+        },
+        "actionIndex": "0",
+        "actionName": "then",
+        "boundObjectsAtEnd": {
+          "price": 1401.93,
+          "loyaltyPoints": 2804,
+          "loyaltyFactor": 2
+        },
+        "boundObjectsDiff": {
+          "loyaltyPoints": 2804
+        },
+        "executionDuration": 0,
+        "executionStartTime": 3
+      },
+      "1.3.1.2.1.4.1": {
+        "recordType": "SequentialEngine",
+        "recordIndex": "1.3.1.2.1.4.1",
+        "allRules": [
+          "Apply loyalty factor"
+        ],
+        "nonExecutedRules": [],
+        "selectedRules": [
+          "Apply loyalty factor"
+        ],
+        "executionDuration": 0,
+        "executionStartTime": 3
+      },
+      "1.3.1.2.1.4": {
+        "recordType": "DecisionModelNode",
+        "recordIndex": "1.3.1.2.1.4",
+        "name": "Loyalty points",
+        "kind": "Decision",
+        "hitPolicy": "sequence",
+        "input": {
+          "price": 1401.93,
+          "loyaltyFactor": 2
+        },
+        "output": {
+          "loyaltyPoints": 2804,
+          "price": 1401.93,
+          "loyaltyFactor": 2
+        },
+        "executionDuration": 0,
+        "executionStartTime": 3
+      },
+      "1.3.1.2.1": {
+        "recordType": "DecisionModel",
+        "recordIndex": "1.3.1.2.1",
+        "name": "LoyaltyPoints-loyalty-points",
+        "input": {
+          "status": "Gold",
+          "price": 1401.93
+        },
+        "output": {
+          "loyaltyPoints": 2804
+        },
+        "executionDuration": 1,
+        "executionStartTime": 2
+      },
+      "1.3.1.2": {
+        "recordType": "Rule",
+        "recordIndex": "1.3.1.2",
+        "name": "Get loyalty points",
+        "boundObjectsAtStart": {
+          "priceAndReward": {
+            "givenDiscount": 0.11,
+            "loyaltyPoints": 0,
+            "price": 1401.93
+          },
+          "customer": {
+            "name": "John",
+            "status": "Gold"
+          }
+        },
+        "actionIndex": "1",
+        "actionName": "then",
+        "boundObjectsAtEnd": {
+          "priceAndReward": {
+            "givenDiscount": 0.11,
+            "loyaltyPoints": 2804,
+            "price": 1401.93
+          },
+          "customer": {
+            "name": "John",
+            "status": "Gold"
+          }
+        },
+        "boundObjectsDiff": {
+          "priceAndReward": {
+            "loyaltyPoints": 2804
+          }
+        },
+        "executionDuration": 2,
+        "executionStartTime": 2
+      },
+      "1.3.1": {
+        "recordType": "SequentialEngine",
+        "recordIndex": "1.3.1",
+        "allRules": [
+          "Get price and discount",
+          "Get loyalty points"
+        ],
+        "nonExecutedRules": [],
+        "selectedRules": [
+          "Get price and discount",
+          "Get loyalty points"
+        ],
+        "executionDuration": 4,
+        "executionStartTime": 0
+      },
+      "1.3": {
+        "recordType": "DecisionModelNode",
+        "recordIndex": "1.3",
+        "name": "Price and reward",
+        "kind": "Decision",
+        "hitPolicy": "sequence",
+        "input": {
+          "customer": {
+            "name": "John",
+            "status": "Gold"
+          },
+          "shoppingCart": {
+            "items": [
+              {
+                "name": "Computer",
+                "price": 1000
+              },
+              {
+                "name": "Equipment",
+                "price": 345.2
+              },
+              {
+                "name": "Monitor",
+                "price": 230
+              }
+            ],
+            "price": 0
+          }
+        },
+        "output": {
+          "priceAndReward": {
+            "givenDiscount": 0.11,
+            "loyaltyPoints": 2804,
+            "price": 1401.93
+          },
+          "customer": {
+            "name": "John",
+            "status": "Gold"
+          },
+          "shoppingCart": {
+            "items": [
+              {
+                "name": "Computer",
+                "price": 1000
+              },
+              {
+                "name": "Equipment",
+                "price": 345.2
+              },
+              {
+                "name": "Monitor",
+                "price": 230
+              }
+            ],
+            "price": 0
+          }
+        },
+        "executionDuration": 4,
+        "executionStartTime": 0
+      }
+    }
+  }
+}

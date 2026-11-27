@@ -1,15 +1,18 @@
 import React, { useState, useCallback, useRef } from 'react';
 import {
   Button,
+  ContentSwitcher,
+  IconSwitch,
   InlineLoading,
   InlineNotification,
   MenuButton,
   MenuItem,
   Modal,
 } from '@carbon/react';
-import { Upload, DocumentBlank, Settings, Close } from '@carbon/icons-react';
+import { Upload, DocumentBlank, Settings, Close, Column, Row } from '@carbon/icons-react';
 import JsonView from '@uiw/react-json-view';
 import { useTrace } from '../../context/TraceContext';
+import { PanelLayoutOrientation } from '../../types/trace.types';
 import { validateTraceData, parseTraceData } from '../../utils/traceUtils';
 import './TraceLoader.scss';
 
@@ -32,10 +35,21 @@ const EXAMPLE_TRACES = [
   { value: "monkey.json", label: 'Engine test - Monkey eats bananas - Rete only'},
   { value: '2026/trace_flat_loanvalidation_Approved.json', label: '[2026] Loan Validation - Approved (flat)' },
   { value: '2026/trace_flat_loanvalidation_Bankruptcy.json', label: '[2026] Loan Validation - Bankruptcy (flat)' },
+  { value: '2026/trace_flat_shopping-cart-price-and-reward.json', label: '[2026] Shopping cart price and reward (flat)' },
+  { value: '2026/trace_nested_shopping-cart-price-and-reward.json', label: '[2026] Shopping cart price and reward (nested)' },
 ];
 
 export const TraceLoader: React.FC = () => {
-  const { loadTrace, traceData, tabs, activeTabId, setActiveTabId, closeTab } = useTrace();
+  const {
+    loadTrace,
+    traceData,
+    tabs,
+    activeTabId,
+    setActiveTabId,
+    closeTab,
+    layoutOrientation,
+    setLayoutOrientation,
+  } = useTrace();
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [showConfigModal, setShowConfigModal] = useState(false);
@@ -187,6 +201,33 @@ export const TraceLoader: React.FC = () => {
         )}
 
         <div className="trace-loader__spacer" />
+
+        {tabs.length > 0 && (
+          <ContentSwitcher
+            size="sm"
+            selectedIndex={layoutOrientation === 'side-by-side' ? 0 : 1}
+            onChange={(item) => {
+              const orientation: PanelLayoutOrientation =
+                item.name === 'stacked' || item.index === 1 ? 'stacked' : 'side-by-side';
+              setLayoutOrientation(orientation);
+            }}
+            aria-label="Panel layout orientation"
+            className="trace-loader__layout-switcher"
+          >
+            <IconSwitch
+              name="side-by-side"
+              text="Side-by-side (columns)"
+            >
+              <Column size={16} />
+            </IconSwitch>
+            <IconSwitch
+              name="stacked"
+              text="Stacked (top and bottom)"
+            >
+              <Row size={16} />
+            </IconSwitch>
+          </ContentSwitcher>
+        )}
 
         <Button
           kind="primary"

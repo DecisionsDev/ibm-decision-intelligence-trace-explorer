@@ -101,6 +101,7 @@ export interface Exception {
 // UI State types
 
 export type LeftPanelTab = 'tree' | 'messages' | 'exceptions' | 'flame';
+export type PanelLayoutOrientation = 'side-by-side' | 'stacked';
 
 export interface TraceTabItem {
   id: string;
@@ -111,6 +112,7 @@ export interface TraceTabItem {
   expandedNodes: Set<string>;
   searchQuery: string;
   customRootIndex: string | null;
+  layoutOrientation: PanelLayoutOrientation;
 }
 
 export interface TraceContextState {
