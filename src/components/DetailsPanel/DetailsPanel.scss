@@ -93,21 +93,25 @@
 
   &__content {
     flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
 
+    // Tab list stays fixed; each tab panel scrolls on its own when needed
     .cds--tabs {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
+      flex: 0 0 auto;
     }
 
-    .cds--tab-panels {
-      flex: 1;
-      overflow-y: auto;
-    }
-
-    .cds--tab-panel {
+    .cds--tab-content {
+      flex: 1 1 auto;
+      min-height: 0;
+      overflow: auto;
       padding: 1rem;
+
+      &[hidden] {
+        display: none;
+      }
     }
   }
 
